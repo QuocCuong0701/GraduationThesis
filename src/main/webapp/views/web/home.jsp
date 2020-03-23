@@ -7,243 +7,944 @@
     <title>Trang chủ</title>
 </head>
 <body>
-<div class="row">
-    <%@include file="/common/web/left-menu.jsp"%>
-
-    <div class="span9">
-        <div class="well np">
-            <div id="myCarousel" class="carousel slide homCar">
-                <div class="carousel-inner">
-                    <div class="item">
-                        <img style="width:100%" src="<c:url value="/template/web/img/img1.jpg"/>" alt="bootstrap ecommerce templates">
-                        <div class="carousel-caption">
-                            <h4>Chuyên bán buôn - bán lẻ</h4>
-                            <p><span>cam kết hàng chính hãng</span></p>
-                        </div>
+<!-- SUPPORT AREA -->
+<div class="support-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-4 col-xs-12">
+                <div class="single-support">
+                    <div class="sigle-support-icon">
+                        <p><i class="fa fa-plane"></i></p>
                     </div>
-                    <div class="item">
-                        <img style="width:100%" src="<c:url value="/template/web/img/img4.jpg"/>" alt="bootstrap ecommerce templates">
-                    </div>
-                    <div class="item active">
-                        <img style="width:100%" src="<c:url value="/template/web/img/img5.png"/>" alt="bootstrap ecommerce templates">
-                    </div>
-                    <div class="item">
-                        <img style="width:100%" src="<c:url value="/template/web/img/img6.png"/>" alt="bootstrap templates">
+                    <div class="sigle-support-content">
+                        <h2>FREE SHIPPING </h2>
+                        <p>On Ordersover $200</p>
                     </div>
                 </div>
-                <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-                <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
             </div>
-        </div>
-        <!-- Products -->
-        <c:forEach var="item" items="${categoriesLimit4.listResult}">
-            <div class="well well-small">
-                <h3 id="category_id_${item.category_id}" style="text-transform: capitalize">${item.category_name}</h3>
-                <hr class="soften"/>
-                <div class="row-fluid">
-                    <ul class="thumbnails">
-                        <c:forEach var="products" items="${productLimit6.listResult}">
-                            <c:if test="${productSize == 0}">
-                                <p><strong>Không có sản phẩm nào.</strong></p>
-                            </c:if>
-                            <c:if test="${productSize > 0}">
-                                <input type="hidden" value="${item.category_id}" name="category_id"/>
-                                <li class="span4" style="margin-left: 0; margin-right: 1.42%;">
-                                    <div class="thumbnail">
-                                        <a class="zoomTool" href="<c:url value="/product-detail?product_id=${products.product_id}"/>" title="add to cart">
-                                            <span class="icon-search"></span> Xem sản phẩm
-                                        </a>
-                                        <a href="<c:url value="/product-detail?product_id=${products.product_id}"/>">
-                                            <c:if test="${products.product_image == null}">
-                                                <img src="<c:url value="/template/web/img/noimages.png"/>" alt="" style="width: 207px; height: 267px;">
-                                            </c:if>
-                                            <c:if test="${products.product_image != null}">
-                                                <img src="<c:url value="${products.product_image}"/>" alt="" style="width: 207px; height: 267px;">
-                                            </c:if>
-                                        </a>
-                                        <div class="caption cntr">
-                                            <p style="height: 40px; text-transform: capitalize;overflow: hidden;"> ${products.product_name}</p>
-                                            <p style="color: #ff0000;"><i class="icon-money"></i><strong> ${products.product_price} &#8363;</strong></p>
-                                            <h4>
-                                                <a class="shopBtn" href="<c:url value="/cart?act=add&product_id=${products.product_id}"/>" title="add to cart">
-                                                <i class="icon-shopping-cart"></i> Thêm vào giỏ </a>
-                                            </h4>
-                                                <%--<div class="actionList">
-                                                    <a class="pull-left" href="#">Add to Wish List </a>
-                                                    <a class="pull-left" href="#"> Add to Compare </a>
-                                                </div>--%>
-                                            <br class="clr">
-                                        </div>
-                                    </div>
-                                </li>
-                            </c:if>
-                        </c:forEach>
-                        <%--<c:forEach var="products" items="${productLimit2.listResult}">
-                            <c:if test="${productSize2 == 0}">
-                                <p><strong>Không có sản phẩm nào.</strong></p>
-                            </c:if>
-                            <c:if test="${productSize2 > 0}">
-                                <input type="hidden" value="${item.category_id}" name="category_id"/>
-                                <li class="span4" style="margin-left: 0; margin-right: 1.42%;">
-                                    <div class="thumbnail">
-                                        <a class="zoomTool" href="<c:url value="/product-detail?product_id=${products.product_id}"/>" title="add to cart">
-                                            <span class="icon-search"></span> Xem sản phẩm
-                                        </a>
-                                        <a href="<c:url value="/product-detail?product_id=${products.product_id}"/>">
-                                            <c:if test="${products.product_image == null}">
-                                                <img src="<c:url value="/template/web/img/noimages.png"/>" alt="" style="width: 207px; height: 267px;">
-                                            </c:if>
-                                            <c:if test="${products.product_image != null}">
-                                                <img src="<c:url value="${products.product_image}"/>" alt="" style="width: 207px; height: 267px;">
-                                            </c:if>
-                                        </a>
-                                        <div class="caption cntr">
-                                            <p style="height: 40px; text-transform: capitalize;overflow: hidden;"> ${products.product_name}</p>
-                                            <p style="color: #ff0000;"><i class="icon-money"></i><strong> ${products.product_price} &#8363;</strong></p>
-                                            <h4>
-                                                <a class="shopBtn" href="<c:url value="/cart?act=add&product_id=${products.product_id}"/>" title="add to cart">
-                                                    <i class="icon-shopping-cart"></i> Thêm vào giỏ </a>
-                                            </h4>
-                                            <br class="clr">
-                                        </div>
-                                    </div>
-                                </li>
-                            </c:if>
-                        </c:forEach>
-                        <c:forEach var="products" items="${productLimit3.listResult}">
-                            <c:if test="${productSize3 == 0}">
-                                <p><strong>Không có sản phẩm nào.</strong></p>
-                            </c:if>
-                            <c:if test="${productSize3 > 0}">
-                                <input type="hidden" value="${item.category_id}" name="category_id"/>
-                                <li class="span4" style="margin-left: 0; margin-right: 1.42%;">
-                                    <div class="thumbnail">
-                                        <a class="zoomTool" href="<c:url value="/product-detail?product_id=${products.product_id}"/>" title="add to cart">
-                                            <span class="icon-search"></span> Xem sản phẩm
-                                        </a>
-                                        <a href="<c:url value="/product-detail?product_id=${products.product_id}"/>">
-                                            <c:if test="${products.product_image == null}">
-                                                <img src="<c:url value="/template/web/img/noimages.png"/>" alt="" style="width: 207px; height: 267px;">
-                                            </c:if>
-                                            <c:if test="${products.product_image != null}">
-                                                <img src="<c:url value="${products.product_image}"/>" alt="" style="width: 207px; height: 267px;">
-                                            </c:if>
-                                        </a>
-                                        <div class="caption cntr">
-                                            <p style="height: 40px; text-transform: capitalize;overflow: hidden;"> ${products.product_name}</p>
-                                            <p style="color: #ff0000;"><i class="icon-money"></i><strong> ${products.product_price} &#8363;</strong></p>
-                                            <h4>
-                                                <a class="shopBtn" href="<c:url value="/cart?act=add&product_id=${products.product_id}"/>" title="add to cart">
-                                                    <i class="icon-shopping-cart"></i> Thêm vào giỏ </a>
-                                            </h4>
-                                                &lt;%&ndash;<div class="actionList">
-                                                    <a class="pull-left" href="#">Add to Wish List </a>
-                                                    <a class="pull-left" href="#"> Add to Compare </a>
-                                                </div>&ndash;%&gt;
-                                            <br class="clr">
-                                        </div>
-                                    </div>
-                                </li>
-                            </c:if>
-                        </c:forEach>
-                        <c:forEach var="products" items="${productLimit4.listResult}">
-                            <c:if test="${productSize4 == 0}">
-                                <p><strong>Không có sản phẩm nào.</strong></p>
-                            </c:if>
-                            <c:if test="${productSize4 > 0}">
-                                <input type="hidden" value="${item.category_id}" name="category_id"/>
-                                <li class="span4" style="margin-left: 0; margin-right: 1.42%;">
-                                    <div class="thumbnail">
-                                        <a class="zoomTool" href="<c:url value="/product-detail?product_id=${products.product_id}"/>" title="add to cart">
-                                            <span class="icon-search"></span> Xem sản phẩm
-                                        </a>
-                                        <a href="<c:url value="/product-detail?product_id=${products.product_id}"/>">
-                                            <c:if test="${products.product_image == null}">
-                                                <img src="<c:url value="/template/web/img/noimages.png"/>" alt="" style="width: 207px; height: 267px;">
-                                            </c:if>
-                                            <c:if test="${products.product_image != null}">
-                                                <img src="<c:url value="${products.product_image}"/>" alt="" style="width: 207px; height: 267px;">
-                                            </c:if>
-                                        </a>
-                                        <div class="caption cntr">
-                                            <p style="height: 40px; text-transform: capitalize;overflow: hidden;"> ${products.product_name}</p>
-                                            <p style="color: #ff0000;"><i class="icon-money"></i><strong> ${products.product_price} &#8363;</strong></p>
-                                            <h4>
-                                                <a class="shopBtn" href="<c:url value="/cart?act=add&product_id=${products.product_id}"/>" title="add to cart">
-                                                    <i class="icon-shopping-cart"></i> Thêm vào giỏ </a>
-                                            </h4>
-                                                &lt;%&ndash;<div class="actionList">
-                                                    <a class="pull-left" href="#">Add to Wish List </a>
-                                                    <a class="pull-left" href="#"> Add to Compare </a>
-                                                </div>&ndash;%&gt;
-                                            <br class="clr">
-                                        </div>
-                                    </div>
-                                </li>
-                            </c:if>
-                        </c:forEach>--%>
-                    </ul>
+            <div class="col-md-3 col-sm-4 col-xs-12">
+                <div class="single-support">
+                    <div class="sigle-support-icon">
+                        <p><i class="fa fa-dollar"></i></p>
+                    </div>
+                    <div class="sigle-support-content">
+                        <h2>FREE SHIPPING </h2>
+                        <p>Moneyback guarantee</p>
+                    </div>
                 </div>
             </div>
-        </c:forEach>
-
-        <!--
-        Featured Products
-        -->
-        <div class="well well-small" style="display: none">
-            <h3><a class="btn btn-mini pull-right" href="products.html" title="View more">VIew More<span class="icon-plus"></span></a> Featured Products  </h3>
-            <hr class="soften"/>
-            <div class="row-fluid">
-                <ul class="thumbnails">
-                    <li class="span4">
-                        <div class="thumbnail">
-                            <a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-                            <a  href="product_details.html"><img src="assets/img/d.jpg" alt=""></a>
-                            <div class="caption">
-                                <h5>Manicure & Pedicure</h5>
-                                <h4>
-                                    <a class="defaultBtn" href="product_details.html" title="Click to view"><span class="icon-zoom-in"></span></a>
-                                    <a class="shopBtn" href="#" title="add to cart"><span class="icon-plus"></span></a>
-                                    <span class="pull-right">$22.00</span>
-                                </h4>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="span4">
-                        <div class="thumbnail">
-                            <a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-                            <a  href="product_details.html"><img src="assets/img/e.jpg" alt=""></a>
-                            <div class="caption">
-                                <h5>Manicure & Pedicure</h5>
-                                <h4>
-                                    <a class="defaultBtn" href="product_details.html" title="Click to view"><span class="icon-zoom-in"></span></a>
-                                    <a class="shopBtn" href="#" title="add to cart"><span class="icon-plus"></span></a>
-                                    <span class="pull-right">$22.00</span>
-                                </h4>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="span4">
-                        <div class="thumbnail">
-                            <a class="zoomTool" href="product_details.html" title="add to cart"><span class="icon-search"></span> QUICK VIEW</a>
-                            <a  href="product_details.html"><img src="assets/img/f.jpg" alt=""/></a>
-                            <div class="caption">
-                                <h5>Manicure & Pedicure</h5>
-                                <h4>
-                                    <a class="defaultBtn" href="product_details.html" title="Click to view"><span class="icon-zoom-in"></span></a>
-                                    <a class="shopBtn" href="#" title="add to cart"><span class="icon-plus"></span></a>
-                                    <span class="pull-right">$22.00</span>
-                                </h4>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
+            <div class="col-md-3 col-sm-4 col-xs-12">
+                <div class="single-support">
+                    <div class="sigle-support-icon">
+                        <p><i class="fa fa-clock-o"></i></p>
+                    </div>
+                    <div class="sigle-support-content">
+                        <h2>24/7 SUPPORT</h2>
+                        <p>Online consultations</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 hidden-sm col-xs-12">
+                <div class="single-support">
+                    <div class="sigle-support-icon">
+                        <p><i class="fa fa-umbrella"></i></p>
+                    </div>
+                    <div class="sigle-support-content">
+                        <h2>SAFE SHOPPING</h2>
+                        <p>Safe Shopping Guarantee</p>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <div class="well well-small" style="display: none">
-            <a class="btn btn-mini pull-right" href="#">View more <span class="icon-plus"></span></a>
-            Popular Products
+    </div>
+</div>
+<!-- Slider AREA -->
+<div class="slider-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-3">
+                <div class="slider-left">
+                    <h2>Today’s Offer</h2>
+                    <div id="owl-slider-left" class="owl-carousel">
+                        <div class="slider-left-carousel">
+                            <div class="slider-left-product">
+                                <a href="#"><img src="<c:url value="/template/web/img/product/slider-product.jpg"/>" alt="product"></a>
+                                <div class="slider-product-button">
+                                    <p class="add-chart"><a href="#">Add To Cart</a></p>
+                                </div>
+                            </div>
+                            <p class="view-details"><a href="#">View details</a></p>
+                        </div>
+                        <div class="slider-left-carousel">
+                            <div class="slider-left-product">
+                                <a href="#"><img src="<c:url value="/template/web/img/product/slider-product-2.jpg"/>" alt="product"></a>
+                                <div class="slider-product-button">
+                                    <p class="add-chart"><a href="#">Add To Cart</a></p>
+                                </div>
+                            </div>
+                            <p class="view-details"><a href="#">View details</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9 col-sm-9">
+                <!-- Main Slider -->
+                <div class="main-slider">
+                    <div class="slider">
+                        <div id="mainSlider" class="nivoSlider slider-image">
+                            <img src="<c:url value="/template/web/img/slider/s1.jpg"/>" alt="main slider" title="#htmlcaption1"/>
+                            <img src="<c:url value="/template/web/img/slider/s5.jpg"/>" alt="main slider" title="#htmlcaption2"/>
+                        </div>
+                        <div id="htmlcaption1" class="nivo-html-caption slider-caption-1">
+                            <div class="slider-progress"></div>
+                            <div class="slide-text">
+                                <div class="middle-text">
+                                    <div class="cap-title wow slideInRight" data-wow-duration=".9s" data-wow-delay="0s">
+                                        <h2>New Collection</h2>
+                                    </div>
+                                    <div class="cap-dec wow slideInRight" data-wow-duration="1.1s" data-wow-delay="0s">
+                                        <p>Save Up to</p>
+                                        <h1>37% Off</h1>
+                                    </div>
+                                    <div class="cap-readmore animated bounceIn" data-wow-duration="1.5s" data-wow-delay=".5s">
+                                        <a href="#">View details</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slide-image">
+                                <img class="wow slideInUp"  data-wow-duration="1.5s" data-wow-delay="0s" src="<c:url value="/template/web/img/slider/si2.png"/>" alt="slider caption" />
+                            </div>
+                        </div>
+                        <div id="htmlcaption2" class="nivo-html-caption slider-caption-2">
+                            <div class="slider-progress"></div>
+                            <div class="slide-text">
+                                <div class="middle-text">
+                                    <div class="cap-title wow slideInRight" data-wow-duration=".9s" data-wow-delay="0s">
+                                        <h2>New Collection</h2>
+                                    </div>
+                                    <div class="cap-dec wow slideInRight" data-wow-duration="1.1s" data-wow-delay="0s">
+                                        <p>Save Up to</p>
+                                        <h1>37% Off</h1>
+                                    </div>
+                                    <div class="cap-readmore animated bounceIn" data-wow-duration="1.5s" data-wow-delay=".5s">
+                                        <a href="#">Shop Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slide-image slide2-image">
+                                <img class="wow slideInUp"  data-wow-duration="1.5s" data-wow-delay="0s" src="<c:url value="/template/web/img/slider/si3.png"/>" alt="slider caption" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Product AREA -->
+<div class="product-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-4">
+                <div class="product-catagori-area">
+                    <div class="product-categeries">
+                        <h2>Categeries</h2>
+                        <div class="panel-group" id="accrodian">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <i class="fa fa-heart"></i> Style
+                                        <a class="collapsed" data-toggle="collapse" href="#colOne" data-parent="#accrodian"></a>
+                                    </h4>
+                                </div>
+                                <div class="panel-collapse collapse" id="colOne">
+                                    <div class="panel-body">
+                                        <a href="#"><i class="fa fa-angle-double-right"></i> Categori-1</a>
+                                        <a href="#"><i class="fa fa-angle-double-right"></i> Categori-2</a>
+                                        <a href="#"><i class="fa fa-angle-double-right"></i> Categori-3</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <i class="fa fa-male"></i> Men
+                                        <a class="collapsed" data-toggle="collapse" href="#colTwo" data-parent="#accrodian"></a>
+                                    </h4>
+                                </div>
+                                <div class="panel-collapse collapse" id="colTwo">
+                                    <div class="panel-body">
+                                        <a href="#"><i class="fa fa-angle-double-right"></i> Categori-1</a>
+                                        <a href="#"><i class="fa fa-angle-double-right"></i> Categori-2</a>
+                                        <a href="#"><i class="fa fa-angle-double-right"></i> Categori-3</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <i class="fa fa-female"></i> Women
+                                        <a class="collapsed" data-toggle="collapse" href="#colThree" data-parent="#accrodian"></a>
+                                    </h4>
+                                </div>
+                                <div class="panel-collapse collapse" id="colThree">
+                                    <div class="panel-body">
+                                        <a href="#"><i class="fa fa-angle-double-right"></i> Categori-1</a>
+                                        <a href="#"><i class="fa fa-angle-double-right"></i> Categori-2</a>
+                                        <a href="#"><i class="fa fa-angle-double-right"></i> Categori-3</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <i class="fa fa-odnoklassniki"></i> Kids
+                                        <a class="collapsed" data-toggle="collapse" href="#colFour" data-parent="#accrodian"></a>
+                                    </h4>
+                                </div>
+                                <div class="panel-collapse collapse" id="colFour">
+                                    <div class="panel-body">
+                                        <a href="#"><i class="fa fa-angle-double-right"></i> Categori-1</a>
+                                        <a href="#"><i class="fa fa-angle-double-right"></i> Categori-2</a>
+                                        <a href="#"><i class="fa fa-angle-double-right"></i> Categori-3</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <i class="fa fa-gift"></i> Gift
+                                        <a class="collapsed" data-toggle="collapse" href="#colFive" data-parent="#accrodian"></a>
+                                    </h4>
+                                </div>
+                                <div class="panel-collapse collapse" id="colFive">
+                                    <div class="panel-body">
+                                        <a href="#"><i class="fa fa-angle-double-right"></i> Categori-1</a>
+                                        <a href="#"><i class="fa fa-angle-double-right"></i> Categori-2</a>
+                                        <a href="#"><i class="fa fa-angle-double-right"></i> Categori-3</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <i class="fa fa-bitbucket"></i> Accessories
+                                        <a class="collapsed" data-toggle="collapse" href="#colSix" data-parent="#accrodian"></a>
+                                    </h4>
+                                </div>
+                                <div class="panel-collapse collapse" id="colSix">
+                                    <div class="panel-body">
+                                        <a href="#"><i class="fa fa-angle-double-right"></i> Categori-1</a>
+                                        <a href="#"><i class="fa fa-angle-double-right"></i> Categori-2</a>
+                                        <a href="#"><i class="fa fa-angle-double-right"></i> Categori-3</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <i class="fa fa-coffee"></i> Offer
+                                        <a class="collapsed" data-toggle="collapse" href="#colSeven" data-parent="#accrodian"></a>
+                                    </h4>
+                                </div>
+                                <div class="panel-collapse collapse" id="colSeven">
+                                    <div class="panel-body">
+                                        <a href="#"><i class="fa fa-angle-double-right"></i> Categori-1</a>
+                                        <a href="#"><i class="fa fa-angle-double-right"></i> Categori-2</a>
+                                        <a href="#"><i class="fa fa-angle-double-right"></i> Categori-3</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="best-seller-area">
+                        <h2 class="header-title">Best seller</h2>
+                        <div class="best-sell-product">
+                            <div class="best-product-img">
+                                <a href="#"><img src="<c:url value="/template/web/img/product/best-product-1.png"/>" alt="product"></a>
+                            </div>
+                            <div class="best-product-content">
+                                <h2><a href="#">Et harum quidem red T-shirt</a></h2>
+                                <h3>$45.00</h3>
+                                <div class="best-product-rating">
+                                    <a href="#"><i class="fa fa-star"></i></a>
+                                    <a href="#"><i class="fa fa-star"></i></a>
+                                    <a href="#"><i class="fa fa-star"></i></a>
+                                    <a href="#"><i class="fa fa-star"></i></a>
+                                    <a href="#"><i class="fa fa-star-o"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="best-sell-product">
+                            <div class="best-product-img">
+                                <a href="#"><img src="<c:url value="/template/web/img/product/best-product-2.png"/>" alt="product"></a>
+                            </div>
+                            <div class="best-product-content">
+                                <h2><a href="#">Et harum quidem red T-shirt</a></h2>
+                                <h3>$45.00</h3>
+                                <div class="best-product-rating">
+                                    <a href="#"><i class="fa fa-star"></i></a>
+                                    <a href="#"><i class="fa fa-star"></i></a>
+                                    <a href="#"><i class="fa fa-star"></i></a>
+                                    <a href="#"><i class="fa fa-star"></i></a>
+                                    <a href="#"><i class="fa fa-star-o"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="best-sell-product">
+                            <div class="best-product-img">
+                                <a href="#"><img src="<c:url value="/template/web/img/product/best-product-3.png"/>" alt="product"></a>
+                            </div>
+                            <div class="best-product-content">
+                                <h2><a href="#">Et harum quidem red T-shirt</a></h2>
+                                <h3>$45.00</h3>
+                                <div class="best-product-rating">
+                                    <a href="#"><i class="fa fa-star"></i></a>
+                                    <a href="#"><i class="fa fa-star"></i></a>
+                                    <a href="#"><i class="fa fa-star"></i></a>
+                                    <a href="#"><i class="fa fa-star"></i></a>
+                                    <a href="#"><i class="fa fa-star-o"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="best-sell-product">
+                            <div class="best-product-img">
+                                <a href="#"><img src="<c:url value="/template/web/img/product/best-product-2.png"/>" alt="product"></a>
+                            </div>
+                            <div class="best-product-content">
+                                <h2><a href="#">Et harum quidem red T-shirt</a></h2>
+                                <h3>$45.00</h3>
+                                <div class="best-product-rating">
+                                    <a href="#"><i class="fa fa-star"></i></a>
+                                    <a href="#"><i class="fa fa-star"></i></a>
+                                    <a href="#"><i class="fa fa-star"></i></a>
+                                    <a href="#"><i class="fa fa-star"></i></a>
+                                    <a href="#"><i class="fa fa-star-o"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="view-details">
+                            <a href="#">View details</a>
+                        </p>
+                    </div>
+                    <div class="add-kids single-add">
+                        <a href="#"><img src="<c:url value="/template/web/img/banner/kids-ad.jpg"/>" alt="add"></a>
+                    </div>
+                    <div class="testmonial-area fix">
+                        <h2 class="header-title">Testimonial</h2>
+                        <div id="owl-testmonial" class="owl-carousel">
+                            <div class="testmonial fix">
+                                <span><i class="fa fa-quote-left"></i></span>
+                                <p>Lorem ipsum dolor consetetuer adipiscing elit. Aenean commdo ligula eget dolor. Aenean massa.</p>
+                                <h3>-MatthE Jensen</h3>
+                                <img src="<c:url value="/template/web/img/testmonial.jpg"/>" alt="">
+                            </div>
+                            <div class="testmonial fix">
+                                <span><i class="fa fa-quote-left"></i></span>
+                                <p>Lorem ipsum dolor consetetuer adipiscing elit. Aenean commdo ligula eget dolor. Aenean massa.</p>
+                                <h3>-MatthE Jensen</h3>
+                                <img src="<c:url value="/template/web/img/testmonial.jpg"/>" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="subscribe-area">
+                        <h2>Subscribe Letter</h2>
+                        <form action="#">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Enter your E-mail">
+                                <button type="button" class="btn"><i class="fa fa-envelope-o"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9 col-sm-8">
+                <div class="product-items-area">
+                    <div class="product-items">
+                        <h2 class="product-header">style</h2>
+                        <div class="row">
+                            <div id="product-slider" class="owl-carousel">
+                                <div class="col-md-4">
+                                    <div class="single-product">
+                                        <div class="single-product-img">
+                                            <a href="#">
+                                                <img class="primary-img" src="<c:url value="/template/web/img/product/single-product-1.jpg"/>" alt="product">
+                                                <img class="secondary-img" src="<c:url value="/template/web/img/product/kids-1.jpg"/>" alt="product">
+                                            </a>
+                                            <div class="single-product-action">
+                                                <a href="#"><i class="fa fa-external-link"></i></a>
+                                                <a href="#"><i class="fa fa-shopping-cart"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="single-product-content">
+                                            <div class="product-content-left">
+                                                <h2><a href="#">EXCLUSIVE STYLE</a></h2>
+                                                <p>Jacket’s</p>
+                                            </div>
+                                            <div class="product-content-right">
+                                                <h3>$27.00</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="single-product">
+                                        <div class="single-product-img">
+                                            <a href="#">
+                                                <img class="primary-img" src="<c:url value="/template/web/"/>img/product/single-product-2.jpg" alt="product">
+                                                <img class="secondary-img" src="<c:url value="/template/web/"/>img/product/women-2.jpg" alt="product">
+                                            </a>
+                                            <div class="single-product-action">
+                                                <a href="#"><i class="fa fa-external-link"></i></a>
+                                                <a href="#"><i class="fa fa-shopping-cart"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="single-product-content">
+                                            <div class="product-content-left">
+                                                <h2><a href="#">EXCLUSIVE STYLE</a></h2>
+                                                <p>Jacket’s</p>
+                                            </div>
+                                            <div class="product-content-right">
+                                                <h3>$27.00</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="single-product">
+                                        <div class="single-product-img">
+                                            <a href="#">
+                                                <img class="primary-img" src="<c:url value="/template/web/"/>img/product/single-product-3.jpg" alt="product">
+                                                <img class="secondary-img" src="<c:url value="/template/web/"/>img/product/men-2.jpg" alt="product">
+                                            </a>
+                                            <div class="single-product-action">
+                                                <a href="#"><i class="fa fa-external-link"></i></a>
+                                                <a href="#"><i class="fa fa-shopping-cart"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="single-product-content">
+                                            <div class="product-content-left">
+                                                <h2><a href="#">EXCLUSIVE STYLE</a></h2>
+                                                <p>Jacket’s</p>
+                                            </div>
+                                            <div class="product-content-right">
+                                                <h3>$27.00</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="single-product">
+                                        <div class="single-product-img">
+                                            <a href="#">
+                                                <img class="primary-img" src="<c:url value="/template/web/img/product/single-product-1.jpg"/>" alt="product">
+                                                <img class="secondary-img" src="<c:url value="/template/web/img/product/kids-1.jpg"/>" alt="product">
+                                            </a>
+                                            <div class="single-product-action">
+                                                <a href="#"><i class="fa fa-external-link"></i></a>
+                                                <a href="#"><i class="fa fa-shopping-cart"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="single-product-content">
+                                            <div class="product-content-left">
+                                                <h2><a href="#">EXCLUSIVE STYLE</a></h2>
+                                                <p>Jacket’s</p>
+                                            </div>
+                                            <div class="product-content-right">
+                                                <h3>$27.00</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="single-product">
+                                        <div class="single-product-img">
+                                            <a href="#">
+                                                <img class="primary-img" src="<c:url value="/template/web/img/product/women-2.jpg"/>" alt="product">
+                                                <img class="secondary-img" src="<c:url value="/template/web/img/product/women-2.jpg"/>" alt="product">
+                                            </a>
+                                            <div class="single-product-action">
+                                                <a href="#"><i class="fa fa-external-link"></i></a>
+                                                <a href="#"><i class="fa fa-shopping-cart"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="single-product-content">
+                                            <div class="product-content-left">
+                                                <h2><a href="#">EXCLUSIVE STYLE</a></h2>
+                                                <p>Jacket’s</p>
+                                            </div>
+                                            <div class="product-content-right">
+                                                <h3>$27.00</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="single-product">
+                                        <div class="single-product-img">
+                                            <a href="#">
+                                                <img class="primary-img" src="<c:url value="/template/web/img/product/single-product-3.jpg"/>" alt="product">
+                                                <img class="secondary-img" src="<c:url value="/template/web/img/product/men-2.jpg"/>" alt="product">
+                                            </a>
+                                            <div class="single-product-action">
+                                                <a href="#"><i class="fa fa-external-link"></i></a>
+                                                <a href="#"><i class="fa fa-shopping-cart"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="single-product-content">
+                                            <div class="product-content-left">
+                                                <h2><a href="#">EXCLUSIVE STYLE</a></h2>
+                                                <p>Jacket’s</p>
+                                            </div>
+                                            <div class="product-content-right">
+                                                <h3>$27.00</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-items">
+                        <h2 class="product-header">men</h2>
+                        <div class="row">
+                            <div id="product-slider-two" class="owl-carousel">
+                                <div class="col-md-4">
+                                    <div class="single-product">
+                                        <div class="single-product-img">
+                                            <a href="#">
+                                                <img class="primary-img" src="<c:url value="/template/web/img/product/men-1.jpg"/>" alt="product">
+                                                <img class="secondary-img" src="<c:url value="/template/web/img/product/single-product-3.jpg"/>" alt="product">
+                                            </a>
+                                            <div class="single-product-action">
+                                                <a href="#"><i class="fa fa-external-link"></i></a>
+                                                <a href="#"><i class="fa fa-shopping-cart"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="single-product-content">
+                                            <div class="product-content-left">
+                                                <h2><a href="#">EXCLUSIVE STYLE</a></h2>
+                                                <p>Jacket’s</p>
+                                            </div>
+                                            <div class="product-content-right">
+                                                <h3>$27.00</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="single-product">
+                                        <div class="single-product-img">
+                                            <a href="#">
+                                                <img class="primary-img" src="<c:url value="/template/web/img/product/men-2.jpg"/>" alt="product">
+                                                <img class="secondary-img" src="<c:url value="/template/web/img/product/single-product-3.jpg"/>" alt="product">
+                                            </a>
+                                            <div class="single-product-action">
+                                                <a href="#"><i class="fa fa-external-link"></i></a>
+                                                <a href="#"><i class="fa fa-shopping-cart"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="single-product-content">
+                                            <div class="product-content-left">
+                                                <h2><a href="#">EXCLUSIVE STYLE</a></h2>
+                                                <p>Jacket’s</p>
+                                            </div>
+                                            <div class="product-content-right">
+                                                <h3>$27.00</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="single-product">
+                                        <div class="single-product-img">
+                                            <a href="#">
+                                                <img class="primary-img" src="<c:url value="/template/web/img/product/men-3.jpg"/>" alt="product">
+                                                <img class="secondary-img" src="<c:url value="/template/web/img/product/single-product-3.jpg"/>" alt="product">
+                                            </a>
+                                            <div class="single-product-action">
+                                                <a href="#"><i class="fa fa-external-link"></i></a>
+                                                <a href="#"><i class="fa fa-shopping-cart"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="single-product-content">
+                                            <div class="product-content-left">
+                                                <h2><a href="#">EXCLUSIVE STYLE</a></h2>
+                                                <p>Jacket’s</p>
+                                            </div>
+                                            <div class="product-content-right">
+                                                <h3>$27.00</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="single-product">
+                                        <div class="single-product-img">
+                                            <a href="#">
+                                                <img class="primary-img" src="<c:url value="/template/web/img/product/men-1.jpg"/>" alt="product">
+                                                <img class="secondary-img" src="<c:url value="/template/web/img/product/single-product-3.jpg"/>" alt="product">
+                                            </a>
+                                            <div class="single-product-action">
+                                                <a href="#"><i class="fa fa-external-link"></i></a>
+                                                <a href="#"><i class="fa fa-shopping-cart"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="single-product-content">
+                                            <div class="product-content-left">
+                                                <h2><a href="#">EXCLUSIVE STYLE</a></h2>
+                                                <p>Jacket’s</p>
+                                            </div>
+                                            <div class="product-content-right">
+                                                <h3>$27.00</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="single-product">
+                                        <div class="single-product-img">
+                                            <a href="#">
+                                                <img class="primary-img" src="<c:url value="/template/web/img/product/men-2.jpg"/>" alt="product">
+                                                <img class="secondary-img" src="<c:url value="/template/web/img/product/single-product-3.jpg"/>" alt="product">
+                                            </a>
+                                            <div class="single-product-action">
+                                                <a href="#"><i class="fa fa-external-link"></i></a>
+                                                <a href="#"><i class="fa fa-shopping-cart"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="single-product-content">
+                                            <div class="product-content-left">
+                                                <h2><a href="#">EXCLUSIVE STYLE</a></h2>
+                                                <p>Jacket’s</p>
+                                            </div>
+                                            <div class="product-content-right">
+                                                <h3>$27.00</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="single-product">
+                                        <div class="single-product-img">
+                                            <a href="#">
+                                                <img class="primary-img" src="<c:url value="/template/web/img/product/men-3.jpg"/>" alt="product">
+                                                <img class="secondary-img" src="<c:url value="/template/web/img/product/single-product-3.jpg"/>" alt="product">
+                                            </a>
+                                            <div class="single-product-action">
+                                                <a href="#"><i class="fa fa-external-link"></i></a>
+                                                <a href="#"><i class="fa fa-shopping-cart"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="single-product-content">
+                                            <div class="product-content-left">
+                                                <h2><a href="#">EXCLUSIVE STYLE</a></h2>
+                                                <p>Jacket’s</p>
+                                            </div>
+                                            <div class="product-content-right">
+                                                <h3>$27.00</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="arrivals-area single-add">
+                        <a href="#"> <img src="<c:url value="/template/web/img/banner/arrivals.jpg"/>" alt="arrivals"> </a>
+                    </div>
+                    <div class="product-items">
+                        <h2 class="product-header">women</h2>
+                        <div class="row">
+                            <div id="product-slider-women" class="owl-carousel">
+                                <div class="col-md-4">
+                                    <div class="single-product">
+                                        <div class="single-product-img">
+                                            <a href="#">
+                                                <img class="primary-img" src="<c:url value="/template/web/img/product/single-product-2.jpg"/>" alt="product">
+                                                <img class="secondary-img" src="<c:url value="/template/web/img/product/single-product-2.jpg"/>" alt="product">
+                                            </a>
+                                            <div class="single-product-action">
+                                                <a href="#"><i class="fa fa-external-link"></i></a>
+                                                <a href="#"><i class="fa fa-shopping-cart"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="single-product-content">
+                                            <div class="product-content-left">
+                                                <h2><a href="#">EXCLUSIVE STYLE</a></h2>
+                                                <p>Jacket’s</p>
+                                            </div>
+                                            <div class="product-content-right">
+                                                <h3>$27.00</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="single-product">
+                                        <div class="single-product-img">
+                                            <a href="#">
+                                                <img class="primary-img" src="<c:url value="/template/web/"/>img/product/women-2.jpg" alt="product">
+                                                <img class="secondary-img" src="<c:url value="/template/web/"/>img/product/single-product-2.jpg" alt="product">
+                                            </a>
+                                            <div class="single-product-action">
+                                                <a href="#"><i class="fa fa-external-link"></i></a>
+                                                <a href="#"><i class="fa fa-shopping-cart"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="single-product-content">
+                                            <div class="product-content-left">
+                                                <h2><a href="#">EXCLUSIVE STYLE</a></h2>
+                                                <p>Jacket’s</p>
+                                            </div>
+                                            <div class="product-content-right">
+                                                <h3>$27.00</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="single-product">
+                                        <div class="single-product-img">
+                                            <a href="#">
+                                                <img class="primary-img" src="<c:url value="/template/web/img/product/women-3.jpg"/>" alt="product">
+                                                <img class="secondary-img" src="<c:url value="/template/web/img/product/single-product-2.jpg"/>" alt="product">
+                                            </a>
+                                            <div class="single-product-action">
+                                                <a href="#"><i class="fa fa-external-link"></i></a>
+                                                <a href="#"><i class="fa fa-shopping-cart"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="single-product-content">
+                                            <div class="product-content-left">
+                                                <h2><a href="#">EXCLUSIVE STYLE</a></h2>
+                                                <p>Jacket’s</p>
+                                            </div>
+                                            <div class="product-content-right">
+                                                <h3>$27.00</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="single-product">
+                                        <div class="single-product-img">
+                                            <a href="#">
+                                                <img class="primary-img" src="<c:url value="/template/web/img/product/single-product-2.jpg"/>" alt="product">
+                                                <img class="secondary-img" src="<c:url value="/template/web/img/product/single-product-2.jpg"/>" alt="product">
+                                            </a>
+                                            <div class="single-product-action">
+                                                <a href="#"><i class="fa fa-external-link"></i></a>
+                                                <a href="#"><i class="fa fa-shopping-cart"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="single-product-content">
+                                            <div class="product-content-left">
+                                                <h2><a href="#">EXCLUSIVE STYLE</a></h2>
+                                                <p>Jacket’s</p>
+                                            </div>
+                                            <div class="product-content-right">
+                                                <h3>$27.00</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="single-product">
+                                        <div class="single-product-img">
+                                            <a href="#">
+                                                <img class="primary-img" src="<c:url value="/template/web/img/product/women-2.jpg"/>" alt="product">
+                                                <img class="secondary-img" src="<c:url value="/template/web/img/product/single-product-2.jpg"/>" alt="product">
+                                            </a>
+                                            <div class="single-product-action">
+                                                <a href="#"><i class="fa fa-external-link"></i></a>
+                                                <a href="#"><i class="fa fa-shopping-cart"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="single-product-content">
+                                            <div class="product-content-left">
+                                                <h2><a href="#">EXCLUSIVE STYLE</a></h2>
+                                                <p>Jacket’s</p>
+                                            </div>
+                                            <div class="product-content-right">
+                                                <h3>$27.00</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="single-product">
+                                        <div class="single-product-img">
+                                            <a href="#">
+                                                <img class="primary-img" src="<c:url value="/template/web/img/product/women-3.jpg"/>" alt="product">
+                                                <img class="secondary-img" src="<c:url value="/template/web/img/product/single-product-2.jpg"/>" alt="product">
+                                            </a>
+                                            <div class="single-product-action">
+                                                <a href="#"><i class="fa fa-external-link"></i></a>
+                                                <a href="#"><i class="fa fa-shopping-cart"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="single-product-content">
+                                            <div class="product-content-left">
+                                                <h2><a href="#">EXCLUSIVE STYLE</a></h2>
+                                                <p>Jacket’s</p>
+                                            </div>
+                                            <div class="product-content-right">
+                                                <h3>$27.00</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-items">
+                        <h2 class="product-header">kids</h2>
+                        <div class="row">
+                            <div id="product-slider-kids" class="owl-carousel">
+                                <div class="col-md-4">
+                                    <div class="single-product">
+                                        <div class="single-product-img">
+                                            <a href="#">
+                                                <img class="primary-img" src="<c:url value="/template/web/img/product/kids-1.jpg"/>" alt="product">
+                                                <img class="secondary-img" src="<c:url value="/template/web/img/product/single-product-1.jpg"/>" alt="product">
+                                            </a>
+                                            <div class="single-product-action">
+                                                <a href="#"><i class="fa fa-external-link"></i></a>
+                                                <a href="#"><i class="fa fa-shopping-cart"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="single-product-content">
+                                            <div class="product-content-left">
+                                                <h2><a href="#">EXCLUSIVE STYLE</a></h2>
+                                                <p>Jacket’s</p>
+                                            </div>
+                                            <div class="product-content-right">
+                                                <h3>$27.00</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="single-product">
+                                        <div class="single-product-img">
+                                            <a href="#">
+                                                <img class="primary-img" src="<c:url value="/template/web/img/product/kids-2.jpg"/>" alt="product">
+                                                <img class="secondary-img" src="<c:url value="/template/web/img/product/single-product-1.jpg"/>" alt="product">
+                                            </a>
+                                            <div class="single-product-action">
+                                                <a href="#"><i class="fa fa-external-link"></i></a>
+                                                <a href="#"><i class="fa fa-shopping-cart"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="single-product-content">
+                                            <div class="product-content-left">
+                                                <h2><a href="#">EXCLUSIVE STYLE</a></h2>
+                                                <p>Jacket’s</p>
+                                            </div>
+                                            <div class="product-content-right">
+                                                <h3>$27.00</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="single-product">
+                                        <div class="single-product-img">
+                                            <a href="#">
+                                                <img class="primary-img" src="<c:url value="/template/web/img/product/kids-3.jpg"/>" alt="product">
+                                                <img class="secondary-img" src="<c:url value="/template/web/img/product/single-product-1.jpg"/>" alt="product">
+                                            </a>
+                                            <div class="single-product-action">
+                                                <a href="#"><i class="fa fa-external-link"></i></a>
+                                                <a href="#"><i class="fa fa-shopping-cart"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="single-product-content">
+                                            <div class="product-content-left">
+                                                <h2><a href="#">EXCLUSIVE STYLE</a></h2>
+                                                <p>Jacket’s</p>
+                                            </div>
+                                            <div class="product-content-right">
+                                                <h3>$27.00</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="single-product">
+                                        <div class="single-product-img">
+                                            <a href="#">
+                                                <img class="primary-img" src="<c:url value="/template/web/img/product/kids-1.jpg"/>" alt="product">
+                                                <img class="secondary-img" src="<c:url value="/template/web/img/product/single-product-1.jpg"/>" alt="product">
+                                            </a>
+                                            <div class="single-product-action">
+                                                <a href="#"><i class="fa fa-external-link"></i></a>
+                                                <a href="#"><i class="fa fa-shopping-cart"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="single-product-content">
+                                            <div class="product-content-left">
+                                                <h2><a href="#">EXCLUSIVE STYLE</a></h2>
+                                                <p>Jacket’s</p>
+                                            </div>
+                                            <div class="product-content-right">
+                                                <h3>$27.00</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="single-product">
+                                        <div class="single-product-img">
+                                            <a href="#">
+                                                <img class="primary-img" src="<c:url value="/template/web/img/product/kids-2.jpg"/>" alt="product">
+                                                <img class="secondary-img" src="<c:url value="/template/web/img/product/single-product-1.jpg"/>" alt="product">
+                                            </a>
+                                            <div class="single-product-action">
+                                                <a href="#"><i class="fa fa-external-link"></i></a>
+                                                <a href="#"><i class="fa fa-shopping-cart"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="single-product-content">
+                                            <div class="product-content-left">
+                                                <h2><a href="#">EXCLUSIVE STYLE</a></h2>
+                                                <p>Jacket’s</p>
+                                            </div>
+                                            <div class="product-content-right">
+                                                <h3>$27.00</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="single-product">
+                                        <div class="single-product-img">
+                                            <a href="#">
+                                                <img class="primary-img" src="<c:url value="/template/web/img/product/kids-3.jpg"/>" alt="product">
+                                                <img class="secondary-img" src="<c:url value="/template/web/img/product/single-product-1.jpg"/>" alt="product">
+                                            </a>
+                                            <div class="single-product-action">
+                                                <a href="#"><i class="fa fa-external-link"></i></a>
+                                                <a href="#"><i class="fa fa-shopping-cart"></i></a>
+                                            </div>
+                                        </div>
+                                        <div class="single-product-content">
+                                            <div class="product-content-left">
+                                                <h2><a href="#">EXCLUSIVE STYLE</a></h2>
+                                                <p>Jacket’s</p>
+                                            </div>
+                                            <div class="product-content-right">
+                                                <h3>$27.00</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

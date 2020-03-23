@@ -1,71 +1,138 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@include file="/common/taglib.jsp" %>
 <!DOCTYPE html>
-<html lang="en">
+<html class="no-js" lang="">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title><dec:title default="Trang chủ"/></title>
-    <link href="<c:url value="/template/web/css/bootstrap.css"/>" type="text/css" rel="stylesheet"/>
-    <link href="<c:url value='/template/web/css/style.css'/>" type="text/css" rel="stylesheet"/>
-    <link href="<c:url value='/template/web/font-awesome/css/font-awesome.css'/>" type="text/css" rel="stylesheet"/>
-    <link rel="shortcut icon" href="<c:url value='/template/web/ico/favicon.ico'/>">
-    <script type='text/javascript' src='<c:url value="/template/web/js/jquery-2.2.3.js" />'></script>
-    <script src="<c:url value="/template/paging/jquery.twbsPagination.js" />"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Trang Chủ</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicon============================================ -->
+    <link rel="shortcut icon" type="image/x-icon" href="<c:url value="/template/web/img/favicon.jpg"/>">
+
+    <!-- Fonts
+    ============================================ -->
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,700,600,500,300,800,900' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,500,300,300italic,500italic,700' rel='stylesheet' type='text/css'>
+
+    <!-- CSS  -->
+
+    <!-- Bootstrap CSS
+    ============================================ -->
+    <link rel="stylesheet" href="<c:url value="/template/web/css/bootstrap.min.css"/>">
+
+    <!-- font-awesome.min CSS
+    ============================================ -->
+    <link rel="stylesheet" href="<c:url value="/template/web/css/font-awesome.min.css"/>">
+
+    <!-- Mean Menu CSS
+    ============================================ -->
+    <link rel="stylesheet" href="<c:url value="/template/web/css/meanmenu.min.css"/>">
+
+    <!-- owl.carousel CSS
+    ============================================ -->
+    <link rel="stylesheet" href="<c:url value="/template/web/css/owl.carousel.css"/>">
+
+    <!-- owl.theme CSS
+    ============================================ -->
+    <link rel="stylesheet" href="<c:url value="/template/web/css/owl.theme.css"/>">
+
+    <!-- owl.transitions CSS
+    ============================================ -->
+    <link rel="stylesheet" href="<c:url value="/template/web/css/owl.transitions.css"/>">
+
+    <!-- Price Filter CSS
+    ============================================ -->
+    <link rel="stylesheet" href="<c:url value="/template/web/css/jquery-ui.min.css"/>">
+
+    <!-- nivo-slider css
+    ============================================ -->
+    <link rel="stylesheet" href="<c:url value="/template/web/css/nivo-slider.css"/>">
+
+    <!-- animate CSS
+   ============================================ -->
+    <link rel="stylesheet" href="<c:url value="/template/web/css/animate.css"/>">
+
+    <!-- jquery-ui-slider CSS
+    ============================================ -->
+    <link rel="stylesheet" href="<c:url value="/template/web/css/jquery-ui-slider.css"/>">
+
+    <!-- normalize CSS
+   ============================================ -->
+    <link rel="stylesheet" href="<c:url value="/template/web/css/normalize.css"/>">
+
+    <!-- main CSS
+    ============================================ -->
+    <link rel="stylesheet" href="<c:url value="/template/web/css/main.css"/>">
+
+    <!-- style CSS
+    ============================================ -->
+    <link rel="stylesheet" href="<c:url value="/template/web/css/style.css"/>">
+
+    <!-- responsive CSS
+    ============================================ -->
+    <link rel="stylesheet" href="<c:url value="/template/web/css/responsive.css"/>">
+
+    <script src="<c:url value="/template/web/js/vendor/modernizr-2.8.3.min.js"/>"></script>
 </head>
-<body>
-
-<div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="topNav">
-        <div class="container">
-            <div class="alignR">
-                <c:set var="cart" value="${sessionScope.model}" />
-                <div class="pull-left socialNw">
-                    <a href="#"><span class="icon-twitter"></span></a>
-                    <a href="#"><span class="icon-facebook"></span></a>
-                    <a href="#"><span class="icon-youtube"></span></a>
-                    <a href="#"><span class="icon-tumblr"></span></a>
-                </div>
-                <a class="active" href="<c:url value="/trang-chu"/>"> <span class="icon-home"></span> Trang chủ</a>
-                <c:if test="${not empty USERMODEL}">
-                    <a href="<c:url value="/account"/>"><span class="icon-user"></span> Tài khoản</a>
-                </c:if>
-                <a href="<c:url value="/registration"/>"><span class="icon-edit"></span> Đăng ký </a>
-                <a href="#"><span class="icon-envelope"></span> Liên hệ</a>
-                <a href="<c:url value="/cart"/>"><span class="icon-shopping-cart"></span>
-                    <c:if test="${cart == null}">
-                        0 Sản phẩm - <span class="badge badge-warning"> 0 &#8363;</span>
-                    </c:if>
-                    <c:if test="${cart != null}">
-                        ${cart.size()} Sản phẩm - <span class="badge badge-warning">${sessionScope.totalPrice} &#8363;</span>
-                    </c:if>
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container">
+<body class="home-one">
     <!-- header -->
     <%@include file="/common/web/header.jsp" %>
     <!-- header -->
 
-    <dec:body></dec:body>
+    <dec:body/>
 
     <!-- footer -->
     <%@include file="/common/web/footer.jsp" %>
     <!-- footer -->
-</div>
 
-<a href="#gototop" class="gotop"><i class="icon-double-angle-up"></i></a>
+    <!-- toTop -->
+    <div id="totop" class="btn btn-info" style="display: none;">
+        <span class="glyphicon glyphicon-chevron-up"></span>
+    </div>
 
 <!-- Placed at the end of the document so the pages load faster -->
+    <!-- JS -->
+    <!-- jquery-1.11.3.min js
+   ============================================ -->
+    <script src="<c:url value="/template/web/js/vendor/jquery-1.11.3.min.js"/>"></script>
 
-<script src="<c:url value='/template/web/js/jquery.js'/>"></script>
-<script src="<c:url value='/template/web/js/bootstrap.min.js'/>"></script>
-<script src="<c:url value='/template/web/js/jquery.easing-1.3.min.js'/>"></script>
-<script src="<c:url value='/template/web/js/jquery.scrollTo-1.4.3.1-min.js'/>"></script>
-<script src="<c:url value='/template/web/js/shop.js'/>"></script>
-<script src="<c:url value='/template/web/js/jquery.dataTable.js'/>"></script>
-<script src="<c:url value='/template/web/js/data_table-1.0.0.js'/>"></script>
+    <!-- bootstrap js
+   ============================================ -->
+    <script src="<c:url value="/template/web/js/bootstrap.min.js"/>"></script>
+
+    <!-- nivo slider js
+    ============================================ -->
+    <script src="<c:url value="/template/web/js/jquery.nivo.slider.pack.js"/>"></script>
+
+    <!-- Mean Menu js
+   ============================================ -->
+    <script src="<c:url value="/template/web/js/jquery.meanmenu.min.js"/>"></script>
+
+    <!-- owl.carousel.min js
+ ============================================ -->
+    <script src="<c:url value="/template/web/js/owl.carousel.min.js"/>"></script>
+
+    <!-- jquery price slider js
+    ============================================ -->
+    <script src="<c:url value="/template/web/js/jquery-price-slider.js"/>"></script>
+
+    <!-- wow.js
+    ============================================ -->
+    <script src="<c:url value="/template/web/js/wow.js"/>"></script>
+    <script>
+        new WOW().init();
+    </script>
+
+    <!-- plugins js
+ ============================================ -->
+    <script src="<c:url value="/template/web/js/plugins.js"/>"></script>
+
+    <!-- main js
+ ============================================ -->
+    <script src="<c:url value="/template/web/js/main.js"/>"></script>
+
 </body>
 </html>

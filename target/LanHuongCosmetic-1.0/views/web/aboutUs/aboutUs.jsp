@@ -7,47 +7,150 @@
     <title>Giới thiệu</title>
 </head>
 <body>
-<div class="row">
-    <%@include file="/common/web/left-menu.jsp"%>
-    <div class="span9">
-        <ul class="breadcrumb">
-            <li><a href="<c:url value="/trang-chu"/>">Trang chủ</a> <span class="divider">/</span></li>
-            <li class="active">Giới thiệu</li>
-        </ul>
-        <div class="well well-small intro">
-            <h2>Mỹ phẩm Lan Hương - Lan Huong Cosmetics</h2>
-            <h3>Giới Thiệu</h3>
-            <p>
-                Đầu tiên xin được gửi lời chào và lời cảm ơn chân thành nhất tới toàn thể quý khách hàng vì đã tin tưởng lựa chọn Mỹ Phẩm Lan Hương.
-            </p>
-            <p>
-                Mỹ Phẩm Lan Hương  được quý khách hàng biết đến là phân phối các mặt hàng mỹ phẩm và Dược mỹ phẩm được sản xuất tại Hàn Quốc đặc
-                biệt là nhà bán lẻ số 1 các Sản phẩm chăm sóc sắc đẹp của Hãng mỹ phẩm nổi tiếng ThefaceShop. Với mục tiêu cung cấp những sản phẩm có
-                chất lượng cao và an toàn theo tiêu chuẩn quốc tế, đáp ứng nhu cầu chăm sóc làm đẹp hàng ngày của người tiêu dùng lẫn hỗ trợ điều trị
-                da dành cho các chuyên gia y tế và sắc đẹp.
-            </p>
-            <h5 style="color: red">Mục tiêu phát triển</h5>
-            <p>
-                Tầm nhìn</p>
-
-                <p>Là công ty chuyên các sản phẩm làm đẹp tại Việt Nam, được khách hàng tín nhiệm ưu tiên lựa chọn.
-            </p>
-            <p>
-                Sứ mệnh</p>
-
-                <p>Thấu hiểu khách hàng, mang đến cho khách hàng niềm tin, mua sắm thuận lợi qua những sản phẩm chất lượng tốt, giá trị đáng tiền và dịch vụ tiện lợi.
-            </p>
-            <p>
-                Giá trị cốt lõi</p>
-
-                <p>Thấu hiểu: Quan tâm, lắng nghe, cảm nhận để thấu hiểu nhu cầu, ước muốn, mong đợi của khách hàng nhằm đáp ứng tốt nhất cho khách hàng.
-
-                Thân thiện và chu đáo: Gần gũi, vui vẽ, cởi mở, chủ động quan tâm chăm sóc tận tình đến khách hàng.
-
-                Rất mong được sự ủng hộ và tín nhiệm lâu dài của quý khách hàng. Xin chân thành cảm ơn!
-            </p>
+    <!-- Breadcurb AREA -->
+    <div class="breadcurb-area">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Pages</a></li>
+                <li>About-us</li>
+            </ul>
         </div>
     </div>
-</div>
+    <!-- About AREA -->
+    <div class="about-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="about-header-img">
+                        <img src="<c:url value="/template/web/img/about/about-head.jpg"/>" alt="about" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="about-header-content">
+                        <h1 class="about-title">WHY WE ARE THE BEST?</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.</p>
+
+                        <p>In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="our-services-area">
+        <div class="container">
+            <div class="our-services-header">
+                <h1 class="about-title">WHAT WE DO?</h1>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="single-services">
+                        <div class="sigle-services-icon">
+                            <i class="fa fa-laptop"></i>
+                        </div>
+                        <div class="sigle-services-content fix">
+                            <h2>ECOMMERCE RETAILER</h2>
+                            <p>Lorem ipsum dolor sit amet, etetuer adipiscing elit. Aenean commodo ligula eget dolor. </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="single-services">
+                        <div class="sigle-services-icon">
+                            <i class="fa fa-cogs"></i>
+                        </div>
+                        <div class="sigle-services-content fix">
+                            <h2>CUSTOM DESIGN</h2>
+                            <p>Lorem ipsum dolor sit amet, etetuer adipiscing elit. Aenean commodo ligula eget dolor. </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="single-services">
+                        <div class="sigle-services-icon">
+                            <i class="fa fa-mobile"></i>
+                        </div>
+                        <div class="sigle-services-content fix">
+                            <h2>SHOP ON THE GO</h2>
+                            <p>Lorem ipsum dolor sit amet, etetuer adipiscing elit. Aenean commodo ligula eget dolor. </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="our-team-member">
+        <div class="container">
+            <div class="our-services-header">
+                <h1 class="about-title">Our Team</h1>
+            </div>
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <div class="single-team-member">
+                        <div class="team-member-img">
+                            <a href="#"><img src="<c:url value="/template/web/img/about/member-1.jpg"/>" alt="member"></a>
+                            <div class="team-member-dagination">
+                                <h2 class="floatleft"><a href="#">Nicole</a></h2>
+                                <h3 class="floatright">Designer</h3>
+                            </div>
+                        </div>
+                        <div class="team-member-action">
+                            <h2><a href="#">Nicole</a></h2>
+                            <h3>Designer</h3>
+                            <p>Lorem ipsum dolor sit amet, cose ctetuer adipiscing elit. Aenean commodo ligula eget dolor.Aenan massa. </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="single-team-member">
+                        <div class="team-member-img">
+                            <a href="#"><img src="<c:url value="/template/web/img/about/member-1.jpg"/>" alt="member"></a>
+                            <div class="team-member-dagination">
+                                <h2 class="floatleft"><a href="#">Nicole</a></h2>
+                                <h3 class="floatright">Designer</h3>
+                            </div>
+                        </div>
+                        <div class="team-member-action">
+                            <h2><a href="#">Nicole</a></h2>
+                            <h3>Designer</h3>
+                            <p>Lorem ipsum dolor sit amet, cose ctetuer adipiscing elit. Aenean commodo ligula eget dolor.Aenan massa. </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="single-team-member">
+                        <div class="team-member-img">
+                            <a href="#"><img src="<c:url value="/template/web/img/about/member-2.jpg"/>" alt="member"></a>
+                            <div class="team-member-dagination">
+                                <h2 class="floatleft"><a href="#">Nicole</a></h2>
+                                <h3 class="floatright">Designer</h3>
+                            </div>
+                        </div>
+                        <div class="team-member-action">
+                            <h2><a href="#">Nicole</a></h2>
+                            <h3>Designer</h3>
+                            <p>Lorem ipsum dolor sit amet, cose ctetuer adipiscing elit. Aenean commodo ligula eget dolor.Aenan massa. </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="single-team-member">
+                        <div class="team-member-img">
+                            <a href="#"><img src="<c:url value="/template/web/img/about/member-3.jpg"/>" alt="member"></a>
+                            <div class="team-member-dagination">
+                                <h2 class="floatleft"><a href="#">Nicole</a></h2>
+                                <h3 class="floatright">Designer</h3>
+                            </div>
+                        </div>
+                        <div class="team-member-action">
+                            <h2><a href="#">Nicole</a></h2>
+                            <h3>Designer</h3>
+                            <p>Lorem ipsum dolor sit amet, cose ctetuer adipiscing elit. Aenean commodo ligula eget dolor.Aenan massa. </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

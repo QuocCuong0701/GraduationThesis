@@ -9,189 +9,205 @@
     <title>Thanh toán</title>
 </head>
 <body>
-<c:set var="cart" value="${sessionScope.model}" />
-<ul class="breadcrumb">
-    <li><a href="/trang-chu">Trang chủ</a> <span class="divider">/</span></li>
-    <li class="active">Thanh toán</li>
-</ul>
-<div class="row">
-    <div class="span4">
-        <div class="well well-small">
-            <ul id="productDetail" class="nav nav-tabs">
-                <li class="active" style="width: 50%; text-align: center;"><a href="#home" data-toggle="tab">Đăng ký</a></li>
-                <li class="" style="width: 50%; text-align: center;"><a style="margin-right: 0;" href="#profile" data-toggle="tab">Đăng nhập</a></li>
+    <!-- Breadcurb AREA -->
+    <div class="breadcurb-area">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Page</a></li>
+                <li>Checkout</li>
             </ul>
-            <div id="myTabContent" class="tab-content tabWrapper">
-                <div class="tab-pane fade active in" id="home">
-                    <h4>Khách hàng mới</h4>
-                    <p style="text-align: justify">Bằng cách tạo tài khoản bạn sẽ có thể mua sắm nhanh hơn, cập nhật tình trạng đơn hàng.</p>
-                    <a href="/registration" type="submit" class="shopBtn btn-block">Đăng ký tài khoản</a>
+        </div>
+    </div>
+    <!-- Checkout AREA -->
+    <div class="checkout-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-sm-7">
+                <div class="billing-address">
+                    <div class="checkout-head">
+                        <h2>BILLING ADDRESS</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenea ligula eget dolor. Aenean massa.</p>
+                    </div>
+                    <div class="checkout-form">
+                        <form action="#" method="post" class="form-horizontal">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">
+                                    country <sup>*</sup>
+                                </label>
+                                <div class="col-md-9">
+                                    <select>
+                                        <option>Sellect Country</option>
+                                        <option>America</option>
+                                        <option>Afganisthan</option>
+                                        <option>Bangladesh</option>
+                                        <option>Chin</option>
+                                        <option>Japna</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">
+                                    First Name <sup>*</sup>
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">
+                                    Last Name <sup>*</sup>
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">
+                                    Company Name <sup>*</sup>
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">
+                                    Address <sup>*</sup>
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">
+
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">
+                                    Town / City <sup>*</sup>
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">
+                                    Postcode <sup>*</sup>
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">
+                                    E-mail Address <sup>*</sup>
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">
+                                    Phone <sup>*</sup>
+                                </label>
+                                <div class="col-md-9">
+                                    <input type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-12">
+                                    <input type="checkbox"> Create an account?
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-12">
+                                    <input type="checkbox"> Ship a billing address?
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">
+                                    Order Now
+                                </label>
+                                <div class="col-md-9">
+                                    <textarea rows="9"></textarea>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <div class="tab-pane fade" id="profile">
-                    <form class="form-horizontal loginFrm" action="/dang-nhap" id="formLogin" method="post">
-                        <table class="table" style="border: 0;">
-                            <tr>
-                                <td>Tài khoản:</td>
-                                <td><input type="text" class="span2" id="inputEmail" placeholder="Username" name="user_name"></td>
-                            </tr>
-                            <tr>
-                                <td>Mật khẩu:</td>
-                                <td><input type="password" class="span2" id="inputPassword" placeholder="Password" name="user_pass"></td>
-                            </tr>
-                        </table>
-                        <div class="control-group">
-                            <input type="hidden" value="login" id="action" name="action">
-                            <button type="submit" class="shopBtn btn-block">Đăng nhập</button>
+            </div>
+            <div class="col-md-4 col-sm-5">
+                <div class="review-order">
+                    <div class="checkout-head">
+                        <h2>Review your Order</h2>
+                    </div>
+                    <div class="single-review">
+                        <div class="single-review-img">
+                            <a href="#"><img src="<c:url value="/template/web/img/checkout.jpg"/>" alt="review"></a>
                         </div>
-                    </form>
+                        <div class="single-review-content fix">
+                            <h2><a href="#">Lorem ipsum dolor sit</a></h2>
+                            <p><span>Color :</span> Verdigris Red</p>
+                            <p><span>Size :</span> L</p>
+                            <h3>$150.0</h3>
+                        </div>
+                    </div>
+                    <div class="single-review">
+                        <div class="single-review-img">
+                            <a href="#"><img src="<c:url value="/template/web/img/checkout.jpg"/>" alt="review"></a>
+                        </div>
+                        <div class="single-review-content fix">
+                            <h2><a href="#">Lorem ipsum dolor sit</a></h2>
+                            <p><span>Color :</span> Verdigris Red</p>
+                            <p><span>Size :</span> L</p>
+                            <h3>$150.0</h3>
+                        </div>
+                    </div>
+                    <div class="single-review">
+                        <div class="single-review-img">
+                            <a href="#"><img src="<c:url value="/template/web/img/checkout.jpg"/>" alt="review"></a>
+                        </div>
+                        <div class="single-review-content fix">
+                            <h2><a href="#">Lorem ipsum dolor sit</a></h2>
+                            <p><span>Color :</span> Verdigris Red</p>
+                            <p><span>Size :</span> L</p>
+                            <h3>$150.0</h3>
+                        </div>
+                    </div>
+                    <div class="subtotal-area">
+                        <div class="subtotal-content fix">
+                            <h2 class="floatleft">Subtotal</h2>
+                            <h2 class="floatright">$450</h2>
+                        </div>
+                        <div class="subtotal-content fix">
+                            <h2 class="floatleft">Shipping & Handling </h2>
+                            <h2 class="floatright">$15</h2>
+                        </div>
+                        <div class="subtotal-content fix">
+                            <h2 class="floatleft">Grand Total</h2>
+                            <h2 class="floatright">$465</h2>
+                        </div>
+                    </div>
+                    <div class="payment-method">
+                        <h2>PAYMENT METHOD</h2>
+                        <div class="payment-checkbox">
+                            <input type="checkbox" checked> Direct Bank Transfer
+                        </div>
+                        <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order wont be shipped until the funds have cleared in our account.</p>
+                        <div class="payment-checkbox">
+                            <input type="checkbox"> Chaque Payment <br>
+                            <input type="checkbox"> Paypal
+                        </div>
+                        <button type="button" class="btn">Place Order</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="span8">
-        <div class="well well-small">
-            <h1>Thanh toán<small class="pull-right"><span>${cart.size()}</span> sản phẩm</small></h1>
-            <hr class="soften">
-            <ul class="info-error" >
-                <li><strong>Họ</strong> là ô bắt buộc</li>
-                <li><strong>Tên</strong> là ô bắt buộc</li>
-                <li><strong>Địa chỉ email</strong> là ô bắt buộc</li>
-                <li><strong>Số điện thoại</strong> là ô bắt buộc</li>
-                <li><strong>Địa chỉ</strong> là ô bắt buộc</li>
-            </ul>
-            <form action="/checkout" method="post" id="formSubmit">
-                <div class="form-horizontal">
-                    <h3>Thông tin thanh toán</h3>
-                    <div style="background: white; height: 200px; border-radius: 4px;">
-                        <div class="control-group">
-                            <label class="control-label" style="margin-top: 10px">Họ và tên <sup>*</sup></label>
-                            <div class="controls" style="margin-top: 10px"><input type="text" placeholder="Nguyễn Hồng N" name="full_name" value=""></div>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label">Email <sup>*</sup></label>
-                            <div class="controls"><input type="email" placeholder="" value="${USERMODEL.user_email}" disabled></div>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label">Số điện thoại <sup>*</sup></label>
-                            <div class="controls"><input type="text" placeholder="0123456789" name="phone" value=""></div>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label">Địa chỉ nhận hàng <sup>*</sup></label>
-                            <div class="controls"><input type="text" placeholder="Trúc Bạch, Ba Đình, Hà Nội" name="address" value=""></div>
-                        </div>
-                        <input type="hidden" name="user_id" value="${USERMODEL.user_id}" />
-                    </div>
-                </div>
-                <hr class="soften">
-                <div class="table-responsive">
-                    <h3>Đơn hàng của bạn</h3>
-                    <c:if test="${not empty cart}">
-                        <table id="billTable" class="table table-bordered" style="background: white;">
-                            <thead>
-                            <tr>
-                                <th style="width: 40%">Sản phẩm</th>
-                                <th style="width: 25%">Giá</th>
-                                <th>Số lượng</th>
-                                <th>Tổng</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                                <c:forEach var="rows" items="${cart}">
-                                    <tr>
-                                        <input type="hidden" value="${rows.value.productModel.product_id}"/>
-                                        <td>${rows.value.productModel.product_name}</td>
-                                        <td>${rows.value.productModel.product_price} &#8363;</td>
-                                        <td>${rows.value.quantity}</td>
-                                        <td><c:out value="${rows.value.quantity * rows.value.productModel.product_price}"/> &#8363;</td>
-                                    </tr>
-                                </c:forEach>
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <th style="width: 70%" colspan="2">Thành tiền:</th>
-                                    <td colspan="2"><c:out value="${sessionScope.totalPrice}"/> &#8363;</td>
-                                </tr>
-                                <tr>
-                                    <th colspan="2">Tổng cộng:</th>
-                                    <td colspan="2"><strong><c:out value="${sessionScope.totalPrice}"/> &#8363;</strong> </td>
-                                </tr>
-                                <tr >
-                                    <td colspan="4">
-                                        <div class="controls" style="float: right">
-                                            <button type="submit" class="shopBtn" style="width: 200px; height: 40px;display: none"><i class="icon-check"></i> THANH TOÁN</button>
-                                            <c:if test="${not empty USERMODEL}">
-                                                <a class="btn-large shopBtn" id="btnCheckout" href="" style="width: 150px;">
-                                                    <i class="icon-check"></i> ĐẶT HÀNG
-                                                </a>
-                                            </c:if>
-                                            <c:if test="${empty USERMODEL}">
-                                                <p style="color: red"><i>Bạn cần đăng nhập để có thể đặt hàng.</i></p>
-                                            </c:if>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tfoot>
-                        </table>
-                    </c:if>
-                </div>
-            </form>
-        </div>
-    </div>
 </div>
-<script>
-    $('#btnCheckout').click(function () {
-       let data = {};
-       let formData = $('#formSubmit').serializeArray();
-       $.each(formData, function (i, v) {
-           data[""+v.name+""] = v.value;
-       });
-       data["total"] = ${sessionScope.totalPrice};
-       data["date"] = Date.parse((new Date()).toISOString());
-
-       let link = "/checkout/order-received?user_id=${USERMODEL.user_id}&date=" + data.date;
-       addBill(data);
-
-       $('#btnCheckout').attr('target', '_self');
-       $('#btnCheckout').attr('href', link);
-    });
-
-    function addBill(data) {
-        $.ajax({
-            url: '${APIurl}',
-            type: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify(data),
-            dataType: 'json',
-            success: function (result) {
-                let billDetail = {};
-                <c:forEach var="cart" items="${cart}">
-                    billDetail["bill_id"] = result.bill_id;
-                    billDetail["product_id"] = ${cart.value.productModel.product_id};
-                    billDetail["quantity"] = ${cart.value.quantity};
-                    billDetail["total"] = ${cart.value.quantity * cart.value.productModel.product_price};
-                    addBillDetail(billDetail);
-                </c:forEach>
-            },
-            error: function (error) {
-                console.log("ERROR" + error);
-            }
-        });
-    }
-    function addBillDetail(data) {
-        $.ajax({
-            url: '${APIurl1}',
-            type: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify(data),
-            dataType: 'json',
-            success: function () {
-                console.log("Success");
-            },
-            error: function (error) {
-                console.log("ERROR" + error);
-            }
-        });
-    }
-</script>
 </body>
 </html>
