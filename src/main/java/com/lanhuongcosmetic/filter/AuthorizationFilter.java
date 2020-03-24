@@ -26,13 +26,13 @@ public class AuthorizationFilter implements Filter {
         if (url.startsWith("/admin")) {
             UserModel model = (UserModel) SessionUtil.getInstance().getValue(request, "USERMODEL");
             if (model != null) {
-                if (model.getUser_role()==false) {
+                if (!model.getUser_role()) {
                     filterChain.doFilter(servletRequest, servletResponse);
-                } else if (model.getUser_role()==true) {
-                    response.sendRedirect(request.getContextPath()+"/dang-nhap?action=login&message=not_permission&alert=danger");
+                } else {
+                    response.sendRedirect(request.getContextPath()+"/login?action=login&message=not_permission&alert=danger");
                 }
             } else {
-                response.sendRedirect(request.getContextPath()+"/dang-nhap?action=login&message=not_login&alert=danger");
+                response.sendRedirect(request.getContextPath()+"/login?action=login&message=not_login&alert=danger");
             }
         } else {
             filterChain.doFilter(servletRequest, servletResponse);

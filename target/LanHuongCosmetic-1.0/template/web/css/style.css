@@ -169,7 +169,7 @@ body{
 	-ms-appearance: none;
 	appearance: none;
 	appearance: none;
-	background: #f1f1f1 url("img/c-arow.png") no-repeat scroll 125px center;
+	background: #f1f1f1 url("../img/c-arow.png") no-repeat scroll 125px center;
 	border: medium none;
 	cursor: pointer;
 	padding: 8px 30px 8px 10px;
@@ -1011,7 +1011,7 @@ i.nivo-next-icon{}
 }
 .subscribe-area h2{
 	font-size:18px;
-	font-weight:600px;
+	font-weight: 600;
 }
 .subscribe-area .input-group{
 	display:block;
@@ -1304,7 +1304,7 @@ body.home-2{
   border: 0px;
 }
 .feature-product-header .nav-tabs > li > a:hover {
-  border-color:none;
+  border-color: none;
 }
 .feature-product-header .nav > li > a:focus, .feature-product-header .nav > li > a:hover {
   background: none;
@@ -2253,7 +2253,7 @@ body.home-2{
 	-webkit-appearance: none;
 	-ms-appearance: none;
 	appearance: none;
-	background: #fff url("img/arow.png") no-repeat scroll 165px center;
+	background: #fff url("../img/arow.png") no-repeat scroll 165px center;
 	border: 1px solid #e1e1e1;
 	padding: 5px 13px;
 	width: 190px;
@@ -2378,7 +2378,7 @@ body.home-2{
 	text-transform:uppercase;
 }
 .team-member-action h3{
-	background: rgba(0, 0, 0, 0) url("img/about/d-bg.png") no-repeat scroll 0 34px;
+	background: rgba(0, 0, 0, 0) url("../img/about/d-bg.png") no-repeat scroll 0 34px;
 	font-size: 12px;
 	line-height: 35px;
 }
@@ -2835,7 +2835,7 @@ body.home-2{
 	width: 100%;
 	-webkit-appearance:none;
 	appearance:none;
-	background: url(img/arow.png) no-repeat 96% center;
+	background: url(../img/arow.png) no-repeat 96% center;
 }
 .chart-all  input{
 	padding: 8px;
@@ -2922,7 +2922,7 @@ body.home-2{
 	-webkit-appearance: none;
 	-ms-appearance: none;
 	appearance: none;
-	background: #f8f8f8 url("img/arow.png") no-repeat scroll 98% center;
+	background: #f8f8f8 url("../img/arow.png") no-repeat scroll 98% center;
 	border: 1px solid #e1e1e1;
 	padding: 8px;
 	width: 100%;
@@ -3010,7 +3010,7 @@ body.home-2{
 	margin-top: 10px;
 }
 .payment-method p:before{
-	background: rgba(0, 0, 0, 0) url("img/before.jpg") no-repeat scroll 0 0;
+	background: rgba(0, 0, 0, 0) url("../img/before.jpg") no-repeat scroll 0 0;
 	content: "";
 	height: 10px;
 	left: 50px;

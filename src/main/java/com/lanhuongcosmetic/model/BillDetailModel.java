@@ -7,7 +7,6 @@ public class BillDetailModel extends AbstractModel<BillDetailModel> {
     private String product_name;
     private double product_price;
     private int quantity;
-    private double total;
 
     public int getBill_detail_id() {
         return bill_detail_id;
@@ -47,14 +46,6 @@ public class BillDetailModel extends AbstractModel<BillDetailModel> {
 
     public void setProduct_price(double product_price) {
         this.product_price = product_price;
-    }
-
-    public double getTotal() {
-        return total;
-    }
-
-    public void setTotal(double total) {
-        this.total = total;
     }
 
     public int getQuantity() {

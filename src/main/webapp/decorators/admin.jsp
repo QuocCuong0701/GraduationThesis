@@ -3,60 +3,185 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title><dec:title default="Trang chủ" /></title>
-	<link rel="stylesheet" href="<c:url value='/template/admin/assets/css/bootstrap.min.css' />" />
-    <link rel="stylesheet" href="<c:url value='/template/admin/font-awesome/4.5.0/css/font-awesome.min.css' />" />
-    <link rel="stylesheet" href="<c:url value='/template/admin/assets/css/ace.min.css' />" class="ace-main-stylesheet" id="main-ace-style" />
-    <script src="<c:url value='/template/admin/assets/js/ace-extra.min.js' />"></script>
-    <%--<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">--%>
-    <%--<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">--%>
-    <%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>--%>
-    <script type='text/javascript' src='<c:url value="/template/admin/js/jquery-2.2.3.min.js" />'></script>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="<c:url value='/template/paging/jquery.twbsPagination.js' />"></script>
-	<script src="<c:url value="/template/admin/global/global.js"/>"></script>
-    <script src="<c:url value='/ckeditor/ckeditor.js' />"></script>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title>Atlantis Lite - Bootstrap 4 Admin Dashboard</title>
+	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
+	<link rel="icon" href="<c:url value="/template/admin/img/icon.ico"/>" type="image/x-icon"/>
+
+	<!-- Fonts and icons -->
+	<script src="<c:url value="/template/admin/js/plugin/webfont/webfont.min.js"/>"></script>
+	<script>
+		WebFont.load({
+			google: {"families":["Lato:300,400,700,900"]},
+			custom: {"families":["Flaticon", "Font Awesome 5 Solid", "Font Awesome 5 Regular", "Font Awesome 5 Brands", "simple-line-icons"], urls: ['/css/fonts.min.css']},
+			active: function() {
+				sessionStorage.fonts = true;
+			}
+		});
+	</script>
+
+	<!-- CSS Files -->
+	<link rel="stylesheet" href="<c:url value="/template/admin/css/bootstrap.min.css"/>" />
+	<link rel="stylesheet" href="<c:url value="/template/admin/css/atlantis.min.css"/>" />
+	<link rel="stylesheet" href="<c:url value="/template/admin/css/fonts.min.css"/>" />
+
+	<!-- CSS Just for demo purpose, don't include it in your project -->
+	<link rel="stylesheet" href="<c:url value="/template/admin/css/demo.css"/>"/>
 </head>
-<body class="no-skin">
-	<!-- header -->
-    <%@ include file="/common/admin/header.jsp" %>
-    <!-- header -->
-	
-	<div class="main-container" id="main-container">
-		<script type="text/javascript">
-				try{ace.settings.check('main-container' , 'fixed')}catch(e){}
-		</script>
+<body>
+
+	<div class="wrapper">
+
 		<!-- header -->
-    	<%@ include file="/common/admin/menu.jsp" %>
+    	<%@ include file="/common/admin/header.jsp" %>
     	<!-- header -->
-		
-		<dec:body/>
-		
-		<!-- footer -->
-    	<%@ include file="/common/admin/footer.jsp" %>
-    	<!-- footer -->
-    	
-    	<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse display">
-				<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
-		</a>
+
+		<%@ include file="/common/admin/menu-left.jsp" %>
+
+		<div class="main-panel">
+			<dec:body/>
+
+			<!-- footer -->
+			<%@ include file="/common/admin/footer.jsp" %>
+			<!-- footer -->
+		</div>
+
 	</div>
-	
-	
-	<script src="<c:url value='/template/admin/assets/js/bootstrap.min.js' />"></script>
-	<script src="<c:url value='/template/admin/assets/js/jquery-ui.custom.min.js' />"></script>
-	<script src="<c:url value='/template/admin/assets/js/jquery.ui.touch-punch.min.js' />"></script>
-	<script src="<c:url value='/template/admin/assets/js/jquery.easypiechart.min.js' />"></script>
-	<script src="<c:url value='/template/admin/assets/js/jquery.sparkline.min.js' />"></script>
-	<script src="<c:url value='/template/admin/assets/js/jquery.flot.min.js' />"></script>
-	<script src="<c:url value='/template/admin/assets/js/jquery.flot.pie.min.js' />"></script>
-	<script src="<c:url value='/template/admin/assets/js/jquery.flot.resize.min.js' />"></script>
-	<script src="<c:url value='/template/admin/assets/js/ace-elements.min.js' />"></script>
-	<script src="<c:url value='/template/admin/assets/js/ace.min.js' />"></script>
-	<script src="<c:url value='/template/admin/assets/js/bootstrap.min.js'/>"></script>
-	
-	<!-- page specific plugin scripts -->
-	<script src="<c:url value='/template/admin/assets/js/jquery-ui.min.js'/>"></script>
+
+	<!--   Core JS Files   -->
+	<script src="<c:url value="/template/admin/js/core/jquery.3.2.1.min.js"/>"></script>
+	<script src="<c:url value="/template/admin/js/core/popper.min.js"/>"></script>
+	<script src="<c:url value="/template/admin/js/core/bootstrap.min.js"/>"></script>
+
+	<!-- jQuery UI -->
+	<script src="<c:url value="/template/admin/js/plugin/jquery-ui-1.12.1.custom/jquery-ui.min.js"/>"></script>
+	<script src="<c:url value="/template/admin/js/plugin/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"/>"></script>
+
+	<!-- jQuery Scrollbar -->
+	<script src="<c:url value="/template/admin/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js"/>"></script>
+
+
+	<!-- Chart JS -->
+	<script src="<c:url value="/template/admin/js/plugin/chart.js/chart.min.js"/>"></script>
+
+	<!-- jQuery Sparkline -->
+	<script src="<c:url value="/template/admin/js/plugin/jquery.sparkline/jquery.sparkline.min.js"/>"></script>
+
+	<!-- Chart Circle -->
+	<script src="<c:url value="/template/admin/js/plugin/chart-circle/circles.min.js"/>"></script>
+
+	<!-- Datatables -->
+	<script src="<c:url value="/template/admin/js/plugin/datatables/datatables.min.js"/>"></script>
+
+	<!-- Bootstrap Notify -->
+	<script src="<c:url value="/template/admin/js/plugin/bootstrap-notify/bootstrap-notify.min.js"/>"></script>
+
+	<!-- jQuery Vector Maps -->
+	<script src="<c:url value="/template/admin/js/plugin/jqvmap/jquery.vmap.min.js"/>"></script>
+	<script src="<c:url value="/template/admin/js/plugin/jqvmap/maps/jquery.vmap.world.js"/>"></script>
+
+	<!-- Sweet Alert -->
+	<script src="<c:url value="/template/admin/js/plugin/sweetalert/sweetalert.min.js"/>"></script>
+
+	<!-- Atlantis JS -->
+	<script src="<c:url value="/template/admin/js/atlantis.min.js"/>"></script>
+
+	<!-- Atlantis DEMO methods, don't include it in your project! -->
+	<script src="<c:url value="/template/admin/js/setting-demo.js"/>"></script>
+	<script src="<c:url value="/template/admin/js/demo.js"/>"></script>
+	<script>
+		Circles.create({
+			id:'circles-1',
+			radius:45,
+			value:60,
+			maxValue:100,
+			width:7,
+			text: 5,
+			colors:['#f1f1f1', '#FF9E27'],
+			duration:400,
+			wrpClass:'circles-wrp',
+			textClass:'circles-text',
+			styleWrapper:true,
+			styleText:true
+		});
+
+		Circles.create({
+			id:'circles-2',
+			radius:45,
+			value:70,
+			maxValue:100,
+			width:7,
+			text: 36,
+			colors:['#f1f1f1', '#2BB930'],
+			duration:400,
+			wrpClass:'circles-wrp',
+			textClass:'circles-text',
+			styleWrapper:true,
+			styleText:true
+		});
+
+		Circles.create({
+			id:'circles-3',
+			radius:45,
+			value:40,
+			maxValue:100,
+			width:7,
+			text: 12,
+			colors:['#f1f1f1', '#F25961'],
+			duration:400,
+			wrpClass:'circles-wrp',
+			textClass:'circles-text',
+			styleWrapper:true,
+			styleText:true
+		});
+
+		var totalIncomeChart = document.getElementById('totalIncomeChart').getContext('2d');
+
+		var mytotalIncomeChart = new Chart(totalIncomeChart, {
+			type: 'bar',
+			data: {
+				labels: ["S", "M", "T", "W", "T", "F", "S", "S", "M", "T"],
+				datasets : [{
+					label: "Total Income",
+					backgroundColor: '#ff9e27',
+					borderColor: 'rgb(23, 125, 255)',
+					data: [6, 4, 9, 5, 4, 6, 4, 3, 8, 10]
+				}]
+			},
+			options: {
+				responsive: true,
+				maintainAspectRatio: false,
+				legend: {
+					display: false
+				},
+				scales: {
+					yAxes: [{
+						ticks: {
+							display: false //this will remove only the label
+						},
+						gridLines : {
+							drawBorder: false,
+							display : false
+						}
+					}],
+					xAxes : [ {
+						gridLines : {
+							drawBorder: false,
+							display : false
+						}
+					}]
+				}
+			}
+		});
+
+		$('#lineChart').sparkline([105,103,123,100,95,105,115], {
+			type: 'line',
+			height: '70',
+			width: '100%',
+			lineWidth: '2',
+			lineColor: '#ffa534',
+			fillColor: 'rgba(255, 165, 52, .14)'
+		});
+	</script>
 </body>
 </html>

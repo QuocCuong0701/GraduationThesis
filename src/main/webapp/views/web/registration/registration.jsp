@@ -1,118 +1,82 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
-<c:url var="APIurl" value="/api-admin-user"/>
-<c:url var ="RegistrationURL" value="/registration"/>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Đăng ký</title>
-</head>
-<body>
-<div class="row">
-    <%@include file="/common/web/left-menu.jsp"%>
-    <div class="span9">
-        <ul class="breadcrumb">
-            <li><a href="<c:url value="/trang-chu"/>">Trang chủ</a> <span class="divider">/</span></li>
-            <li class="active">Đăng ký</li>
-        </ul>
-        <h3>Đăng Ký Tài Khoản</h3>
-        <hr class="soft">
-        <div class="well">
-            <c:if test="${not empty messageResponse}">
-                <div class="alert alert-${alert}">
-                        ${messageResponse}
-                </div>
-            </c:if>
-            <form class="form-horizontal" action="/registration" method="post" id="formSubmit">
-                <h3>Thông tin đăng ký</h3>
-                <div class="control-group">
-                    <label class="control-label" for="inputUserName">Tên đăng nhập<sup>*</sup></label>
-                    <div class="controls">
-                        <input type="text" id="inputUserName" name="user_name" placeholder="Tên đăng nhập">
+<c:url var="RegistrationURL" value="/registration"/>
+
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+            <div class="login100-pic js-tilt" data-tilt>
+                <img src="<c:url value="/template/web/img/img-01.png"/>" alt="IMG">
+            </div>
+
+            <form action="<c:url value="/registration"/>" method="post" id="formSubmit" class="login100-form validate-form">
+                <span class="login100-form-title">
+                    Đăng Ký Tài Khoản
+                </span>
+
+                <c:if test="${not empty message}">
+                    <div class="alert alert-${alert}" style="border-radius: 25px;">
+                            ${message}
                     </div>
+                </c:if>
+
+                <div class="wrap-input100 validate-input" data-validate = "Nhập email hợp lệ. Ví dụ: ex@abc.xyz">
+                    <input class="input100" type="text" name="user_email" placeholder="Email">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
                 </div>
-                <div class="control-group">
-                    <label class="control-label" for="inputEmail">Email <sup>*</sup></label>
-                    <div class="controls">
-                        <input type="email" id="inputEmail" name="user_email" placeholder="john@gmail.com">
-                    </div>
+
+                <div class="wrap-input100 validate-input" data-validate = "Tên đăng nhập không được để trống">
+                    <input class="input100" type="text" name="user_name" placeholder="Tên đăng nhập">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</span>
                 </div>
-                <div class="control-group">
-                    <label class="control-label" for="password">Mật khẩu <sup>*</sup></label>
-                    <div class="controls">
-                        <input type="password" id="password" name="user_pass" placeholder="Mật khẩu">
-                    </div>
+
+                <div class="wrap-input100 validate-input" data-validate = "Nhập mật khẩu">
+                    <input class="input100" type="password" name="user_pass" placeholder="Mật khẩu">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
                 </div>
-                <div class="control-group">
-                    <label class="control-label" for="rePassword">Nhập lại mật khẩu <sup>*</sup></label>
-                    <div class="controls">
-                        <input type="password" id="rePassword" placeholder="Nhập lại mật khẩu">
-                    </div>
+
+                <div class="wrap-input100 validate-input" data-validate = "Nhập lại mật khẩu">
+                    <input class="input100" type="password" name="repassword" placeholder="Nhập lại mật khẩu">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
                 </div>
-                <div class="control-group">
-                    <div class="controls">
-                        <input type="submit" name="submitAccount" id="submitAccount" value="Đăng ký" class="exclusive shopBtn"/>
-                    </div>
+
+                <div class="container-login100-form-btn">
+                    <input type="hidden" value="login" name="action"/>
+                    <button type="submit" class="login100-form-btn">Đăng Ký</button>
                 </div>
-            </form>
-        </div>
-        <hr class="soft">
-        <div class="well" style="display: none">
-            <h5>BẠN ĐÃ CÓ TÀI KHOẢN ?</h5>
-            <form action="<c:url value='/dang-nhap'/>" method="post" class="form-horizontal" id="formLogin">
-                <div class="control-group">
-                    <label class="control-label" for="userName">Tên đăng nhập<sup>*</sup></label>
-                    <div class="controls">
-                        <input type="text" id="userName" name="user_name" placeholder="Tên đăng nhập">
-                    </div>
-                </div>
-                <div class="control-group">
-                    <label class="control-label" for="inputPassword">Mật khẩu<sup>*</sup></label>
-                    <div class="controls">
-                        <input type="password" id="inputPassword" name="user_pass" class="span3" placeholder="Mật khẩu">
-                    </div>
-                </div>
-                <div class="control-group">
-                    <div class="controls">
-                        <input type="hidden" value="login" id="action" name="action"/>
-                        <button type="submit" name="action" value="login" class="shopBtn">Đăng nhập</button>
-                    </div>
+
+                <div class="text-center p-t-50">
+                    <a class="txt2" href="<c:url value="/login?action=login"/> ">
+                        <i class="fa fa-long-arrow-left m-l-5" aria-hidden="true"></i>
+                        Quay Lại Trang Đăng Nhập
+                    </a>
+                    <a class="txt2" href="<c:url value="/home"/> ">
+                        <i class="fa fa-long-arrow-left m-l-5" aria-hidden="true"></i>
+                        Quay Lại Trang Chủ
+                    </a>
                 </div>
             </form>
         </div>
     </div>
 </div>
+
 <script>
     $(document).ready(function () {
         $('#formSubmit').submit(function (e) {
             e.preventDefault();
-            var userName = $('#inputUserName').val();
-            var userEmail = $('#inputEmail').val();
-            var userPassword = $('#password').val();
-            var userRePass = $('#rePassword').val();
-            $('.error').remove();
-            if (userName.length < 1 || userName.length > 32) {
-                $('#inputUserName').after('<span class="error"> Tên phải từ 1 - 32 ký tự.</span>');
-            }
-            if (userEmail.length < 1) {
-                $('#inputEmail').after('<span class="error"> Điền địa chỉ email.</span>');
-            } else {
-                var regEx = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-                var validEmail = regEx.test(userEmail);
-                if (!validEmail) {
-                    $('#inputEmail').after('<span class="error"> Email không hợp lệ.</span>');
-                }
-            }
-            if (userPassword.length <= 4 || userPassword.length > 20) {
-                $('#password').after('<span class="error"> Mật khẩu phải từ 5 - 20 ký tự.</span>');
-            }
-            if (userRePass.length < 1) {
-                $('#rePassword').after('<span class="error"> Nhập lại mật khẩu.</span>');
-            } else if (!userRePass.match(userPassword)) {
-                $('#rePassword').after('<span class="error"> Mật khẩu không khớp.</span>');
-            }
-            let error = $('form span').map(function () {
+            let error = $('form div.alert-validate').map(function () {
                 return $(this).val();
             }).get();
             if (error.length === 0) {
@@ -121,10 +85,10 @@
                 $.each(formData, function (i, v) {
                     data["" + v.name + ""] = v.value;
                 });
-                addAccount(data);
+                //addAccount(data);
             }
-        });
-    });
+        })
+    })
 
     function addAccount(data) {
         $.ajax({
@@ -146,5 +110,3 @@
         });
     }
 </script>
-</body>
-</html>

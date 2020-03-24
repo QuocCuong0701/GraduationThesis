@@ -9,8 +9,8 @@ public class BillModel extends AbstractModel<BillModel> {
     private double total;
     private String address;
     private String phone;
-    private Timestamp date;
-    private boolean status;
+    private String note;
+    private boolean confirmed;
 
     public String getFull_name() {
         return full_name;
@@ -20,12 +20,20 @@ public class BillModel extends AbstractModel<BillModel> {
         this.full_name = full_name;
     }
 
-    public boolean isStatus() {
-        return status;
+    public String getNote() {
+        return note;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
+    public void setNote(String note) {
+        this.note = note;
+    }
+
+    public boolean isConfirmed() {
+        return confirmed;
+    }
+
+    public void setConfirmed(boolean confirmed) {
+        this.confirmed = confirmed;
     }
 
     public int getBill_id() {
@@ -66,13 +74,5 @@ public class BillModel extends AbstractModel<BillModel> {
 
     public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    public Timestamp getDate() {
-        return date;
-    }
-
-    public void setDate(Timestamp date) {
-        this.date = date;
     }
 }

@@ -1,26 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
-<div class="footer">
-    <div class="footer-inner">
-        <div class="footer-content">
-			<span class="bigger-120">
-				<span class="blue bolder">Ace</span>
-				Application &copy; 2013-2014
-			</span>
 
-            <span class="action-buttons">
-				<a href="#">
-					<i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
-				</a>
-
-				<a href="#">
-					<i class="ace-icon fa fa-facebook-square text-primary bigger-150"></i>
-				</a>
-
-				<a href="#">
-					<i class="ace-icon fa fa-rss-square orange bigger-150"></i>
-				</a>
-			</span>
-        </div>
-    </div>
-</div>
+<!-- Footer -->
+<footer class="footer">
+	<div class="container-fluid">
+		<nav class="pull-left">
+			<ul class="nav">
+				<li class="nav-item">
+					<a class="nav-link" href="https://www.themekita.com">
+						ThemeKita
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">
+						Help
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">
+						Licenses
+					</a>
+				</li>
+			</ul>
+		</nav>
+		<div class="copyright ml-auto">
+			2018, made with <i class="fa fa-heart heart text-danger"></i> by <a href="https://www.themekita.com">ThemeKita</a>
+		</div>
+	</div>
+</footer>

@@ -14,6 +14,7 @@ com\lanhuongcosmetic\controller\web\ProductController.class
 com\lanhuongcosmetic\model\ProductModel.class
 com\lanhuongcosmetic\service\impl\CategoryService.class
 com\lanhuongcosmetic\dao\ICartDAO.class
+com\lanhuongcosmetic\controller\web\LoginController.class
 com\lanhuongcosmetic\service\IUserService.class
 com\lanhuongcosmetic\service\impl\BillService.class
 com\lanhuongcosmetic\mapper\CategoryMapper.class

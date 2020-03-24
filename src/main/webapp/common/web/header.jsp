@@ -35,7 +35,7 @@
                             <li><a href="#"><i class="fa fa-user"></i>My Account</a></li>
                             <li><a href="#"><i class="fa fa-heart"></i>Wishlist</a></li>
                             <li><a href="<c:url value="/checkout"/>"><i class="fa fa-check-square-o"></i>Checkout</a></li>
-                            <li><a href="#"><i class="fa fa-lock"></i>Login</a></li>
+                            <li><a href="<c:url value="/login?action=login"/>"><i class="fa fa-lock"></i>Login</a></li>
                             <li><a href="#"><i class="fa fa-pencil-square-o"></i>Register</a></li>
                         </ul>
                     </div>
@@ -48,7 +48,7 @@
             <div class="row">
                 <div class="col-md-2 col-sm-2 col-xs-12">
                     <div class="header-logo">
-                        <a href="<c:url value="/trang-chu"/>"><img src="<c:url value="/template/web/img/logo.png"/>" alt="logo"></a>
+                        <a href="<c:url value="/home"/>"><img src="<c:url value="/template/web/img/logo.png"/>" alt="logo"></a>
                     </div>
                 </div>
                 <div class="col-md-10 col-sm-10 col-xs-12">
@@ -126,7 +126,7 @@
                 <div class="main-menu hidden-xs">
                     <nav>
                         <ul>
-                            <li><a href="<c:url value="/trang-chu"/>">Home</a></li>
+                            <li><a href="<c:url value="/home"/>">Home</a></li>
                             <li><a href="<c:url value="/product"/>">Shop</a></li>
                             <li><a href="shop.html">Men</a></li>
                             <li><a href="shop.html">Women</a></li>

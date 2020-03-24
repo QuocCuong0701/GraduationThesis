@@ -1,21 +1,25 @@
-drop database if exists lanhuongcosmetic;
-create database lanhuongcosmetic;
-use lanhuongcosmetic;
+drop database if exists lhcosmetic;
+create database lhcosmetic;
+use lhcosmetic;
 -- User --
 drop table if exists user;
 create table user(
 	user_id int primary key auto_increment not null,
-    user_name varchar(255) not null,
-    user_email varchar(255) not null,
+    user_name varchar(50) not null,
+    user_email varchar(50) not null,
     user_pass varchar(20) not null,
-    user_role bit not null
+    user_role bit not null,
+    created_date timestamp not null,
+    updated_date timestamp
 );
 
 -- Category --
 drop table if exists category;
 create table category(
 	category_id int primary key auto_increment not null,
-    category_name varchar(255) not null
+    category_name varchar(50) not null,
+    created_date timestamp not null,
+    updated_date timestamp
 );
 
 -- Product --
@@ -27,6 +31,10 @@ create table product(
     product_price double not null,
     product_description text,
     product_detail text,
+    view int(5) ,
+    buy int(5),
+    created_date timestamp not null ,
+    updated_date timestamp ,
     category_id int not null
 );
 alter table product add constraint fk_category_id foreign key (category_id) references category(category_id);
@@ -37,14 +45,13 @@ create table bill(
 	bill_id int primary key auto_increment not null,
     user_id int not null,
     full_name varchar(30) not null,
-    total double not null,
-    address varchar(255) not null,
+    address varchar(100) not null,
     phone varchar(11) not null,
-    date timestamp not null,
-    status bit not null
-    -- primary key (bill_id, user_id)
+    note text,
+    confirmed bit not null,
+    created_date timestamp not null,
+    updated_date timestamp
 );
--- alter table bill add constraint pk_bill primary key (bill_id, user_id);
 alter table bill add constraint fk_bill_user_id foreign key (user_id) references user(user_id);
 
 -- BillDetail --
@@ -54,19 +61,8 @@ create table bill_detail(
     bill_id int not null,
     product_id int not null,
     quantity int not null,
-    total double not null
+    created_date timestamp not null,
+    updated_date timestamp
 );
 alter table bill_detail add constraint fk_bill_id foreign key (bill_id) references bill(bill_id);
 alter table bill_detail add constraint fk_product_id foreign key (product_id) references product(product_id);
-
--- Cart --
-drop table if exists cart;
-create table cart(
-	cart_id int primary key auto_increment not null,
-    -- user_id int not null,
-    product_id int not null,
-    total double not null,
-    quantity int(10) not null
-);
--- alter table cart add constraint fk_cart_user_id foreign key (user_id) references user(user_id);
-alter table cart add constraint fk_cart_product_id foreign key (product_id) references product(product_id);

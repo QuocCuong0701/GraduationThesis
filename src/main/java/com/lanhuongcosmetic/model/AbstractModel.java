@@ -1,5 +1,6 @@
 package com.lanhuongcosmetic.model;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +15,8 @@ public class AbstractModel<T> {
     private String message;
     private String type;
     private int[] ids;
+    private Timestamp created_date;
+    private Timestamp updated_date;
     private List<T> listResult = new ArrayList<>();
 
     public List<T> getListResult() {
@@ -102,5 +105,21 @@ public class AbstractModel<T> {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public Timestamp getCreated_date() {
+        return created_date;
+    }
+
+    public void setCreated_date(Timestamp created_date) {
+        this.created_date = created_date;
+    }
+
+    public Timestamp getUpdated_date() {
+        return updated_date;
+    }
+
+    public void setUpdated_date(Timestamp updated_date) {
+        this.updated_date = updated_date;
     }
 }

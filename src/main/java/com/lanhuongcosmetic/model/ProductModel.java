@@ -7,6 +7,8 @@ public class ProductModel extends AbstractModel<ProductModel> {
     private double product_price;
     private String product_description;
     private String product_detail;
+    private int view;
+    private int buy;
     private int category_id;
 
     public int getProduct_id() {
@@ -55,6 +57,22 @@ public class ProductModel extends AbstractModel<ProductModel> {
 
     public void setProduct_detail(String product_detail) {
         this.product_detail = product_detail;
+    }
+
+    public int getView() {
+        return view;
+    }
+
+    public void setView(int view) {
+        this.view = view;
+    }
+
+    public int getBuy() {
+        return buy;
+    }
+
+    public void setBuy(int buy) {
+        this.buy = buy;
     }
 
     public int getCategory_id() {

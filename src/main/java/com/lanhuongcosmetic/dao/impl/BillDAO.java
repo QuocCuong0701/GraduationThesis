@@ -27,7 +27,7 @@ public class BillDAO extends AbstractDAO<BillModel> implements IBillDAO {
     public int save(BillModel billModel) {
         String sql = "INSERT INTO bill(user_id, full_name, total, address, phone, date, status) VALUES (?,?,?,?,?,?,?)";
         return insert(sql, billModel.getUser_id(), billModel.getFull_name(), billModel.getTotal(), billModel.getAddress(),
-                billModel.getPhone(), billModel.getDate(), 0);
+                billModel.getPhone(), billModel.getCreated_date(), 0);
     }
 
     @Override

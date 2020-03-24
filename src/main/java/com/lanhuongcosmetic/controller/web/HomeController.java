@@ -18,9 +18,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.ResourceBundle;
 
-@WebServlet(urlPatterns = {"/trang-chu", "/dang-nhap", "/thoat"})
+@WebServlet(urlPatterns = {"/home", "/login", "/logout"})
 public class HomeController extends HttpServlet {
 
     @Inject
@@ -32,16 +33,25 @@ public class HomeController extends HttpServlet {
     @Inject
     private IProductService iProductService;
 
-    ResourceBundle resourceBundle = ResourceBundle.getBundle("message");
+    private ResourceBundle resourceBundle = ResourceBundle.getBundle("message");
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getParameter("action");
         HttpSession httpSession = req.getSession();
-        if (action != null && action.equals("logout")) {
+        if (action != null && action.equals("login")) {
+            String alert = req.getParameter("alert");
+            String message = req.getParameter("message");
+            if (message != null && alert != null) {
+                req.setAttribute("message", new String(resourceBundle.getString(message).getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
+                req.setAttribute("alert", alert);
+            }
+            RequestDispatcher rd = req.getRequestDispatcher("/views/login.jsp");
+            rd.forward(req, resp);
+        } else if (action != null && action.equals("logout")) {
             httpSession.invalidate();
             SessionUtil.getInstance().removeValue(req, "USERMODEL");
-            resp.sendRedirect(req.getContextPath() + "/trang-chu");
+            resp.sendRedirect(req.getContextPath() + "/home");
         } else {
             CategoryModel categoryModel = FormUtil.toModel(CategoryModel.class, req);
             categoryModel.setListResult(iCategoryService.findAll());
@@ -72,10 +82,10 @@ public class HomeController extends HttpServlet {
                 if (!userModel.getUser_role()) {
                     resp.sendRedirect(req.getContextPath() + "/admin-home");
                 } else {
-                    resp.sendRedirect(req.getContextPath() + "/trang-chu");
+                    resp.sendRedirect(req.getContextPath() + "/home");
                 }
             } else {
-                resp.sendRedirect(req.getContextPath() + "/trang-chu?action=login&message=username_password_invalid&alert=danger");
+                resp.sendRedirect(req.getContextPath() + "/login?action=login&message=username_password_invalid&alert=danger");
             }
         }
     }

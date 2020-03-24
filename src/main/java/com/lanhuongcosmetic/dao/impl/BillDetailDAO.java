@@ -26,9 +26,9 @@ public class BillDetailDAO extends AbstractDAO<BillDetailModel> implements IBill
 
     @Override
     public int save(BillDetailModel billDetailModel) {
-        String sql = "INSERT INTO bill_detail (bill_id, product_id, quantity, total) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO bill_detail (bill_id, product_id, quantity) VALUES (?,?,?)";
         return insert(sql, billDetailModel.getBill_id(), billDetailModel.getProduct_id(),
-                billDetailModel.getQuantity(), billDetailModel.getTotal());
+                billDetailModel.getQuantity());
     }
 
     @Override

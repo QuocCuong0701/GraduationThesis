@@ -15,8 +15,6 @@ public class BillDetailMapper implements RowMapper<BillDetailModel> {
             billDetailModel.setProduct_name(rs.getString("product_name"));
             billDetailModel.setProduct_price(rs.getDouble("product_price"));
             billDetailModel.setQuantity(rs.getInt("quantity"));
-            billDetailModel.setTotal(rs.getDouble("product_price") * rs.getInt("quantity"));
-            //billDetailModel.setTotal(10);
 
             return billDetailModel;
         } catch (SQLException e) {
