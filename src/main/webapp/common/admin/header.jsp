@@ -58,8 +58,8 @@
                                     <div class="user-box">
                                         <div class="avatar-lg"><img src="<c:url value="/template/admin/img/profile.jpg"/>" alt="image profile" class="avatar-img rounded"></div>
                                         <div class="u-text">
-                                            <h4>Hizrian</h4>
-                                            <p class="text-muted">hello@example.com</p>
+                                            <h4>${USERMODEL.user_name}</h4>
+                                            <p class="text-muted">${USERMODEL.user_email}</p>
                                             <%--<a href="profile.html" class="btn btn-xs btn-secondary btn-sm">View Profile</a>--%>
                                         </div>
                                     </div>

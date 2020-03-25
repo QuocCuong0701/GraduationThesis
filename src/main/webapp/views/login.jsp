@@ -58,7 +58,7 @@
                     </a>
                     <a class="txt2" href="<c:url value="/home"/> ">
                         <i class="fa fa-long-arrow-left m-l-5" aria-hidden="true"></i>
-                        Quay Lại Trang Chủ
+                        Trang Chủ
                     </a>
                 </div>
             </form>

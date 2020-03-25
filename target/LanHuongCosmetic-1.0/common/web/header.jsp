@@ -26,7 +26,12 @@
                                 </li>
                             </ul>
                         </div>
-                        <p>Welcome visitor!</p>
+                        <c:if test="${empty USERMODEL}">
+                            <p>Chào mừng quý khách!</p>
+                        </c:if>
+                        <c:if test="${not empty USERMODEL}">
+                            <p>Xin chào <span style="font-weight: bold">${USERMODEL.user_name}</span>!</p>
+                        </c:if>
                     </div>
                 </div>
                 <div class="col-md-8 col-sm-8 col-xs-12">
@@ -35,8 +40,13 @@
                             <li><a href="#"><i class="fa fa-user"></i>My Account</a></li>
                             <li><a href="#"><i class="fa fa-heart"></i>Wishlist</a></li>
                             <li><a href="<c:url value="/checkout"/>"><i class="fa fa-check-square-o"></i>Checkout</a></li>
-                            <li><a href="<c:url value="/login?action=login"/>"><i class="fa fa-lock"></i>Login</a></li>
-                            <li><a href="#"><i class="fa fa-pencil-square-o"></i>Register</a></li>
+                            <c:if test="${empty USERMODEL}">
+                                <li><a href="<c:url value="/login?action=login"/>"><i class="fa fa-lock"></i>Đăng Nhập</a></li>
+                            </c:if>
+                            <c:if test="${not empty USERMODEL}">
+                                <li><a href="<c:url value="/logout?action=logout"/>"><i class="fa fa-unlock"></i>Đăng Xuất</a></li>
+                            </c:if>
+                            <li><a href="<c:url value="/registration"/>"><i class="fa fa-pencil-square-o"></i>Đăng Ký</a></li>
                         </ul>
                     </div>
                 </div>

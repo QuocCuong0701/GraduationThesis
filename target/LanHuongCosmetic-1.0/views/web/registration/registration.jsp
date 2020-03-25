@@ -50,7 +50,7 @@
                 </div>
 
                 <div class="wrap-input100 validate-input" data-validate = "Nhập lại mật khẩu">
-                    <input class="input100" type="password" name="repassword" placeholder="Nhập lại mật khẩu">
+                    <input class="input100" type="password" placeholder="Nhập lại mật khẩu">
                     <span class="focus-input100"></span>
                     <span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
@@ -58,18 +58,17 @@
                 </div>
 
                 <div class="container-login100-form-btn">
-                    <input type="hidden" value="login" name="action"/>
-                    <button type="submit" class="login100-form-btn">Đăng Ký</button>
+                    <input type="submit" class="login100-form-btn" value="Đăng Ký"/>
                 </div>
 
                 <div class="text-center p-t-50">
                     <a class="txt2" href="<c:url value="/login?action=login"/> ">
                         <i class="fa fa-long-arrow-left m-l-5" aria-hidden="true"></i>
-                        Quay Lại Trang Đăng Nhập
+                        Đăng Nhập
                     </a>
                     <a class="txt2" href="<c:url value="/home"/> ">
                         <i class="fa fa-long-arrow-left m-l-5" aria-hidden="true"></i>
-                        Quay Lại Trang Chủ
+                        Trang Chủ
                     </a>
                 </div>
             </form>
@@ -77,6 +76,7 @@
     </div>
 </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         $('#formSubmit').submit(function (e) {
@@ -90,7 +90,7 @@
                 $.each(formData, function (i, v) {
                     data["" + v.name + ""] = v.value;
                 });
-                //addAccount(data);
+                addAccount(data);
             }
         })
     });
@@ -104,7 +104,7 @@
             dataType: 'json',
             success: function (result) {
                 if (result != null) {
-                    window.location.href = "${RegistrationURL}?message=create_account_success";
+                    window.location.href = "${RegistrationURL}?alert=success&message=create_account_success";
                 } else {
                     window.location.href = "${RegistrationURL}?message=create_account_error";
                 }

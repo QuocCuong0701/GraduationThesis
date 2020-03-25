@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<title>Atlantis Lite - Bootstrap 4 Admin Dashboard</title>
+	<title><dec:title default="Trang Chủ"/></title>
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
 	<link rel="icon" href="<c:url value="/template/admin/img/icon.ico"/>" type="image/x-icon"/>
 
@@ -25,8 +25,8 @@
 	<link rel="stylesheet" href="<c:url value="/template/admin/css/atlantis.min.css"/>" />
 	<link rel="stylesheet" href="<c:url value="/template/admin/css/fonts.min.css"/>" />
 
-	<!-- CSS Just for demo purpose, don't include it in your project -->
-	<link rel="stylesheet" href="<c:url value="/template/admin/css/demo.css"/>"/>
+	<!-- CSS Just for demo purpose, don't include it in your project
+	<link rel="stylesheet" href="<c:url value="/template/admin/css/demo.css"/>"/>-->
 </head>
 <body>
 
@@ -49,7 +49,8 @@
 	</div>
 
 	<!--   Core JS Files   -->
-	<script src="<c:url value="/template/admin/js/core/jquery.3.2.1.min.js"/>"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<%--<script src="<c:url value="/template/admin/js/core/jquery.3.2.1.min.js"/>"></script>--%>
 	<script src="<c:url value="/template/admin/js/core/popper.min.js"/>"></script>
 	<script src="<c:url value="/template/admin/js/core/bootstrap.min.js"/>"></script>
 
@@ -76,17 +77,17 @@
 	<!-- Bootstrap Notify -->
 	<script src="<c:url value="/template/admin/js/plugin/bootstrap-notify/bootstrap-notify.min.js"/>"></script>
 
-	<!-- jQuery Vector Maps -->
+	<!-- jQuery Vector Maps
 	<script src="<c:url value="/template/admin/js/plugin/jqvmap/jquery.vmap.min.js"/>"></script>
 	<script src="<c:url value="/template/admin/js/plugin/jqvmap/maps/jquery.vmap.world.js"/>"></script>
-
+	-->
 	<!-- Sweet Alert -->
 	<script src="<c:url value="/template/admin/js/plugin/sweetalert/sweetalert.min.js"/>"></script>
 
 	<!-- Atlantis JS -->
 	<script src="<c:url value="/template/admin/js/atlantis.min.js"/>"></script>
 
-	<!-- Atlantis DEMO methods, don't include it in your project! -->
+	<!-- Atlantis DEMO methods, don't include it in your project!
 	<script src="<c:url value="/template/admin/js/setting-demo.js"/>"></script>
 	<script src="<c:url value="/template/admin/js/demo.js"/>"></script>
 	<script>
@@ -182,6 +183,6 @@
 			lineColor: '#ffa534',
 			fillColor: 'rgba(255, 165, 52, .14)'
 		});
-	</script>
+	</script>-->
 </body>
 </html>

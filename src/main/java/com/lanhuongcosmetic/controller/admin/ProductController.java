@@ -29,7 +29,7 @@ public class ProductController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ProductModel productModel = FormUtil.toModel(ProductModel.class, req);
+        /*ProductModel productModel = FormUtil.toModel(ProductModel.class, req);
         String view = "";
         if (productModel.getType().equals(SystemConstant.LIST)) {
             Pageble pageble = new PageRequest(productModel.getPage(), productModel.getMaxPageItem(),
@@ -46,8 +46,8 @@ public class ProductController extends HttpServlet {
             view = "/views/admin/product/edit.jsp";
         }
         MessageUtil.showMessage(req);
-        req.setAttribute(SystemConstant.MODEL, productModel);
-        RequestDispatcher rd = req.getRequestDispatcher(view);
+        req.setAttribute(SystemConstant.MODEL, productModel);*/
+        RequestDispatcher rd = req.getRequestDispatcher("/views/admin/product/list.jsp");
         rd.forward(req, resp);
     }
 
