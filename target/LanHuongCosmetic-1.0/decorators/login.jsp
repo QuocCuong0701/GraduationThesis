@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Đăng nhập</title>
+    <title><dec:title default="Đăng Nhập"/></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
     <link rel="icon" type="image/png" href="<c:url value="/template/web/img/favicon.jpg"/>"/>
@@ -20,7 +20,8 @@
 
     <dec:body/>
 
-    <script src="<c:url value="/template/web/js/vendor/jquery.3.2.1.min.js" />"></script>
+    <script src="<c:url value="/template/web/js/vendor/jquery.js" />"></script>
+    <%--<script src="<c:url value="/template/web/js/vendor/jquery.3.2.1.min.js" />"></script>--%>
     <script src="<c:url value="/template/web/js/main-login.js"/>"></script>
 </body>
 </html>

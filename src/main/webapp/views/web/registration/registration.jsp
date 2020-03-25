@@ -1,7 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
 <c:url var="RegistrationURL" value="/registration"/>
-
+<c:url var="APIurl" value="/api-admin-user"/>
+<!DOCTYPE html>
+<head>
+    <title>Đăng Ký Tài Khoản</title>
+</head>
+<body>
 <div class="limiter">
     <div class="container-login100">
         <div class="wrap-login100">
@@ -72,7 +77,7 @@
     </div>
 </div>
 
-<script>
+<script type="text/javascript">
     $(document).ready(function () {
         $('#formSubmit').submit(function (e) {
             e.preventDefault();
@@ -88,7 +93,7 @@
                 //addAccount(data);
             }
         })
-    })
+    });
 
     function addAccount(data) {
         $.ajax({
@@ -110,3 +115,4 @@
         });
     }
 </script>
+</body>

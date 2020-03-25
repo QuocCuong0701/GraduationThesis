@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Trang Chủ</title>
+    <title><dec:title default="Trang Chủ"/></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -95,9 +95,9 @@
 
 <!-- Placed at the end of the document so the pages load faster -->
     <!-- JS -->
-    <!-- jquery-1.11.3.min js
+    <!-- jquery
    ============================================ -->
-    <script src="<c:url value="/template/web/js/vendor/jquery-1.11.3.min.js"/>"></script>
+    <script src="<c:url value="/template/web/js/vendor/jquery.3.2.1.min.js"/>"></script>
 
     <!-- bootstrap js
    ============================================ -->
