@@ -50,6 +50,7 @@
 
 	<!--   Core JS Files   -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="<c:url value="/template/web/js/vendor/jquery.js" />"></script>
 	<%--<script src="<c:url value="/template/admin/js/core/jquery.3.2.1.min.js"/>"></script>--%>
 	<script src="<c:url value="/template/admin/js/core/popper.min.js"/>"></script>
 	<script src="<c:url value="/template/admin/js/core/bootstrap.min.js"/>"></script>
