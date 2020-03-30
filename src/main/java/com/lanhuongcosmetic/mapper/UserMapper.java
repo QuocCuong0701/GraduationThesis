@@ -15,6 +15,8 @@ public class UserMapper implements RowMapper<UserModel> {
             userModel.setUser_email(rs.getString("user_email"));
             userModel.setUser_pass(rs.getString("user_pass"));
             userModel.setUser_role(rs.getBoolean("user_role"));
+            userModel.setCreated_date(rs.getTimestamp("created_date"));
+            userModel.setUpdated_date(rs.getTimestamp("updated_date"));
 
             return userModel;
         } catch (SQLException e) {

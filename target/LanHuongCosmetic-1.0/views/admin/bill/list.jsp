@@ -3,177 +3,172 @@
 <c:url var="APIurl" value="/api-admin-bill"/>
 <c:url var="BillURL" value="/admin-bill"/>
 <c:url var="BillDetailURL" value="/api-admin-billDetail"/>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Danh sách sản phẩm</title>
+    <title>Danh sách đơn hàng</title>
 </head>
-
 <body>
-<div class="main-content">
-    <form action="<c:url value='/admin-bill'/>" id="formSubmit" method="get">
-        <div class="main-content-inner">
-            <div class="breadcrumbs ace-save-state" id="breadcrumbs">
-                <ul class="breadcrumb">
-                    <li>
-                        <i class="ace-icon fa fa-home home-icon"></i>
-                        <a href="<c:url value="/admin-home"/>">Trang chủ</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="page-content">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <c:if test="${not empty messageResponse}">
-                            <div class="alert alert-${alert}">
-                                    ${messageResponse}
-                            </div>
-                        </c:if>
-                        <div class="widget-box table-filter">
-                            <div class="table-btn-controls">
-                                <div class="pull-right tableTools-container">
-                                    <div class="dt-buttons btn-overlap btn-group">
-                                        <button id="btnDelete" type="button" class="dt-button buttons-html5 btn btn-white btn-primary btn-bold"
-                                                data-toggle="tooltip" title='Xóa đơn hàng'>
-                                            <span>
-                                                <i class="fa fa-trash-o bigger-110 pink"></i>
-                                            </span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
+<div class="content">
+    <div class="page-inner">
+        <div class="page-header">
+            <ul class="breadcrumbs" style="margin-left: 0;">
+                <li class="nav-home">
+                    <a href="<c:url value="/admin-home"/> ">
+                        <i class="flaticon-home"></i>
+                    </a>
+                </li>
+                <li class="separator">
+                    <i class="flaticon-right-arrow"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="<c:url value="/admin-bill?type=list"/>">Quản Lý Đơn Hàng</a>
+                </li>
+                <li class="separator">
+                    <i class="flaticon-right-arrow"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="#">Danh Sách Đơn Hàng</a>
+                </li>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center">
+                            <h4 class="card-title">Danh Sách Đơn Hàng</h4>
+                            <%--<button id="btnDelete" class="btn btn-primary btn-round ml-auto btn-danger">
+                                <i class="fa fa-trash-alt"></i> Xóa Tài Khoản
+                            </button>--%>
                         </div>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered">
-                                        <thead>
-                                        <tr>
-                                            <th><input type="checkbox" id="checkAll"></th>
-                                            <th>Tên khách hàng</th>
-                                            <th>Tổng hóa đơn</th>
-                                            <th>Địa chỉ nhận hàng</th>
-                                            <th>Số điện thoại</th>
-                                            <th>Ngày đặt đơn</th>
-                                            <th>Tình trạng đơn hàng</th>
-                                            <th>Xem chi tiết</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <c:forEach var="item" items="${model.listResult}">
-                                            <tr>
-                                                <td><input type="checkbox" id="checkbox_${item.bill_id}" value="${item.bill_id}"/></td>
-                                                <td>${item.full_name}</td>
-                                                <td>${item.total} &#8363;</td>
-                                                <td>${item.address}</td>
-                                                <td>${item.phone}</td>
-                                                <td>${item.date}</td>
-                                                <td>
-                                                    <c:if test="${item.status == false}">
-                                                        <a class="confirmBtn btn btn-danger btn-edit" data-toggle="tooltip" title="Xác nhận đơn hàng" style="width: 120px;">
-                                                            <i class="fa fa-pencil-square-o" aria-hidden="true"> Xác nhận</i>
-                                                        </a>
-                                                    </c:if>
-                                                    <c:if test="${item.status == true}">
-                                                        <a class="confirmBtn btn btn-success btn-edit" data-toggle="tooltip"
-                                                           title="Đơn hàng đã xác nhận" style="width: 120px;">
-                                                            <i class="fa fa-check" aria-hidden="true"> Đã xác nhận</i>
-                                                        </a>
-                                                    </c:if>
-                                                </td>
-                                                <td>
-                                                    <a href="<c:url value="${BillDetailURL}?bill_id=${item.bill_id}"/>"
-                                                        data-toggle="modal" class="btn btn-sm btn-primary billDetail">
-                                                        <i class="fa fa-info-circle"></i>
-                                                    </a>
-                                                    <%--<a href="${BillURL}?type=list&bill_id=${item.bill_id}&maxPageItem=10&page=1&sortBy=asc&sortName=full_name"
-                                                       id="btnBillDetail" data-toggle="modal" class="btn btn-sm btn-primary billDetail">
-                                                        <i class="fa fa-info-circle"></i>
-                                                    </a>--%>
-                                                    <!-- Modal -->
-                                                    <div class="modal fade billDetailModal" id="billDetailModal" role="dialog">
-                                                        <div class="modal-dialog modal-lg">
-                                                            <div class="modal-content" style="margin-top: 100px;">
-                                                                <div class="modal-header">
-                                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                                    <h4 class="modal-title">Chi tiết đơn hàng</h4>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <table class="table table-bordered">
-                                                                        <thead>
-                                                                            <tr>
-                                                                                <th>Tên sản phẩm</th>
-                                                                                <th>Giá</th>
-                                                                                <th>Số lượng</th>
-                                                                                <th>Tổng</th>
-                                                                            </tr>
-                                                                        </thead>
-                                                                        <tbody id="tBody"></tbody>
-                                                                    </table>
-                                                                </div>
-                                                                <div class="modal-footer">
-                                                                    <a class="btn btn-success btn-edit btnConfirm" title="Xác nhận đơn hàng"
-                                                                       href="<c:url value="${APIurl}?bill_id=${item.bill_id}"/>" style="width: 120px;" id="btnConfirm">
-                                                                        <i class="fa fa-pencil-square-o" aria-hidden="true"> Xác nhận</i>
-                                                                    </a>
-                                                                    <button type="button" class="btn btn-danger" title="Đóng" data-dismiss="modal">Đóng</button>
-                                                                </div>
-                                                            </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="billsTable" class="display table table-striped table-hover" >
+                                <thead>
+                                <tr>
+                                    <%--<th><input type="checkbox" class="checkAll" id="checkAll"></th>--%>
+                                    <th>Tên người nhận</th>
+                                    <th>Địa chỉ nhân hàng</th>
+                                    <th>Số điện thoại</th>
+                                    <th>Ghi chú</th>
+                                    <th>Ngày đặt đơn</th>
+                                    <th>Ngày cập nhật</th>
+                                    <th>Tình trạng</th>
+                                    <th>Xem chi tiết</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <c:forEach var="listProducts" items="${model.listResult}">
+                                    <tr>
+                                        <%--<td><input type="checkbox" id="checkbox_${listProducts.user_id}" value="${listProducts.user_id}"></td>--%>
+                                        <td>${listProducts.full_name}</td>
+                                        <td>${listProducts.address}</td>
+                                        <td>${listProducts.phone}</td>
+                                        <td>${listProducts.note}</td>
+                                        <td>${listProducts.created_date}</td>
+                                        <td>${listProducts.updated_date}</td>
+                                        <td>
+                                            <c:if test="${listProducts.confirmed == true}">
+                                                <button class="btn btn-success" style="width: 156px;">
+                                                    <span class="btn-label"><i class="fa fa-check"></i></span> Đã xác nhận
+                                                </button>
+                                            </c:if>
+                                            <c:if test="${listProducts.confirmed == false}">
+                                                <button class="btn btn-danger" style="width: 156px;">
+                                                    <span class="btn-label"><i class="fa fa-times"></i></span> Chưa xác nhận
+                                                </button>
+                                            </c:if>
+                                        </td>
+                                        <td>
+                                            <a href="${BillDetailURL}?type=list&bill_id=${listProducts.bill_id}" class="btn btn-primary billDetails" data-toggle="modal" data-target="#billDetailModal">
+                                                <i class="fa fa-info"></i>
+                                            </a>
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="billDetailModal" tabindex="-1" role="dialog" aria-hidden="true">
+                                                <div class="modal-dialog" role="document" style="max-width: 1000px;">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title">
+                                                                <span class="fw-light">Thêm sản Phẩm</span>
+                                                            </h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <p class="large">Thông tin sản phẩm</p>
+                                                            <table class="table">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Tên sản phẩm</th>
+                                                                        <th>Giá(VND)</th>
+                                                                        <th>Số lượng</th>
+                                                                        <th>Tổng(VND)</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody id="tbodyBillDetail"></tbody>
+                                                            </table>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <a href="<c:url value="${APIurl}?bill_id=${listProducts.bill_id}"/>" id="btnConfirm" class="btn btn-primary btnConfirm"><i class="fa fa-check"></i> Xác nhận</a>
+                                                            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"></i> Đóng</button>
                                                         </div>
                                                     </div>
-                                                </td>
-                                            </tr>
-                                        </c:forEach>
-                                        </tbody>
-                                    </table>
-                                    <ul class="pagination" id="pagination"></ul>
-                                    <input type="hidden" value="" id="page" name="page"/>
-                                    <input type="hidden" value="" id="maxPageItem" name="maxPageItem"/>
-                                    <input type="hidden" value="" id="sortName" name="sortName"/>
-                                    <input type="hidden" value="" id="sortBy" name="sortBy"/>
-                                    <input type="hidden" value="" id="type" name="type"/>
-                                </div>
-                            </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <th>Tên người nhận</th>
+                                    <th>Địa chỉ nhân hàng</th>
+                                    <th>Số điện thoại</th>
+                                    <th>Ghi chú</th>
+                                    <th>Ngày đặt đơn</th>
+                                    <th>Ngày cập nhật</th>
+                                    <th>Tình trạng</th>
+                                    <th>Xem chi tiết</th>
+                                </tr>
+                                </tfoot>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </form>
+    </div>
 </div>
+
 <script>
 	$(document).ready(function () {
-		$('.billDetail').click(function (e) {
-		    e.preventDefault();
-			$('#billDetailModal').modal();
-		});
+	    $('#billsTable').dataTable();
 	});
 
-    var totalPages = ${model.totalPage};
-    var currentPage = ${model.page};
-    var limit = 10;
-    $(function () {
-        window.pagObj = $('#pagination').twbsPagination({
-            totalPages: totalPages,
-            visiblePages: 10,
-            startPage: currentPage,
-            onPageClick: function (event, page) {
-                if (currentPage !== page) {
-                    $('#maxPageItem').val(limit);
-                    $('#page').val(page);
-                    $('#sortName').val('full_name');
-                    $('#sortBy').val('asc');
-                    $('#type').val('list');
-                    $('#formSubmit').submit();
-                }
-            }
+	// See Bill Detail
+    $('.billDetails').click(function (e) {
+        e.preventDefault();
+        $('#tbodyBillDetail').empty();
+        let url = $(this).attr("href");
+        $.get(url, function (data) {
+            data.map(item=>{
+                $('#tbodyBillDetail').append("<tr>" +
+                    "<td>"+item.product_name+"</td>" +
+                    "<td>"+parseInt(item.product_price).toLocaleString()+" đ</td>" +
+                    "<td>"+item.quantity+"</td>" +
+                    "<td>"+parseInt(item.product_price * item.quantity).toLocaleString()+" đ</td>" +
+                    "</tr>");
+                $('.btnConfirm').attr('href', "${APIurl}?bill_id="+item.bill_id+"");
+            });
         });
     });
 
     $("#btnDelete").click(function () {
-        var data = {};
+        let data = {};
         data['ids'] = $('tbody input[type=checkbox]:checked').map(function () {
             return $(this).val();
         }).get();
@@ -195,24 +190,8 @@
         });
     }
 
-    $('.billDetail').click(function (e) {
-        e.preventDefault();
-        $('#tBody').empty();
-        let url = $(this).attr("href");
-        $.get(url, function (data) {
-            data.map(item=>{
-                $('#tBody').append("<tr>" +
-                    "<td>"+item.product_name+"</td>" +
-                    "<td>"+item.product_price+"&#8363;</td>" +
-                    "<td>"+item.quantity+"</td>" +
-                    "<td>"+item.total+"&#8363;</td>" +
-                    "</tr>");
-                $('.btnConfirm').attr('href', "${APIurl}?bill_id="+item.bill_id+"")
-            });
-        });
-    });
 
-    $('#btnConfirm').click(function (e) {
+    $('.btnConfirm').click(function (e) {
         e.preventDefault();
         let url = $(this).attr("href");
         updateBill(url);
@@ -224,10 +203,10 @@
             type: 'PUT',
             contentType: 'application/json',
             success: function (result) {
-                window.location.href = "${BillURL}?type=list&maxPageItem=10&page=1&sortName=date&sortBy=desc&message=update_success";
+                window.location.href = "${BillURL}?type=list&message=update_success";
             },
             error: function (error) {
-                window.location.href = "${BillURL}?type=list&maxPageItem=10&page=1&sortName=date&sortBy=desc&message=error_system";
+                window.location.href = "${BillURL}?type=list&message=error_system";
             }
         });
     }

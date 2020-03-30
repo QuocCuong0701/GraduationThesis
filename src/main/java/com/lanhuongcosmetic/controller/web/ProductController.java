@@ -32,14 +32,15 @@ public class ProductController extends HttpServlet {
         ProductModel productModel = FormUtil.toModel(ProductModel.class, req);
         String category_id = req.getParameter("category_id");
         String view = "";
-        Pageble pageble = new PageRequest(productModel.getPage(), 12, new Sorter("product_name", "asc"));
+        Pageble pageble = new PageRequest(productModel.getPage(), 9, new Sorter("product_name", "asc"));
         if (category_id == null) {
             productModel.setListResult(iProductService.findAll(pageble));
         } else {
+            productModel.setListResult(null);
             productModel.setListResult(iProductService.findByCategory(pageble, Integer.parseInt(category_id)));
         }
         productModel.setTotalItem(iProductService.getTotalItem());
-        productModel.setTotalPage((int) Math.ceil((double) productModel.getTotalItem() / 12));
+        productModel.setTotalPage((int) Math.ceil((double) productModel.getTotalItem() / 9));
 
         CategoryModel categoryModel = FormUtil.toModel(CategoryModel.class, req);
         categoryModel.setListResult(iCategoryService.findAll());

@@ -19,6 +19,11 @@ public class BillService implements IBillService {
     }
 
     @Override
+    public List<BillModel> findAll() {
+        return iBillDAO.findAll();
+    }
+
+    @Override
     public BillModel save(BillModel billModel) {
         int bill_id = iBillDAO.save(billModel);
         return iBillDAO.findOne(bill_id);
@@ -46,6 +51,11 @@ public class BillService implements IBillService {
     @Override
     public BillModel findOneByIdAndDate(int user_id, Timestamp date) {
         return iBillDAO.findOneByIdAndDate(user_id, date);
+    }
+
+    @Override
+    public BillModel findOneByDate(Timestamp created_date) {
+        return iBillDAO.findOneByDate(created_date);
     }
 
     @Override

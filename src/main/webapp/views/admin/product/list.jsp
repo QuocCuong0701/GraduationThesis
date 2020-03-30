@@ -1,9 +1,8 @@
 <%@include file="/common/taglib.jsp"%>
 <c:url var="APIurl" value="/api-admin-product"/>
 <c:url var ="ProductURL" value="/admin-product"/>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -14,10 +13,9 @@
 <div class="content">
 	<div class="page-inner">
 		<div class="page-header">
-			<h4 class="page-title">DataTables.Net</h4>
-			<ul class="breadcrumbs">
+			<ul class="breadcrumbs" style="margin-left: 0;">
 				<li class="nav-home">
-					<a href="#">
+					<a href="<c:url value="/admin-home"/> ">
 						<i class="flaticon-home"></i>
 					</a>
 				</li>
@@ -25,13 +23,13 @@
 					<i class="flaticon-right-arrow"></i>
 				</li>
 				<li class="nav-item">
-					<a href="#">Tables</a>
+					<a href="<c:url value="/admin-product?type=list"/> ">Quản Lý Sản Phẩm</a>
 				</li>
 				<li class="separator">
 					<i class="flaticon-right-arrow"></i>
 				</li>
 				<li class="nav-item">
-					<a href="#">Datatables</a>
+					<a href="#">Danh Sách Sản Phẩm</a>
 				</li>
 			</ul>
 		</div>
@@ -39,361 +37,70 @@
 			<div class="col-md-12">
 				<div class="card">
 					<div class="card-header">
-						<h4 class="card-title">Basic</h4>
-					</div>
-					<div class="card-body">
-						<div class="table-responsive">
-							<div id="basic-datatables_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="basic-datatables_length"><label>Show <select name="basic-datatables_length" aria-controls="basic-datatables" class="form-control form-control-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-12 col-md-6"><div id="basic-datatables_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="basic-datatables"></label></div></div></div><div class="row"><div class="col-sm-12"><table id="basic-datatables" class="display table table-striped table-hover dataTable" role="grid" aria-describedby="basic-datatables_info">
-								<thead>
-								<tr role="row"><th class="sorting_desc" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 166.8px;" aria-sort="descending">Name</th><th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 262px;">Position</th><th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 123.6px;">Office</th><th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 47.6px;">Age</th><th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 113.2px;">Start date</th><th class="sorting" tabindex="0" aria-controls="basic-datatables" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 109.2px;">Salary</th></tr>
-								</thead>
-								<tfoot>
-								<tr><th rowspan="1" colspan="1">Name</th><th rowspan="1" colspan="1">Position</th><th rowspan="1" colspan="1">Office</th><th rowspan="1" colspan="1">Age</th><th rowspan="1" colspan="1">Start date</th><th rowspan="1" colspan="1">Salary</th></tr>
-								</tfoot>
-								<tbody>
-								<tr role="row" class="odd">
-									<td class="sorting_1">Zorita Serrano</td>
-									<td class="">Software Engineer</td>
-									<td>San Francisco</td>
-									<td>56</td>
-									<td>2012/06/01</td>
-									<td>$115,000</td>
-								</tr><tr role="row" class="even">
-									<td class="sorting_1">Zenaida Frank</td>
-									<td class="">Software Engineer</td>
-									<td>New York</td>
-									<td>63</td>
-									<td>2010/01/04</td>
-									<td>$125,250</td>
-								</tr><tr role="row" class="odd">
-									<td class="sorting_1">Yuri Berry</td>
-									<td class="">Chief Marketing Officer (CMO)</td>
-									<td>New York</td>
-									<td>40</td>
-									<td>2009/06/25</td>
-									<td>$675,000</td>
-								</tr><tr role="row" class="even">
-									<td class="sorting_1">Vivian Harrell</td>
-									<td class="">Financial Controller</td>
-									<td>San Francisco</td>
-									<td>62</td>
-									<td>2009/02/14</td>
-									<td>$452,500</td>
-								</tr><tr role="row" class="odd">
-									<td class="sorting_1">Unity Butler</td>
-									<td class="">Marketing Designer</td>
-									<td>San Francisco</td>
-									<td>47</td>
-									<td>2009/12/09</td>
-									<td>$85,675</td>
-								</tr><tr role="row" class="even">
-									<td class="sorting_1">Timothy Mooney</td>
-									<td class="">Office Manager</td>
-									<td>London</td>
-									<td>37</td>
-									<td>2008/12/11</td>
-									<td>$136,200</td>
-								</tr><tr role="row" class="odd">
-									<td class="sorting_1">Tiger Nixon</td>
-									<td class="">System Architect</td>
-									<td>Edinburgh</td>
-									<td>61</td>
-									<td>2011/04/25</td>
-									<td>$320,800</td>
-								</tr><tr role="row" class="even">
-									<td class="sorting_1">Thor Walton</td>
-									<td class="">Developer</td>
-									<td>New York</td>
-									<td>61</td>
-									<td>2013/08/11</td>
-									<td>$98,540</td>
-								</tr><tr role="row" class="odd">
-									<td class="sorting_1">Tatyana Fitzpatrick</td>
-									<td class="">Regional Director</td>
-									<td>London</td>
-									<td>19</td>
-									<td>2010/03/17</td>
-									<td>$385,750</td>
-								</tr><tr role="row" class="even">
-									<td class="sorting_1">Suki Burks</td>
-									<td class="">Developer</td>
-									<td>London</td>
-									<td>53</td>
-									<td>2009/10/22</td>
-									<td>$114,500</td>
-								</tr></tbody>
-							</table></div></div><div class="row"><div class="col-sm-12 col-md-5"><div class="dataTables_info" id="basic-datatables_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div></div><div class="col-sm-12 col-md-7"><div class="dataTables_paginate paging_simple_numbers" id="basic-datatables_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="basic-datatables_previous"><a href="#" aria-controls="basic-datatables" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li><li class="paginate_button page-item active"><a href="#" aria-controls="basic-datatables" data-dt-idx="1" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item "><a href="#" aria-controls="basic-datatables" data-dt-idx="2" tabindex="0" class="page-link">2</a></li><li class="paginate_button page-item "><a href="#" aria-controls="basic-datatables" data-dt-idx="3" tabindex="0" class="page-link">3</a></li><li class="paginate_button page-item "><a href="#" aria-controls="basic-datatables" data-dt-idx="4" tabindex="0" class="page-link">4</a></li><li class="paginate_button page-item "><a href="#" aria-controls="basic-datatables" data-dt-idx="5" tabindex="0" class="page-link">5</a></li><li class="paginate_button page-item "><a href="#" aria-controls="basic-datatables" data-dt-idx="6" tabindex="0" class="page-link">6</a></li><li class="paginate_button page-item next" id="basic-datatables_next"><a href="#" aria-controls="basic-datatables" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li></ul></div></div></div></div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-md-12">
-				<div class="card">
-					<div class="card-header">
-						<h4 class="card-title">Multi Filter Select</h4>
-					</div>
-					<div class="card-body">
-						<div class="table-responsive">
-							<div id="multi-filter-select_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="multi-filter-select_length"><label>Show <select name="multi-filter-select_length" aria-controls="multi-filter-select" class="form-control form-control-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-12 col-md-6"><div id="multi-filter-select_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="multi-filter-select"></label></div></div></div><div class="row"><div class="col-sm-12"><table id="multi-filter-select" class="display table table-striped table-hover dataTable" role="grid" aria-describedby="multi-filter-select_info">
-								<thead>
-								<tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="multi-filter-select" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 166.8px;">Name</th><th class="sorting" tabindex="0" aria-controls="multi-filter-select" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 262px;">Position</th><th class="sorting" tabindex="0" aria-controls="multi-filter-select" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 123.6px;">Office</th><th class="sorting" tabindex="0" aria-controls="multi-filter-select" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 47.6px;">Age</th><th class="sorting" tabindex="0" aria-controls="multi-filter-select" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 113.2px;">Start date</th><th class="sorting" tabindex="0" aria-controls="multi-filter-select" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending" style="width: 109.2px;">Salary</th></tr>
-								</thead>
-								<tfoot>
-								<tr><th rowspan="1" colspan="1"><select class="form-control"><option value=""></option><option value="Airi Satou">Airi Satou</option><option value="Angelica Ramos">Angelica Ramos</option><option value="Ashton Cox">Ashton Cox</option><option value="Bradley Greer">Bradley Greer</option><option value="Brenden Wagner">Brenden Wagner</option><option value="Brielle Williamson">Brielle Williamson</option><option value="Bruno Nash">Bruno Nash</option><option value="Caesar Vance">Caesar Vance</option><option value="Cara Stevens">Cara Stevens</option><option value="Cedric Kelly">Cedric Kelly</option><option value="Charde Marshall">Charde Marshall</option><option value="Colleen Hurst">Colleen Hurst</option><option value="Dai Rios">Dai Rios</option><option value="Donna Snider">Donna Snider</option><option value="Doris Wilder">Doris Wilder</option><option value="Finn Camacho">Finn Camacho</option><option value="Fiona Green">Fiona Green</option><option value="Garrett Winters">Garrett Winters</option><option value="Gavin Cortez">Gavin Cortez</option><option value="Gavin Joyce">Gavin Joyce</option><option value="Gloria Little">Gloria Little</option><option value="Haley Kennedy">Haley Kennedy</option><option value="Hermione Butler">Hermione Butler</option><option value="Herrod Chandler">Herrod Chandler</option><option value="Hope Fuentes">Hope Fuentes</option><option value="Howard Hatfield">Howard Hatfield</option><option value="Jackson Bradshaw">Jackson Bradshaw</option><option value="Jena Gaines">Jena Gaines</option><option value="Jenette Caldwell">Jenette Caldwell</option><option value="Jennifer Acosta">Jennifer Acosta</option><option value="Jennifer Chang">Jennifer Chang</option><option value="Jonas Alexander">Jonas Alexander</option><option value="Lael Greer">Lael Greer</option><option value="Martena Mccray">Martena Mccray</option><option value="Michael Bruce">Michael Bruce</option><option value="Michael Silva">Michael Silva</option><option value="Michelle House">Michelle House</option><option value="Olivia Liang">Olivia Liang</option><option value="Paul Byrd">Paul Byrd</option><option value="Prescott Bartlett">Prescott Bartlett</option><option value="Quinn Flynn">Quinn Flynn</option><option value="Rhona Davidson">Rhona Davidson</option><option value="Sakura Yamamoto">Sakura Yamamoto</option><option value="Serge Baldwin">Serge Baldwin</option><option value="Shad Decker">Shad Decker</option><option value="Shou Itou">Shou Itou</option><option value="Sonya Frost">Sonya Frost</option><option value="Suki Burks">Suki Burks</option><option value="Tatyana Fitzpatrick">Tatyana Fitzpatrick</option><option value="Thor Walton">Thor Walton</option><option value="Tiger Nixon">Tiger Nixon</option><option value="Timothy Mooney">Timothy Mooney</option><option value="Unity Butler">Unity Butler</option><option value="Vivian Harrell">Vivian Harrell</option><option value="Yuri Berry">Yuri Berry</option><option value="Zenaida Frank">Zenaida Frank</option><option value="Zorita Serrano">Zorita Serrano</option></select></th><th rowspan="1" colspan="1"><select class="form-control"><option value=""></option><option value="Accountant">Accountant</option><option value="Chief Executive Officer (CEO)">Chief Executive Officer (CEO)</option><option value="Chief Financial Officer (CFO)">Chief Financial Officer (CFO)</option><option value="Chief Marketing Officer (CMO)">Chief Marketing Officer (CMO)</option><option value="Chief Operating Officer (COO)">Chief Operating Officer (COO)</option><option value="Customer Support">Customer Support</option><option value="Data Coordinator">Data Coordinator</option><option value="Developer">Developer</option><option value="Development Lead">Development Lead</option><option value="Director">Director</option><option value="Financial Controller">Financial Controller</option><option value="Integration Specialist">Integration Specialist</option><option value="Javascript Developer">Javascript Developer</option><option value="Junior Javascript Developer">Junior Javascript Developer</option><option value="Junior Technical Author">Junior Technical Author</option><option value="Marketing Designer">Marketing Designer</option><option value="Office Manager">Office Manager</option><option value="Personnel Lead">Personnel Lead</option><option value="Post-Sales support">Post-Sales support</option><option value="Pre-Sales Support">Pre-Sales Support</option><option value="Regional Director">Regional Director</option><option value="Regional Marketing">Regional Marketing</option><option value="Sales Assistant">Sales Assistant</option><option value="Secretary">Secretary</option><option value="Senior Javascript Developer">Senior Javascript Developer</option><option value="Senior Marketing Designer">Senior Marketing Designer</option><option value="Software Engineer">Software Engineer</option><option value="Support Engineer">Support Engineer</option><option value="Support Lead">Support Lead</option><option value="System Architect">System Architect</option><option value="Systems Administrator">Systems Administrator</option><option value="Team Leader">Team Leader</option><option value="Technical Author">Technical Author</option></select></th><th rowspan="1" colspan="1"><select class="form-control"><option value=""></option><option value="Edinburgh">Edinburgh</option><option value="London">London</option><option value="New York">New York</option><option value="San Francisco">San Francisco</option><option value="Sidney">Sidney</option><option value="Singapore">Singapore</option><option value="Tokyo">Tokyo</option></select></th><th rowspan="1" colspan="1"><select class="form-control"><option value=""></option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="33">33</option><option value="35">35</option><option value="36">36</option><option value="37">37</option><option value="38">38</option><option value="39">39</option><option value="40">40</option><option value="41">41</option><option value="42">42</option><option value="43">43</option><option value="46">46</option><option value="47">47</option><option value="48">48</option><option value="51">51</option><option value="53">53</option><option value="55">55</option><option value="56">56</option><option value="59">59</option><option value="61">61</option><option value="62">62</option><option value="63">63</option><option value="64">64</option><option value="65">65</option><option value="66">66</option></select></th><th rowspan="1" colspan="1"><select class="form-control"><option value=""></option><option value="2008/09/26">2008/09/26</option><option value="2008/10/16">2008/10/16</option><option value="2008/10/26">2008/10/26</option><option value="2008/11/13">2008/11/13</option><option value="2008/11/28">2008/11/28</option><option value="2008/12/11">2008/12/11</option><option value="2008/12/13">2008/12/13</option><option value="2008/12/16">2008/12/16</option><option value="2008/12/19">2008/12/19</option><option value="2009/01/12">2009/01/12</option><option value="2009/02/14">2009/02/14</option><option value="2009/02/27">2009/02/27</option><option value="2009/04/10">2009/04/10</option><option value="2009/06/25">2009/06/25</option><option value="2009/07/07">2009/07/07</option><option value="2009/08/19">2009/08/19</option><option value="2009/09/15">2009/09/15</option><option value="2009/10/09">2009/10/09</option><option value="2009/10/22">2009/10/22</option><option value="2009/12/09">2009/12/09</option><option value="2010/01/04">2010/01/04</option><option value="2010/02/12">2010/02/12</option><option value="2010/03/11">2010/03/11</option><option value="2010/03/17">2010/03/17</option><option value="2010/06/09">2010/06/09</option><option value="2010/07/14">2010/07/14</option><option value="2010/09/20">2010/09/20</option><option value="2010/10/14">2010/10/14</option><option value="2010/11/14">2010/11/14</option><option value="2010/12/22">2010/12/22</option><option value="2011/01/25">2011/01/25</option><option value="2011/02/03">2011/02/03</option><option value="2011/03/09">2011/03/09</option><option value="2011/03/21">2011/03/21</option><option value="2011/04/25">2011/04/25</option><option value="2011/05/03">2011/05/03</option><option value="2011/05/07">2011/05/07</option><option value="2011/06/02">2011/06/02</option><option value="2011/06/07">2011/06/07</option><option value="2011/06/27">2011/06/27</option><option value="2011/07/25">2011/07/25</option><option value="2011/08/14">2011/08/14</option><option value="2011/09/03">2011/09/03</option><option value="2011/12/06">2011/12/06</option><option value="2011/12/12">2011/12/12</option><option value="2012/03/29">2012/03/29</option><option value="2012/04/09">2012/04/09</option><option value="2012/06/01">2012/06/01</option><option value="2012/08/06">2012/08/06</option><option value="2012/09/26">2012/09/26</option><option value="2012/10/13">2012/10/13</option><option value="2012/11/27">2012/11/27</option><option value="2012/12/02">2012/12/02</option><option value="2012/12/18">2012/12/18</option><option value="2013/02/01">2013/02/01</option><option value="2013/03/03">2013/03/03</option><option value="2013/08/11">2013/08/11</option></select></th><th rowspan="1" colspan="1"><select class="form-control"><option value=""></option><option value="$1,200,000">$1,200,000</option><option value="$103,500">$103,500</option><option value="$103,600">$103,600</option><option value="$106,450">$106,450</option><option value="$109,850">$109,850</option><option value="$112,000">$112,000</option><option value="$114,500">$114,500</option><option value="$115,000">$115,000</option><option value="$125,250">$125,250</option><option value="$132,000">$132,000</option><option value="$136,200">$136,200</option><option value="$137,500">$137,500</option><option value="$138,575">$138,575</option><option value="$139,575">$139,575</option><option value="$145,000">$145,000</option><option value="$145,600">$145,600</option><option value="$162,700">$162,700</option><option value="$163,000">$163,000</option><option value="$163,500">$163,500</option><option value="$164,500">$164,500</option><option value="$170,750">$170,750</option><option value="$183,000">$183,000</option><option value="$198,500">$198,500</option><option value="$205,500">$205,500</option><option value="$206,850">$206,850</option><option value="$217,500">$217,500</option><option value="$234,500">$234,500</option><option value="$235,500">$235,500</option><option value="$237,500">$237,500</option><option value="$313,500">$313,500</option><option value="$320,800">$320,800</option><option value="$324,050">$324,050</option><option value="$327,900">$327,900</option><option value="$342,000">$342,000</option><option value="$345,000">$345,000</option><option value="$356,250">$356,250</option><option value="$357,650">$357,650</option><option value="$372,000">$372,000</option><option value="$385,750">$385,750</option><option value="$433,060">$433,060</option><option value="$452,500">$452,500</option><option value="$470,600">$470,600</option><option value="$645,750">$645,750</option><option value="$675,000">$675,000</option><option value="$725,000">$725,000</option><option value="$75,650">$75,650</option><option value="$85,600">$85,600</option><option value="$85,675">$85,675</option><option value="$850,000">$850,000</option><option value="$86,000">$86,000</option><option value="$86,500">$86,500</option><option value="$87,500">$87,500</option><option value="$90,560">$90,560</option><option value="$92,575">$92,575</option><option value="$95,400">$95,400</option><option value="$98,540">$98,540</option></select></th></tr>
-								</tfoot>
-								<tbody>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-								<tr role="row" class="odd">
-									<td class="sorting_1">Airi Satou</td>
-									<td>Accountant</td>
-									<td>Tokyo</td>
-									<td>33</td>
-									<td>2008/11/28</td>
-									<td>$162,700</td>
-								</tr><tr role="row" class="even">
-									<td class="sorting_1">Angelica Ramos</td>
-									<td>Chief Executive Officer (CEO)</td>
-									<td>London</td>
-									<td>47</td>
-									<td>2009/10/09</td>
-									<td>$1,200,000</td>
-								</tr><tr role="row" class="odd">
-									<td class="sorting_1">Ashton Cox</td>
-									<td>Junior Technical Author</td>
-									<td>San Francisco</td>
-									<td>66</td>
-									<td>2009/01/12</td>
-									<td>$86,000</td>
-								</tr><tr role="row" class="even">
-									<td class="sorting_1">Bradley Greer</td>
-									<td>Software Engineer</td>
-									<td>London</td>
-									<td>41</td>
-									<td>2012/10/13</td>
-									<td>$132,000</td>
-								</tr><tr role="row" class="odd">
-									<td class="sorting_1">Brenden Wagner</td>
-									<td>Software Engineer</td>
-									<td>San Francisco</td>
-									<td>28</td>
-									<td>2011/06/07</td>
-									<td>$206,850</td>
-								</tr></tbody>
-							</table></div></div><div class="row"><div class="col-sm-12 col-md-5"><div class="dataTables_info" id="multi-filter-select_info" role="status" aria-live="polite">Showing 1 to 5 of 57 entries</div></div><div class="col-sm-12 col-md-7"><div class="dataTables_paginate paging_simple_numbers" id="multi-filter-select_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="multi-filter-select_previous"><a href="#" aria-controls="multi-filter-select" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li><li class="paginate_button page-item active"><a href="#" aria-controls="multi-filter-select" data-dt-idx="1" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item "><a href="#" aria-controls="multi-filter-select" data-dt-idx="2" tabindex="0" class="page-link">2</a></li><li class="paginate_button page-item "><a href="#" aria-controls="multi-filter-select" data-dt-idx="3" tabindex="0" class="page-link">3</a></li><li class="paginate_button page-item "><a href="#" aria-controls="multi-filter-select" data-dt-idx="4" tabindex="0" class="page-link">4</a></li><li class="paginate_button page-item "><a href="#" aria-controls="multi-filter-select" data-dt-idx="5" tabindex="0" class="page-link">5</a></li><li class="paginate_button page-item disabled" id="multi-filter-select_ellipsis"><a href="#" aria-controls="multi-filter-select" data-dt-idx="6" tabindex="0" class="page-link">…</a></li><li class="paginate_button page-item "><a href="#" aria-controls="multi-filter-select" data-dt-idx="7" tabindex="0" class="page-link">12</a></li><li class="paginate_button page-item next" id="multi-filter-select_next"><a href="#" aria-controls="multi-filter-select" data-dt-idx="8" tabindex="0" class="page-link">Next</a></li></ul></div></div></div></div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-md-12">
-				<div class="card">
-					<div class="card-header">
 						<div class="d-flex align-items-center">
-							<h4 class="card-title">Add Row</h4>
-							<button class="btn btn-primary btn-round ml-auto" data-toggle="modal" data-target="#addRowModal">
+							<h4 class="card-title">Danh Sách Sản Phẩm</h4>
+							<button id="btnDelete" class="btn btn-primary btn-round ml-auto btn-danger btnDelete" style="margin-right: 5px;">
+								<i class="fa fa-trash-alt"></i> Xóa Sản Phẩm
+							</button>
+							<button class="btn btn-primary btn-round" data-toggle="modal" data-target="#addRowModal">
 								<i class="fa fa-plus"></i>
-								Add Row
+								Thêm Sản Phẩm
 							</button>
 						</div>
 					</div>
 					<div class="card-body">
-						<!-- Modal -->
-						<div class="modal fade" id="addRowModal" tabindex="-1" role="dialog" aria-hidden="true">
-							<div class="modal-dialog" role="document">
-								<div class="modal-content">
-									<div class="modal-header no-bd">
-										<h5 class="modal-title">
-														<span class="fw-mediumbold">
-														New</span>
-											<span class="fw-light">
-															Row
-														</span>
-										</h5>
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-											<span aria-hidden="true">×</span>
-										</button>
-									</div>
-									<div class="modal-body">
-										<p class="small">Create a new row using this form, make sure you fill them all</p>
-										<form>
-											<div class="row">
-												<div class="col-sm-12">
-													<div class="form-group form-group-default">
-														<label>Name</label>
-														<input id="addName" type="text" class="form-control" placeholder="fill name">
-													</div>
-												</div>
-												<div class="col-md-6 pr-0">
-													<div class="form-group form-group-default">
-														<label>Position</label>
-														<input id="addPosition" type="text" class="form-control" placeholder="fill position">
-													</div>
-												</div>
-												<div class="col-md-6">
-													<div class="form-group form-group-default">
-														<label>Office</label>
-														<input id="addOffice" type="text" class="form-control" placeholder="fill office">
-													</div>
-												</div>
-											</div>
-										</form>
-									</div>
-									<div class="modal-footer no-bd">
-										<button type="button" id="addRowButton" class="btn btn-primary">Add</button>
-										<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-									</div>
-								</div>
-							</div>
-						</div>
-
 						<div class="table-responsive">
-							<div id="add-row_wrapper" class="dataTables_wrapper container-fluid dt-bootstrap4"><div class="row"><div class="col-sm-12 col-md-6"><div class="dataTables_length" id="add-row_length"><label>Show <select name="add-row_length" aria-controls="add-row" class="form-control form-control-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div class="col-sm-12 col-md-6"><div id="add-row_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="add-row"></label></div></div></div><div class="row"><div class="col-sm-12"><table id="add-row" class="display table table-striped table-hover dataTable" role="grid" aria-describedby="add-row_info">
+							<table id="add-row" class="display table table-striped table-hover" >
 								<thead>
-								<tr role="row"><th class="sorting_asc" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 247.6px;">Name</th><th class="sorting" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 355.6px;">Position</th><th class="sorting" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 195.6px;">Office</th><th style="width: 126.8px;" class="sorting" tabindex="0" aria-controls="add-row" rowspan="1" colspan="1" aria-label="Action: activate to sort column ascending">Action</th></tr>
+								<tr>
+									<th><input type="checkbox" class="checkAll" id="checkAll"></th>
+									<th>Tên Sản Phẩm</th>
+									<th>Hình Ảnh</th>
+									<th>Giá(VND)</th>
+									<th>Lượt Xem</th>
+									<th>Lượt Mua</th>
+									<th>Ngày Tạo</th>
+									<th>Ngày Cập Nhật</th>
+									<th>Hành Động</th>
+								</tr>
 								</thead>
-								<tfoot>
-								<tr><th rowspan="1" colspan="1">Name</th><th rowspan="1" colspan="1">Position</th><th rowspan="1" colspan="1">Office</th><th rowspan="1" colspan="1">Action</th></tr>
-								</tfoot>
 								<tbody>
-
-
-
-
-
-
-
-
-
-
-								<tr role="row" class="odd">
-									<td class="sorting_1">Garrett Winters</td>
-									<td>Accountant</td>
-									<td>Tokyo</td>
-									<td>
-										<div class="form-button-action">
-											<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
+								<c:forEach var="listProducts" items="${model.listResult}">
+									<tr>
+										<td><input type="checkbox" id="checkbox_${listProducts.product_id}" value="${listProducts.product_id}"></td>
+										<td>${listProducts.product_name}</td>
+										<td><img src="<c:url value="${listProducts.product_image}"/>" style="height: 100px;"/></td>
+										<td><fmt:formatNumber pattern="###,###" value="${listProducts.product_price}"/></td>
+										<td><fmt:formatNumber pattern="###,###" value="${listProducts.view}"/></td>
+										<td><fmt:formatNumber pattern="###,###" value="${listProducts.buy}"/></td>
+										<td>${listProducts.created_date}</td>
+										<td>${listProducts.updated_date}</td>
+										<td>
+											<c:url var="editURL" value="/admin-product">
+												<c:param name="type" value="edit"/>
+												<c:param name="product_id" value="${listProducts.product_id}"/>
+											</c:url>
+											<a href="${editURL}" data-toggle="tooltip" title=""class="btn btn-link btn-primary" data-original-title="Cập nhật sản phẩm">
 												<i class="fa fa-edit"></i>
-											</button>
-											<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-												<i class="fa fa-times"></i>
-											</button>
-										</div>
-									</td>
-								</tr><tr role="row" class="even">
-									<td class="sorting_1">Herrod Chandler</td>
-									<td>Sales Assistant</td>
-									<td>San Francisco</td>
-									<td>
-										<div class="form-button-action">
-											<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
-												<i class="fa fa-edit"></i>
-											</button>
-											<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-												<i class="fa fa-times"></i>
-											</button>
-										</div>
-									</td>
-								</tr><tr role="row" class="odd">
-									<td class="sorting_1">Rhona Davidson</td>
-									<td>Integration Specialist</td>
-									<td>Tokyo</td>
-									<td>
-										<div class="form-button-action">
-											<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
-												<i class="fa fa-edit"></i>
-											</button>
-											<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-												<i class="fa fa-times"></i>
-											</button>
-										</div>
-									</td>
-								</tr><tr role="row" class="even">
-									<td class="sorting_1">Sonya Frost</td>
-									<td>Software Engineer</td>
-									<td>Edinburgh</td>
-									<td>
-										<div class="form-button-action">
-											<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
-												<i class="fa fa-edit"></i>
-											</button>
-											<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-												<i class="fa fa-times"></i>
-											</button>
-										</div>
-									</td>
-								</tr><tr role="row" class="odd">
-									<td class="sorting_1">Tiger Nixon</td>
-									<td>System Architect</td>
-									<td>Edinburgh</td>
-									<td>
-										<div class="form-button-action">
-											<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task">
-												<i class="fa fa-edit"></i>
-											</button>
-											<button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove">
-												<i class="fa fa-times"></i>
-											</button>
-										</div>
-									</td>
-								</tr></tbody>
-							</table></div></div><div class="row"><div class="col-sm-12 col-md-5"><div class="dataTables_info" id="add-row_info" role="status" aria-live="polite">Showing 6 to 10 of 10 entries</div></div><div class="col-sm-12 col-md-7"><div class="dataTables_paginate paging_simple_numbers" id="add-row_paginate"><ul class="pagination"><li class="paginate_button page-item previous" id="add-row_previous"><a href="#" aria-controls="add-row" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li><li class="paginate_button page-item "><a href="#" aria-controls="add-row" data-dt-idx="1" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item active"><a href="#" aria-controls="add-row" data-dt-idx="2" tabindex="0" class="page-link">2</a></li><li class="paginate_button page-item next disabled" id="add-row_next"><a href="#" aria-controls="add-row" data-dt-idx="3" tabindex="0" class="page-link">Next</a></li></ul></div></div></div></div>
+											</a>
+										</td>
+									</tr>
+								</c:forEach>
+								</tbody>
+								<tfoot>
+								<tr>
+									<th></th>
+									<th>Tên Sản Phẩm</th>
+									<th>Hình Ảnh</th>
+									<th>Giá(VND)</th>
+									<th>Lượt Xem</th>
+									<th>Lượt Mua</th>
+									<th>Ngày Tạo</th>
+									<th>Ngày Cập Nhật</th>
+									<th>Hành Động</th>
+								</tr>
+								</tfoot>
+							</table>
 						</div>
 					</div>
 				</div>
@@ -401,54 +108,162 @@
 		</div>
 	</div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="addRowModal" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog" role="document" style="max-width: 1000px; height: 95%; overflow: auto;">
+		<div class="modal-content">
+			<div class="modal-header no-bd">
+				<h5 class="modal-title">
+					<span class="fw-light">Thêm sản Phẩm</span>
+				</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<p class="large">Thông tin sản phẩm</p>
+				<form id="addProductForm">
+					<div class="row">
+						<div class="col-md-4">
+							<div class="form-group form-group-default" style="height: 46px;">
+								<select class="form-control" id="category_id" name="category_id" style="text-transform: capitalize;">
+									<option value="">Chọn loại sản phẩm</option>
+									<c:forEach var="item" items="${categories}">
+										<option value="${item.category_id}">${item.category_name}</option>
+									</c:forEach>
+								</select>
+							</div>
+						</div>
+						<div class="col-sm-8">
+							<div class="form-group form-group-default">
+								<label>Tên sản phẩm</label>
+								<input name="product_name" type="text" class="form-control" placeholder="Điền tên sản phẩm">
+							</div>
+						</div>
+						<div class="col-md-6 pr-0">
+							<div class="form-group form-group-default">
+								<label>Hình ảnh</label>
+								<input type="file" value="" id="add_product_image" name="product_image" onchange="chooseImage(event)" accept=".png, .jpg, .jpeg"
+									   size="50" style="width: 200px; display: inline"/>
+								<img id="show_image" src="" alt="" style="width: 80px;" />
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group form-group-default">
+								<label>Giá</label>
+								<input name="product_price" type="text" class="form-control" placeholder="Điền giá">
+							</div>
+						</div>
+						<div class="col-sm-12">
+							<div class="form-group form-group-default">
+								<label>Mô tả</label>
+								<textarea rows="" cols="" name="product_description" style="width: 820px;height: 175px"></textarea>
+							</div>
+						</div>
+						<div class="col-sm-12">
+							<div class="form-group form-group-default">
+								<label>Chi tiết</label>
+								<textarea rows="" cols="" name="product_detail" style="width: 820px;height: 175px"></textarea>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer no-bd">
+				<button type="button" id="addProductButton" class="btn btn-primary">Thêm</button>
+				<button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+			</div>
+		</div>
+	</div>
+</div>
 
-<script >
-	$(document).ready(function() {
-		$('#basic-datatables').DataTable({
+<script type="text/javascript">
+	$(document).ready(function (e) {
+		$('#add-row').dataTable();
+	});
+
+	// Add Product
+	let editor = '';
+	let editor1 = '';
+	$(document).ready(function(){
+		editor = CKEDITOR.replace( 'product_description');
+	});
+	$(document).ready(function(){
+		editor1 = CKEDITOR.replace( 'product_detail');
+	});
+
+	$('#addProductButton').click(function (e) {
+		e.preventDefault();
+		let data = {};
+		let formData = $('#addProductForm').serializeArray();
+		$.each(formData, function (i, v) {
+			data[""+v.name+""] = v.value;
 		});
+		$('#product_image').attr('value', document.getElementById('add_product_image').defaultValue);
+		data["product_image"] = document.getElementById('add_product_image').defaultValue;
+		data["product_description"] = editor.getData();
+		data["product_detail"] = editor1.getData();
+		data["created_date"] = Date.parse((new Date()).toISOString());
+		addProduct(data);
+	});
 
-		$('#multi-filter-select').DataTable( {
-			"pageLength": 5,
-			initComplete: function () {
-				this.api().columns().every( function () {
-					var column = this;
-					var select = $('<select class="form-control"><option value=""></option></select>')
-							.appendTo( $(column.footer()).empty() )
-							.on( 'change', function () {
-								var val = $.fn.dataTable.util.escapeRegex(
-										$(this).val()
-								);
-
-								column
-										.search( val ? '^'+val+'$' : '', true, false )
-										.draw();
-							} );
-
-					column.data().unique().sort().each( function ( d, j ) {
-						select.append( '<option value="'+d+'">'+d+'</option>' )
-					} );
-				} );
+	function addProduct(data) {
+		$.ajax({
+			url: '${APIurl}',
+			type: 'POST',
+			contentType: 'application/json',
+			data: JSON.stringify(data),
+			success: function (result) {
+				window.location.href = "${ProductURL}?type=list&message=insert_success";
+			},
+			error: function (error) {
+				window.location.href = "${ProductURL}?type=list&message=error_system";
 			}
 		});
+	}
 
-		// Add Row
-		$('#add-row').DataTable({
-			"pageLength": 5,
-		});
+	function chooseImage(evt) {
+		evt.stopPropagation();
+		evt.preventDefault();
+		let files = evt.target.files;
+		let file = files[0];
+		let fileReader = new FileReader();
 
-		var action = '<td> <div class="form-button-action"> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
+		fileReader.onload = function(progressEvent) {
+			let url = fileReader.result;
+			let myImg = document.getElementById("add_product_image");
+			$('#show_image').attr('src', progressEvent.target.result);
+			$('#add_product_image').attr('value', url);
+			myImg.src = url;
+		};
+		fileReader.readAsDataURL(file);
+	}
 
-		$('#addRowButton').click(function() {
-			$('#add-row').dataTable().fnAddData([
-				$("#addName").val(),
-				$("#addPosition").val(),
-				$("#addOffice").val(),
-				action
-			]);
-			$('#addRowModal').modal('hide');
-
-		});
+	// Delete Product
+	$('.btnDelete').click(function () {
+		let data={};
+		let ids = $('tbody input[type=checkbox]:checked').map(function () {
+			return $(this).val();
+		}).get();
+		data['ids'] = ids;
+		deleteProduct(data);
 	});
+
+	function deleteProduct(data) {
+		$.ajax({
+			url: '${APIurl}',
+			type: 'DELETE',
+			contentType: 'application/json',
+			data: JSON.stringify(data),
+			success: function (result) {
+				window.location.href = "${ProductURL}?type=list&message=delete_success";
+			},
+			error: function (error) {
+				window.location.href = "${ProductURL}?type=list&message=error_system";
+			}
+		});
+	}
+
 </script>
 </body>
 </html>

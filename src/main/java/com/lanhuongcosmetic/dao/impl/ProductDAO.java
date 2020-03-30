@@ -20,22 +20,34 @@ public class ProductDAO extends AbstractDAO<ProductModel> implements IProductDAO
 
     @Override
     public int save(ProductModel productModel) {
-        StringBuilder sql = new StringBuilder("INSERT INTO product (product_name, ");
-        sql.append("product_image, product_price, product_description, product_detail, category_id)");
-        sql.append(" VALUES (?,?,?,?,?,?)");
+        StringBuilder sql = new StringBuilder("INSERT INTO product (product_name, product_image, ");
+        sql.append("product_price, product_description, product_detail, created_date, category_id)");
+        sql.append(" VALUES (?,?,?,?,?,?,?)");
         return insert(sql.toString(), productModel.getProduct_name(), productModel.getProduct_image(),
                 productModel.getProduct_price(), productModel.getProduct_description(),
-                productModel.getProduct_detail(), productModel.getCategory_id());
+                productModel.getProduct_detail(), productModel.getCreated_date(), productModel.getCategory_id());
     }
 
     @Override
     public void update(ProductModel productModel) {
         StringBuilder sql = new StringBuilder("UPDATE product SET product_name = ?, ");
         sql.append("product_image = ?, product_price = ?, product_description = ?, ");
-        sql.append("product_detail = ?, category_id = ? WHERE product_id = ?");
+        sql.append("product_detail = ?, updated_date = ? , category_id = ? WHERE product_id = ?");
         update(sql.toString(), productModel.getProduct_name(), productModel.getProduct_image(),
                 productModel.getProduct_price(), productModel.getProduct_description(),
-                productModel.getProduct_detail(), productModel.getCategory_id(), productModel.getProduct_id());
+                productModel.getProduct_detail(), productModel.getUpdated_date(), productModel.getCategory_id(), productModel.getProduct_id());
+    }
+
+    @Override
+    public void updateView(ProductModel productModel) {
+        String sql = "UPDATE product SET view = ? WHERE product_id = ?";
+        update(sql, productModel.getView() + 1, productModel.getProduct_id());
+    }
+
+    @Override
+    public void updateBuy(ProductModel productModel) {
+        String sql = "UPDATE product SET buy = ? WHERE product_id = ?";
+        update(sql, productModel.getBuy() + 1, productModel.getProduct_id());
     }
 
     @Override
@@ -64,9 +76,21 @@ public class ProductDAO extends AbstractDAO<ProductModel> implements IProductDAO
     }
 
     @Override
-    public List<ProductModel> findAllLimit6(int category_id) {
-        StringBuilder sql = new StringBuilder("SELECT * FROM product WHERE category_id = ? LIMIT 6");
-        return query(sql.toString(), new ProductMapper(), category_id);
+    public List<ProductModel> findAll() {
+        String sql = "SELECT * FROM product";
+        return query(sql, new ProductMapper());
+    }
+
+    @Override
+    public List<ProductModel> twoLatestProduct(String sortBy, int limit) {
+        String sql = "SELECT * FROM product ORDER BY " + sortBy + " desc LIMIT " + limit;
+        return query(sql, new ProductMapper());
+    }
+
+    @Override
+    public List<ProductModel> listProduct(int category, int limit) {
+        String sql = "SELECT * FROM product WHERE category_id = " + category + " LIMIT " + limit;
+        return query(sql, new ProductMapper());
     }
 
     @Override

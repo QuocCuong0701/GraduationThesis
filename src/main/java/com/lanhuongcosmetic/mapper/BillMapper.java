@@ -13,11 +13,13 @@ public class BillMapper implements RowMapper<BillModel> {
             billModel.setBill_id(rs.getInt("bill_id"));
             billModel.setUser_id(rs.getInt("user_id"));
             billModel.setFull_name(rs.getString("full_name"));
-            billModel.setTotal(rs.getDouble("total"));
             billModel.setAddress(rs.getString("address"));
+            billModel.setEmail(rs.getString("email"));
             billModel.setPhone(rs.getString("phone"));
             billModel.setNote(rs.getString("note"));
             billModel.setConfirmed(rs.getBoolean("confirmed"));
+            billModel.setCreated_date(rs.getTimestamp("created_date"));
+            billModel.setUpdated_date(rs.getTimestamp("updated_date"));
 
             return billModel;
         } catch (SQLException e) {

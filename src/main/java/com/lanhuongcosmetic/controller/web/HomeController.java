@@ -57,14 +57,43 @@ public class HomeController extends HttpServlet {
             categoryModel.setListResult(iCategoryService.findAll());
             req.setAttribute("categories", categoryModel);
 
-            CategoryModel categoryLimit4 = FormUtil.toModel(CategoryModel.class, req);
-            categoryLimit4.setListResult(iCategoryService.findAllLimit4());
-            req.setAttribute("categoriesLimit4", categoryLimit4);
+            // Offer Product
+            ProductModel twoLatestProduct = FormUtil.toModel(ProductModel.class, req);
+            twoLatestProduct.setListResult(iProductService.twoLatestProduct("created_date", 2));
+            req.setAttribute("twoLatestProduct", twoLatestProduct);
+            // Best Seller
+            ProductModel bestSeller = FormUtil.toModel(ProductModel.class, req);
+            bestSeller.setListResult(iProductService.twoLatestProduct("buy", 4));
+            req.setAttribute("bestSeller", bestSeller);
 
-            ProductModel productLimit6 = FormUtil.toModel(ProductModel.class, req);
-            productLimit6.setListResult(iProductService.findAllLimit6(1));
-            req.setAttribute("productLimit6", productLimit6);
-            req.setAttribute("productSize", productLimit6.getListResult().size());
+            // List Products
+            ProductModel list1 = FormUtil.toModel(ProductModel.class, req);
+            list1.setListResult(iProductService.listProduct(1, 6));
+            req.setAttribute("list1", list1);
+            CategoryModel category1 = FormUtil.toModel(CategoryModel.class, req);
+            category1 = iCategoryService.findOne(1);
+            req.setAttribute("category1", category1);
+
+            ProductModel list2 = FormUtil.toModel(ProductModel.class, req);
+            list2.setListResult(iProductService.listProduct(2, 6));
+            req.setAttribute("list2", list2);
+            CategoryModel category2 = FormUtil.toModel(CategoryModel.class, req);
+            category2 = iCategoryService.findOne(2);
+            req.setAttribute("category2", category2);
+
+            ProductModel list3 = FormUtil.toModel(ProductModel.class, req);
+            list3.setListResult(iProductService.listProduct(3, 6));
+            req.setAttribute("list3", list3);
+            CategoryModel category3 = FormUtil.toModel(CategoryModel.class, req);
+            category3 = iCategoryService.findOne(3);
+            req.setAttribute("category3", category3);
+
+            ProductModel list4 = FormUtil.toModel(ProductModel.class, req);
+            list4.setListResult(iProductService.listProduct(4, 6));
+            req.setAttribute("list4", list4);
+            CategoryModel category4 = FormUtil.toModel(CategoryModel.class, req);
+            category4 = iCategoryService.findOne(4);
+            req.setAttribute("category4", category4);
 
             RequestDispatcher rd = req.getRequestDispatcher("/views/web/home.jsp");
             rd.forward(req, resp);

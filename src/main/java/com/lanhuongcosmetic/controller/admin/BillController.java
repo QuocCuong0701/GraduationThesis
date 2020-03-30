@@ -32,11 +32,7 @@ public class BillController extends HttpServlet {
         BillModel billModel = FormUtil.toModel(BillModel.class, req);
         String view = "";
         if (billModel.getType().equals(SystemConstant.LIST)) {
-            Pageble pageble = new PageRequest(billModel.getPage(), billModel.getMaxPageItem(),
-                    new Sorter(billModel.getSortName(), billModel.getSortBy()));
-            billModel.setListResult(iBillService.findAll(pageble));
-            billModel.setTotalItem(iBillService.getTotalItem());
-            billModel.setTotalPage((int) Math.ceil((double) billModel.getTotalItem() / billModel.getMaxPageItem()));
+            billModel.setListResult(iBillService.findAll());
             view = "/views/admin/bill/list.jsp";
         } else if (billModel.getType().equals(SystemConstant.EDIT)) {
             view = "/views/admin/bill/edit.jsp";

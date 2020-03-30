@@ -24,15 +24,28 @@ public class BillDAO extends AbstractDAO<BillModel> implements IBillDAO {
     }
 
     @Override
+    public List<BillModel> findAll() {
+        String sql = "SELECT * FROM bill";
+        return query(sql, new BillMapper());
+    }
+
+    @Override
     public int save(BillModel billModel) {
-        String sql = "INSERT INTO bill(user_id, full_name, total, address, phone, date, status) VALUES (?,?,?,?,?,?,?)";
-        return insert(sql, billModel.getUser_id(), billModel.getFull_name(), billModel.getTotal(), billModel.getAddress(),
-                billModel.getPhone(), billModel.getCreated_date(), 0);
+        StringBuilder sql = new StringBuilder("INSERT INTO bill");
+        if(billModel.getUser_id() != 0){
+            sql.append("(user_id, full_name, address, email, phone, created_date, confirmed) VALUES (?,?,?,?,?,?,?)");
+            return insert(sql.toString(), billModel.getUser_id(), billModel.getFull_name(), billModel.getAddress(),
+                    billModel.getEmail(), billModel.getPhone(), billModel.getCreated_date(), 0);
+        } else {
+            sql.append("(full_name, address, email, phone, created_date, confirmed) VALUES (?,?,?,?,?,?)");
+            return insert(sql.toString(),  billModel.getFull_name(), billModel.getAddress(),
+                    billModel.getEmail(), billModel.getPhone(), billModel.getCreated_date(), 0);
+        }
     }
 
     @Override
     public void update(int bill_id) {
-        String sql = "UPDATE bill SET status = ? WHERE bill_id = ?";
+        String sql = "UPDATE bill SET confirmed = ? WHERE bill_id = ?";
         update(sql, 1, bill_id);
     }
 
@@ -50,9 +63,16 @@ public class BillDAO extends AbstractDAO<BillModel> implements IBillDAO {
     }
 
     @Override
-    public BillModel findOneByIdAndDate(int user_id, Timestamp date) {
-        String sql = "SELECT * FROM bill WHERE user_id = ? AND date = ?";
-        List<BillModel> billModels = query(sql, new BillMapper(), user_id, date);
+    public BillModel findOneByIdAndDate(int user_id, Timestamp created_date) {
+        String sql = "SELECT * FROM bill WHERE user_id = ? AND created_date = ?";
+        List<BillModel> billModels = query(sql, new BillMapper(), user_id, created_date);
+        return billModels.isEmpty() ? null : billModels.get(0);
+    }
+
+    @Override
+    public BillModel findOneByDate(Timestamp created_date) {
+        String sql = "SELECT * FROM bill WHERE created_date = ?";
+        List<BillModel> billModels = query(sql, new BillMapper(), created_date);
         return billModels.isEmpty() ? null : billModels.get(0);
     }
 

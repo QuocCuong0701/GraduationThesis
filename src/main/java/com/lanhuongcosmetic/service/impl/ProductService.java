@@ -19,7 +19,7 @@ public class ProductService implements IProductService {
     private IProductDAO iProductDAO;
 
     @Override
-    public List<ProductModel> findByCategory(Pageble pageble,int category_id) {
+    public List<ProductModel> findByCategory(Pageble pageble, int category_id) {
         return iProductDAO.findByCategory(pageble, category_id);
     }
 
@@ -38,8 +38,19 @@ public class ProductService implements IProductService {
     }
 
     @Override
+    public void updateView(ProductModel productModel) {
+        iProductDAO.updateView(productModel);
+        iProductDAO.findOne(productModel.getProduct_id());
+    }
+
+    @Override
+    public void updateBuy(ProductModel productModel) {
+        iProductDAO.updateBuy(productModel);
+    }
+
+    @Override
     public void delete(int[] ids) {
-        for(int id : ids){
+        for (int id : ids) {
             iProductDAO.delete(id);
         }
     }
@@ -58,8 +69,18 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public List<ProductModel> findAllLimit6(int category_id) {
-        return iProductDAO.findAllLimit6(category_id);
+    public List<ProductModel> findAll() {
+        return iProductDAO.findAll();
+    }
+
+    @Override
+    public List<ProductModel> twoLatestProduct(String sortBy, int limit) {
+        return iProductDAO.twoLatestProduct(sortBy, limit);
+    }
+
+    @Override
+    public List<ProductModel> listProduct(int category, int limit) {
+        return iProductDAO.listProduct(category, limit);
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.lanhuongcosmetic.controller.web;
 
+import com.lanhuongcosmetic.constant.SystemConstant;
 import com.lanhuongcosmetic.model.CategoryModel;
 import com.lanhuongcosmetic.model.ProductModel;
 import com.lanhuongcosmetic.service.ICategoryService;
@@ -25,12 +26,14 @@ public class ProductDetailController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String product_id = req.getParameter("product_id");
-        ProductModel productModel = new ProductModel();
+        ProductModel productModel;
         productModel = iProductService.findOneByProductId(Integer.parseInt(product_id));
+        iProductService.updateView(productModel);
+        req.setAttribute(SystemConstant.MODEL, productModel);
+
         CategoryModel categoryModel = FormUtil.toModel(CategoryModel.class, req);
         categoryModel.setListResult(iCategoryService.findAll());
         req.setAttribute("categories", categoryModel);
-        req.setAttribute("productDetail", productModel);
 
         RequestDispatcher rd = req.getRequestDispatcher("/views/web/productDetail/productDetail.jsp");
         rd.forward(req, resp);

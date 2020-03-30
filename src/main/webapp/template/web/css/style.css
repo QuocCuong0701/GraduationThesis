@@ -82,7 +82,7 @@ padding: 0
 body{
 	background:#F8F8F8;
 	color: #666666;
-	font-family: 'Raleway', arial;
+	/*font-family: 'Raleway', arial;*/
 	font-size: 14px;
 	font-style: normal;
 	font-weight: 400;
@@ -267,13 +267,13 @@ body{
 	border-radius: 2px;
 	padding: 10px 20px;
 	position: absolute;
-	right: -81px;
+	right: -107px;
 	top: 0;
 	width: 300px;
 }
 .header-chart-dropdown-list{
 	border-bottom: 1px solid #ccc;
-	padding: 20px 0 30px;
+	padding: 15px 0 15px;
 }
 .dropdown-chart-left{
 	margin-right:20px;
@@ -316,7 +316,7 @@ body{
 .chart-checkout span{
 	float:right;
 }
-.chart-checkout button{
+.chart-checkout button, .chart-checkout a{
 	background: #062F3C none repeat scroll 0 0;
 	border: medium none;
 	border-radius: 2px;
@@ -327,7 +327,7 @@ body{
 	width: 100%;
 	transition: all .3s;
 }
-.chart-checkout button:hover{
+.chart-checkout button:hover, .chart-checkout a:hover{
 	background: #ffa726 none repeat scroll 0 0;
 	color: #fff;
 }
@@ -490,7 +490,7 @@ body{
 	text-transform:uppercase;
 	font-size:20px;
 	font-weight:700;
-	font-family: 'Roboto';
+	/*font-family: 'Roboto';*/
 	border-bottom:1px solid #C3C3C3;
 	line-height: 30px;
 }
@@ -788,6 +788,9 @@ i.nivo-next-icon{}
 .single-product-img{
 	position:relative;
 	overflow: hidden;
+	width: 264px;
+	height: 280px;
+	background-color: #fff;
 }
 .single-product-img img{
 	width: 100%;
@@ -814,7 +817,7 @@ i.nivo-next-icon{}
 	opacity: 0;
 	position: absolute;
 	top: 0;
-	width: 100%;
+	width: 263px;
 	transition: all 0.5s ease 0s;
 	z-index:99;
 }
@@ -1919,6 +1922,7 @@ body.home-2{
 	padding: 20px 15px 0;
 }
 .single-item-content h2{
+	height: 60px;
 	font-size:16px;
 	font-weight:700;
 	color:#898989;
@@ -1929,7 +1933,7 @@ body.home-2{
 	color:#FFA726;
 }
 .single-item-content h3{
-	clear: both;
+	/*clear: both;*/
 	color: #7e7e7e;
 	font-size: 16px;
 	font-weight: 700;
@@ -2054,7 +2058,7 @@ body.home-2{
 	margin-top: 0;
 }
 .shop-pagination .pagination li a{
-	color: #666666;
+	/*color: #666666;*/
 	margin-left: 5px;
 }
 .shop-pagination .pagination > li:first-child > a, .pagination > li:first-child > span {
@@ -2432,7 +2436,7 @@ body.home-2{
 }
 .blog-main-content{
 	float:left;
-	font-family:roboto;
+	font-family: sans-serif;
 }
 .blog-main-content>p{
 	margin-bottom: 30px;
@@ -2452,7 +2456,7 @@ body.home-2{
 .single-blog-bottom-content{
 	background: #ebebeb none repeat scroll 0 0;
 	border-left: 3px solid #ffa726;
-	font-family: roboto;
+	font-family: sans-serif;
 	padding: 10px 30px;
 }
 .single-blog-bottom-content p{
@@ -2720,7 +2724,7 @@ body.home-2{
 ------------------------------*/
 .chart-area{
 	margin-bottom:30px;
-	font-family:roboto;
+	/*font-family:roboto;*/
 }
 .table-responsive{
     overflow-x: auto;
@@ -2792,14 +2796,14 @@ body.home-2{
 .cart-button{
 	margin-top:12px;
 }
-.cart-button button{
+.cart-button button, .cart-button a{
 	width:175px;
 	background:#FFA726;
 	color:#fff;
 	border-radius:2px;
 	transition: all .4s;
 }
-.cart-button button:hover{
+.cart-button button:hover, .cart-button a:hover{
 	background:#2B82AD;
 	color:#fff;
 }
@@ -2842,7 +2846,7 @@ body.home-2{
 	border: 1px solid #e1e1e1;
 	width: 100%;
 }
-.chart-all button{
+.chart-all button, .chart-all a{
 	background:#FFA726;
 	color:#fff;
 	border-radius:2px;
@@ -2862,12 +2866,13 @@ body.home-2{
 }
 .shopping-cost-area{
 	float:right;
+	width: 292px;
 }
 .shopping-cost-area h2:after{
     content: "";
 	float:right;
 }
-.shopping-summary button{
+.shopping-summary button, .shopping-summary a{
 	margin-top:15px;
 	 float: right;
 }
@@ -2980,7 +2985,7 @@ body.home-2{
 	border-bottom: 1px solid #e1e1e1;
 }
 .subtotal-content h2{
-	font-family:roboto;
+	/*font-family:roboto;*/
 	font-size:16px;
 	font-weight:700;
 	margin:10px 0;
@@ -3018,7 +3023,7 @@ body.home-2{
 	top: -10px;
 	width: 15px;
 }
-.payment-method button{
+.payment-method button, .payment-method a{
 	background:#FFA726;
 	color:#fff;
 	padding:8px;
@@ -3031,7 +3036,7 @@ body.home-2{
 	border-radius:2px;
 	transition: all .4s;
 }
-.payment-method button:hover{
+.payment-method button:hover, .payment-method a:hover{
 	background:#2B82AD;
 	color:#fff;
 }
@@ -3299,4 +3304,55 @@ body.home-2{
 .shop-social-button a:hover{
 	background:#2B82AD;
 	color:#fff;
+}
+/* ----------------------------
+20. Order Received page
+------------------------------*/
+.order_details:after {
+	clear: both
+}
+.order_details {
+	margin: 0 0 1.5em;
+	list-style: none;
+	font-size: 20px;
+}
+.order_details:after, .order_details:before {
+	content: " ";
+	display: table
+}
+.order_details li {
+	float: left;
+	margin-right: 2em;
+	text-transform: uppercase;
+	font-size: .715em;
+	line-height: 1;
+	border-right: 1px dashed #d3ced2;
+	padding-right: 2em;
+	margin-left: 0;
+	padding-left: 0
+}
+.order_details li strong {
+	display: block;
+	font-size: 1.4em;
+	text-transform: none;
+	line-height: 1.5
+}
+.order_details li:last-of-type {
+	border: none
+}
+address {
+	border-left: 3px solid #f45245;
+	border-right: 3px solid #f45245;
+	padding-left: 15px;
+	font-size: 15px;
+}
+address {
+	margin: 0 0 1.5em;
+	font-style: italic;
+	font-family: Geogria, serif, "Times New Roman";
+	background: white;
+	border-radius: 4px;
+}
+.tableOrderReceived th{
+	width: 60%;
 }

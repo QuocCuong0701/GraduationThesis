@@ -11,168 +11,108 @@
     <div class="breadcurb-area">
         <div class="container">
             <ul class="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Pages</a></li>
-                <li>Cart</li>
+                <li><a href="<c:url value="/home"/>">Trang Chủ</a></li>
+                <li>Giỏ Hàng</li>
             </ul>
         </div>
     </div>
     <!-- Chart AREA -->
-    <div class="chart-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="chart-item table-responsive fix">
-                        <table class="col-md-12">
-                            <thead>
-                            <tr>
-                                <th class="th-product">Product</th>
-                                <th class="th-details">Details</th>
-                                <th class="th-edit">Edit</th>
-                                <th class="th-qty">Qty</th>
-                                <th class="th-price">Price</th>
-                                <th class="th-total">Sub Total</th>
-                                <th class="th-delate">Delete</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td class="th-product">
-                                    <a href="#"><img src="<c:url value="/template/web/img/cart/cart-1.jpg"/>" alt="cart"></a>
-                                </td>
-                                <td class="th-details">
-                                    <h2><a href="#">Baby New Style Jackets</a></h2>
-                                    <div class="best-product-rating">
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star-o"></i></a>
-                                        <a href="#"><i class="fa fa-star-o"></i></a>
-                                    </div>
-                                    <p>Product Color : Red</p>
-                                    <p>Product Code  : 2201 RS</p>
-                                </td>
-                                <td class="th-edit"><a href="#">Edit</a></td>
-                                <td class="th-qty">
-                                    <input type="number" min="1" placeholder="1">
-                                </td>
-                                <td class="th-price">$225.00</td>
-                                <td class="th-total">$450.00</td>
-                                <td class="th-delate"><a href="#"><i class="fa fa-trash"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td class="th-product">
-                                    <a href="#"><img src="<c:url value="/template/web/img/cart/cart-2.jpg"/>" alt="cart"></a>
-                                </td>
-                                <td class="th-details">
-                                    <h2><a href="#">Baby New Style Jackets</a></h2>
-                                    <div class="best-product-rating">
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star-o"></i></a>
-                                        <a href="#"><i class="fa fa-star-o"></i></a>
-                                    </div>
-                                    <p>Product Color : Red</p>
-                                    <p>Product Code  : 2201 RS</p>
-                                </td>
-                                <td class="th-edit"><a href="#">Edit</a></td>
-                                <td class="th-qty">
-                                    <input type="number" min="1" placeholder="1">
-                                </td>
-                                <td class="th-price">$225.00</td>
-                                <td class="th-total">$450.00</td>
-                                <td class="th-delate"><a href="#"><i class="fa fa-trash"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td class="th-product">
-                                    <a href="#"><img src="img/cart/cart-3.jpg" alt="cart"></a>
-                                </td>
-                                <td class="th-details">
-                                    <h2><a href="#">Baby New Style Jackets</a></h2>
-                                    <div class="best-product-rating">
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star"></i></a>
-                                        <a href="#"><i class="fa fa-star-o"></i></a>
-                                        <a href="#"><i class="fa fa-star-o"></i></a>
-                                    </div>
-                                    <p>Product Color : Red</p>
-                                    <p>Product Code  : 2201 RS</p>
-                                </td>
-                                <td class="th-edit"><a href="#">Edit</a></td>
-                                <td class="th-qty">
-                                    <input type="number" min="1" placeholder="1">
-                                </td>
-                                <td class="th-price">$225.00</td>
-                                <td class="th-total">$450.00</td>
-                                <td class="th-delate"><a href="#"><i class="fa fa-trash"></i></a></td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="cart-button">
-                        <button type="button" class="btn">Continue Shopping</button>
-                        <button type="button" class="btn floatright">Update Cart</button>
-                    </div>
+    <c:set var="cart" value="${sessionScope.model}"/>
+    <c:if test="${cart.size() > 0}">
+        <div class="chart-area">
+            <div class="container">
+                <div class="row">
+                    <form action="<c:url value="/cart?act=update"/>" method="post">
+                        <div class="col-md-12">
+                            <div class="chart-item table-responsive fix">
+                                <table class="col-md-12">
+                                    <thead>
+                                    <tr>
+                                        <th class="th-product">Hình Ảnh</th>
+                                        <th class="th-details">Sản Phẩm</th>
+                                        <th class="th-qty">Số Lượng</th>
+                                        <th class="th-price">Giá</th>
+                                        <th class="th-total">Tổng</th>
+                                        <th class="th-delate">Xóa</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <c:forEach var="rows" items="${cart}">
+                                        <input type="hidden" name="product_id" value="${rows.value.productModel.product_id}"/>
+                                        <tr>
+                                            <td class="th-product">
+                                                <a href="<c:url value="/product-detail?product_id=${rows.value.productModel.product_id}"/>">
+                                                    <img src="<c:url value="${rows.value.productModel.product_image}"/>" alt="cart">
+                                                </a>
+                                            </td>
+                                            <td class="th-details">
+                                                <h2><a href="<c:url value="/product-detail?product_id=${rows.value.productModel.product_id}"/>">
+                                                        ${rows.value.productModel.product_name}</a>
+                                                </h2>
+                                                <div class="best-product-rating">
+                                                    <a href="#"><i class="fa fa-star"></i></a>
+                                                    <a href="#"><i class="fa fa-star"></i></a>
+                                                    <a href="#"><i class="fa fa-star"></i></a>
+                                                    <a href="#"><i class="fa fa-star-o"></i></a>
+                                                    <a href="#"><i class="fa fa-star-o"></i></a>
+                                                </div>
+                                            </td>
+                                            <td class="th-qty">
+                                                <input type="number" name="quantity" min="1" value="${rows.value.quantity}" placeholder="1"/>
+                                            </td>
+                                            <td class="th-price"><fmt:formatNumber pattern="###,###" value="${rows.value.productModel.product_price}"/> đ</td>
+                                            <td class="th-total"><fmt:formatNumber pattern="###,###" value="${rows.value.productModel.product_price * rows.value.quantity}"/> đ</td>
+                                            <td class="th-delate"><a href="<c:url value="/cart?act=remove&product_id=${rows.value.productModel.product_id}"/>"><i class="fa fa-trash"></i></a></td>
+                                        </tr>
+                                    </c:forEach>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="cart-button">
+                                <a href="<c:url value="/product?page=1"/>" class="btn"><i class="fa fa-arrow-left"></i> Tiếp Tục Mua Sắm</a>
+                                <button type="submit" class="btn floatright"><i class="fa fa-refresh"></i> Cập Nhật Giỏ Hàng</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-            </div>
-            <div class="row">
-                <div class="cart-shopping-area fix">
-                    <div class="col-md-4 col-sm-4">
-                        <div class="calculate-shipping chart-all">
-                            <h2>CALCULATE SHIPPING</h2>
-                            <p>Enter your destination to get a shipping estimate.</p>
-                            <select>
-                                <option>Sellect Country</option>
-                                <option>America</option>
-                                <option>Afganisthan</option>
-                                <option>Bangladesh</option>
-                                <option>Chin</option>
-                                <option>Japna</option>
-                            </select>
-                            <select>
-                                <option>State/Provinence</option>
-                                <option>Dhaka</option>
-                                <option>Borishal</option>
-                                <option>Gajipur</option>
-                                <option>Kustiya</option>
-                                <option>Vola</option>
-                                <option>Gaibandha</option>
-                            </select>
-                            <input type="text" placeholder="Zip / Post Code">
-                            <button type="button" class="btn">Get A Quote</button>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-4">
-                        <div class="chart-all">
-                            <h2>PROMOTIONAL CODE</h2>
-                            <p>Enter your destination to get a shipping estimate.</p>
-                            <input type="text" placeholder="Zip / Post Code">
-                            <button type="button" class="btn">Get A Quote</button>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-4">
-                        <div class="shopping-summary chart-all">
-                            <div class="shopping-cost-area">
-                                <h2>SHOPPING BAG SUMMARY</h2>
-                                <div class="shopping-cost">
-                                    <div class="shopping-cost-left">
-                                        <p>Sub Total </p>
-                                        <p>GRAND TOTAL </p>
+                <div class="row">
+                    <div class="cart-shopping-area fix">
+                        <div class="col-md-4 col-sm-4 floatright">
+                            <div class="shopping-summary chart-all">
+                                <div class="shopping-cost-area">
+                                    <h2 style="width: 145px; float: right;">TỔNG GIỎ HÀNG</h2>
+                                    <div class="shopping-cost">
+                                        <div class="shopping-cost-left">
+                                            <p>Tạm Tính </p>
+                                            <p>Tổng </p>
+                                        </div>
+                                        <div class="shopping-cost-right">
+                                            <p><fmt:formatNumber pattern="###,###" value="${sessionScope.totalPrice}"/> đ</p>
+                                            <p><fmt:formatNumber pattern="###,###" value="${sessionScope.totalPrice}"/> đ</p>
+                                        </div>
                                     </div>
-                                    <div class="shopping-cost-right">
-                                        <p>$2.010.00</p>
-                                        <p>$2.010.00</p>
-                                    </div>
+                                    <a href="<c:url value="/checkout"/>" class="btn"><i class="fa fa-check"></i> Thanh Toán</a>
                                 </div>
-                                <button type="button" class="btn">Proceed to Checkout</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </c:if>
+    <c:if test="${cart.size() == 0 || cart == null}">
+    <div class="chart-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <i>Không có sản phẩm nào trong giỏ.</i>
+                    <div class="cart-button">
+                        <a href="<c:url value="/product?page=1"/>" class="btn"><i class="fa fa-arrow-left"></i> Tiếp Tục Mua Sắm</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+    </c:if>
 </body>
 </html>

@@ -1,9 +1,12 @@
 package com.lanhuongcosmetic.controller.web;
 
+import com.lanhuongcosmetic.model.BillDetailModel;
 import com.lanhuongcosmetic.model.BillModel;
 import com.lanhuongcosmetic.model.CategoryModel;
+import com.lanhuongcosmetic.service.IBillDetailService;
 import com.lanhuongcosmetic.service.IBillService;
 import com.lanhuongcosmetic.service.ICategoryService;
+import com.lanhuongcosmetic.service.IProductService;
 import com.lanhuongcosmetic.utils.FormUtil;
 
 import javax.inject.Inject;
@@ -22,37 +25,55 @@ import java.text.SimpleDateFormat;
 @WebServlet(urlPatterns = {"/checkout", "/checkout/order-received"})
 public class CheckoutController extends HttpServlet {
     @Inject
-    private ICategoryService iCategoryService;
+    private IProductService iProductService;
 
     @Inject
     private IBillService iBillService;
 
+    @Inject
+    private IBillDetailService iBillDetailService;
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession httpSession = req.getSession();
-        RequestDispatcher rd = null;
-        CategoryModel categoryModel = FormUtil.toModel(CategoryModel.class, req);
-        categoryModel.setListResult(iCategoryService.findAll());
-        req.setAttribute("categories", categoryModel);
+        String view = "";
+        BillModel billModel;
+
         if (req.getRequestURI().endsWith("checkout")) {
-            rd = req.getRequestDispatcher("/views/web/checkout/checkout.jsp");
+            view = "/views/web/checkout/checkout.jsp";
         } else if (req.getRequestURI().endsWith("order-received")) {
             String user_id = req.getParameter("user_id");
-            String date = req.getParameter("date");
+            String date = req.getParameter("created_date");
 
             long milisec = Long.parseLong(date);
             DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             Timestamp ts = new Timestamp(milisec);
 
-            BillModel billModel = iBillService.findOneByIdAndDate(Integer.parseInt(user_id), Timestamp.valueOf(df.format(ts)));
+            if (user_id != null) {
+                billModel = iBillService.findOneByIdAndDate(Integer.parseInt(user_id), Timestamp.valueOf(df.format(ts)));
+            } else {
+                billModel = iBillService.findOneByDate(Timestamp.valueOf(df.format(ts)));
+            }
             if (billModel == null) {
                 ts = new Timestamp(milisec + 1000);
-                billModel = iBillService.findOneByIdAndDate(Integer.parseInt(user_id), Timestamp.valueOf(df.format(ts)));
+                if (user_id != null) {
+                    billModel = iBillService.findOneByIdAndDate(Integer.parseInt(user_id), Timestamp.valueOf(df.format(ts)));
+                } else {
+                    billModel = iBillService.findOneByDate(Timestamp.valueOf(df.format(ts)));
+                }
             }
+            BillDetailModel billDetailModel = new BillDetailModel();
+            billDetailModel.setListResult(iBillDetailService.findBillDetailByBillId(billModel.getBill_id()));
+            for(BillDetailModel bdm : billDetailModel.getListResult()){
+                iProductService.updateBuy(iProductService.findOneByProductId(bdm.getProduct_id()));
+            }
+
             req.setAttribute("BillModel", billModel);
-            rd = req.getRequestDispatcher("/views/web/checkout/orderReceived.jsp");
+            view = "/views/web/checkout/orderReceived.jsp";
             //httpSession.invalidate();
         }
+
+        RequestDispatcher rd = req.getRequestDispatcher(view);
         rd.forward(req, resp);
     }
 

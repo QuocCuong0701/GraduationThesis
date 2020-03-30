@@ -90,6 +90,7 @@
                 $.each(formData, function (i, v) {
                     data["" + v.name + ""] = v.value;
                 });
+                data['created_date'] = Date.parse((new Date()).toISOString());
                 addAccount(data);
             }
         })

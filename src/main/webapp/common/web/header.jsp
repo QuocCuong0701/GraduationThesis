@@ -34,12 +34,13 @@
                         </c:if>
                     </div>
                 </div>
-                <div class="col-md-8 col-sm-8 col-xs-12">
+                    <div class="col-md-8 col-sm-8 col-xs-12">
                     <div class="header-top-right">
                         <ul class="list-inline">
-                            <li><a href="#"><i class="fa fa-user"></i>My Account</a></li>
-                            <li><a href="#"><i class="fa fa-heart"></i>Wishlist</a></li>
-                            <li><a href="<c:url value="/checkout"/>"><i class="fa fa-check-square-o"></i>Checkout</a></li>
+                            <c:if test="${not empty USERMODEL}">
+                                <li><a href="#"><i class="fa fa-user"></i>Tài Khoản</a></li>
+                            </c:if>
+                            <li><a href="<c:url value="/checkout"/>"><i class="fa fa-check-square-o"></i>Thanh Toán</a></li>
                             <c:if test="${empty USERMODEL}">
                                 <li><a href="<c:url value="/login?action=login"/>"><i class="fa fa-lock"></i>Đăng Nhập</a></li>
                             </c:if>
@@ -68,58 +69,81 @@
                                 <li><i class="fa fa-search"></i></li>
                                 <li>
                                     <select>
-                                        <option value="All Categories">All Categories</option>
+                                        <option value="All Categories">Thể Loại</option>
                                         <option value="Categorie One">Categorie One</option>
                                         <option value="Categorie Two">Categorie Two</option>
                                         <option value="Categorie Three">Categorie Three</option>
-                                        <option value="Categorie Four">Categorie Four</option>
-                                        <option value="Categorie Five">Categorie Five</option>
                                     </select>
                                 </li>
                             </ul>
                         </div>
                         <div class="header-search">
                             <form action="#">
-                                <input type="text" placeholder="My Search"/>
+                                <input type="text" placeholder="Tìm Kiếm"/>
                                 <button type="button"><i class="fa fa-search"></i></button>
                             </form>
                         </div>
                         <div class="header-chart">
+                            <c:set var="cart" value="${sessionScope.model}"/>
                             <ul class="list-inline">
-                                <li><a href="#"><i class="fa fa-cart-arrow-down"></i></a></li>
-                                <li class="chart-li"><a href="#">My cart</a>
+                                <li><a href="<c:url value="/cart"/>"><i class="fa fa-cart-arrow-down"></i></a></li>
+                                <li class="chart-li"><a href="<c:url value="/cart"/>">Giỏ Hàng</a>
                                     <ul>
                                         <li>
                                             <div class="header-chart-dropdown">
-                                                <div class="header-chart-dropdown-list">
-                                                    <div class="dropdown-chart-left floatleft">
-                                                        <a href="#"><img src="<c:url value="/template/web/img/product/best-product-1.png"/>" alt="list"></a>
+                                                <c:if test="${cart.size() == 0 || cart == null}">
+                                                    <div class="header-chart-dropdown-list">
+                                                        <i>Không có sản phẩm nào trong giỏ.</i>
                                                     </div>
-                                                    <div class="dropdown-chart-right">
-                                                        <h2><a href="#">Feugiat justo lacinia</a></h2>
-                                                        <h3>Qty: 1</h3>
-                                                        <h4>£80.00</h4>
-                                                    </div>
-                                                </div>
-                                                <div class="header-chart-dropdown-list">
-                                                    <div class="dropdown-chart-left floatleft">
-                                                        <a href="#"><img src="<c:url value="/template/web/img/product/best-product-2.png"/>" alt="list"></a>
-                                                    </div>
-                                                    <div class="dropdown-chart-right">
-                                                        <h2><a href="#">Aenean eu tristique</a></h2>
-                                                        <h3>Qty: 1</h3>
-                                                        <h4>£70.00</h4>
-                                                    </div>
-                                                </div>
+                                                </c:if>
+                                                <c:if test="${cart.size() > 0}">
+                                                    <c:forEach var="rows" items="${cart}">
+                                                        <div class="header-chart-dropdown-list">
+                                                            <div class="dropdown-chart-left floatleft">
+                                                                <a href="<c:url value="/product-detail?product_id=${rows.value.productModel.product_id}"/>">
+                                                                    <img style="width: 70px; height: 83px;" src="<c:url value="${rows.value.productModel.product_image}"/>" alt="list">
+                                                                </a>
+                                                            </div>
+                                                            <div class="dropdown-chart-right">
+                                                                <h2><a href="<c:url value="/product-detail?product_id=${rows.value.productModel.product_id}"/>">${rows.value.productModel.product_name}</a></h2>
+                                                                <h3>Số lượng: ${rows.value.quantity}</h3>
+                                                                <h4><fmt:formatNumber pattern="###,###" value="${rows.value.quantity * rows.value.productModel.product_price}"/> đ</h4>
+                                                            </div>
+                                                        </div>
+                                                    </c:forEach>
+                                                </c:if>
                                                 <div class="chart-checkout">
-                                                    <p>subtotal<span>£150.00</span></p>
-                                                    <button type="button" class="btn btn-default">Chckout</button>
+                                                    <c:set var="totalPrice" value="${sessionScope.totalPrice}"/>
+                                                    <p>Tổng
+                                                        <span>
+                                                            <c:if test="${totalPrice !=0 }">
+                                                                <fmt:formatNumber pattern="###,###" value="${totalPrice}"/>
+                                                            </c:if>
+                                                             <c:if test="${totalPrice == 0 || totalPrice == null}">
+                                                                 0
+                                                             </c:if>
+                                                            đ</span>
+                                                    </p>
+                                                    <c:if test="${cart.size() == 0 || cart == null}">
+                                                        <a href="<c:url value="/cart"/>" class="btn btn-default">Thanh Toán</a>
+                                                    </c:if>
+                                                    <c:if test="${cart.size()> 0}">
+                                                        <a href="<c:url value="/checkout"/>" class="btn btn-default">Thanh Toán</a>
+                                                    </c:if>
                                                 </div>
                                             </div>
                                         </li>
                                     </ul>
                                 </li>
-                                <li><a href="#">2 items</a></li>
+                                <li><a href="#">
+                                    <c:if test="${totalQuantity == 0 || totalQuantity == null}">
+                                        0
+                                    </c:if>
+                                    <c:if test="${totalQuantity > 0}">
+                                        ${totalQuantity}
+                                    </c:if>
+                                      sản phẩm</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -136,34 +160,20 @@
                 <div class="main-menu hidden-xs">
                     <nav>
                         <ul>
-                            <li><a href="<c:url value="/home"/>">Home</a></li>
-                            <li><a href="<c:url value="/product"/>">Shop</a></li>
-                            <li><a href="shop.html">Men</a></li>
-                            <li><a href="shop.html">Women</a></li>
-                            <li><a href="shop.html">Kids</a></li>
-                            <li><a href="shop.html">gift</a></li>
-                            <li><a href="blog-left-sidebar.html">Blog</a>
+                            <li><a href="<c:url value="/home"/>">Trang Chủ</a></li>
+                            <li><a href="<c:url value="/product?page=1"/>">Sản Phẩm</a></li>
+                            <li><a href="shop.html">Thể Loại 1</a></li>
+                            <li><a href="shop.html">Thể Loại 2</a></li>
+                            <li><a href="shop.html">Thể Loại 3</a></li>
+                            <li><a href="#">Trang</a>
                                 <ul class="sub-menu">
-                                    <li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
-                                    <li><a href="blog-single.html">Blog Details</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Pages</a>
-                                <ul class="sub-menu">
-                                    <li><a href="shop.html">Shop</a></li>
-                                    <li><a href="shop.html">Men</a></li>
-                                    <li><a href="shop.html">Women</a></li>
-                                    <li><a href="shop.html">Kids</a></li>
-                                    <li><a href="shop.html">Gift</a></li>
-                                    <li><a href="about-us.html">About Us</a></li>
+                                    <li><a href="about-us.html">Giới Thiệu</a></li>
                                     <li><a href="single-product.html">Single Product</a></li>
-                                    <li><a href="cart.html">Cart</a></li>
-                                    <li><a href="checkout.html">Checkout</a></li>
-                                    <li><a href="look-book.html">Look Book</a></li>
-                                    <li><a href="404.html">Error 404</a></li>
+                                    <li><a href="cart.html">Giỏ Hàng</a></li>
+                                    <li><a href="checkout.html">Thanh Toán</a></li>
                                 </ul>
                             </li>
-                            <li><a href="contact.html">contact</a></li>
+                            <li><a href="contact.html">Liên Hệ</a></li>
                         </ul>
                     </nav>
                 </div>

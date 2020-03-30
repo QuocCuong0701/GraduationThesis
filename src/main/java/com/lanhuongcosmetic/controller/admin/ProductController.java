@@ -29,25 +29,21 @@ public class ProductController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        /*ProductModel productModel = FormUtil.toModel(ProductModel.class, req);
+        ProductModel productModel = FormUtil.toModel(ProductModel.class, req);
         String view = "";
         if (productModel.getType().equals(SystemConstant.LIST)) {
-            Pageble pageble = new PageRequest(productModel.getPage(), productModel.getMaxPageItem(),
-                    new Sorter(productModel.getSortName(), productModel.getSortBy()));
-            productModel.setListResult(iProductService.findAll(pageble));
-            productModel.setTotalItem(iProductService.getTotalItem());
-            productModel.setTotalPage((int) Math.ceil((double) productModel.getTotalItem() / productModel.getMaxPageItem()));
+            productModel.setListResult(iProductService.findAll());
             view = "/views/admin/product/list.jsp";
         } else if (productModel.getType().equals(SystemConstant.EDIT)) {
             if (productModel.getProduct_id() != 0) {
                 productModel = iProductService.findOne(productModel.getProduct_id());
             }
-            req.setAttribute("categories", iCategoryService.findAll());
             view = "/views/admin/product/edit.jsp";
         }
         MessageUtil.showMessage(req);
-        req.setAttribute(SystemConstant.MODEL, productModel);*/
-        RequestDispatcher rd = req.getRequestDispatcher("/views/admin/product/list.jsp");
+        req.setAttribute("categories", iCategoryService.findAll());
+        req.setAttribute(SystemConstant.MODEL, productModel);
+        RequestDispatcher rd = req.getRequestDispatcher(view);
         rd.forward(req, resp);
     }
 

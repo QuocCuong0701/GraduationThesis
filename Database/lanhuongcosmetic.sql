@@ -43,9 +43,10 @@ alter table product add constraint fk_category_id foreign key (category_id) refe
 drop table if exists bill;
 create table bill(
 	bill_id int primary key auto_increment not null,
-    user_id int not null,
+    user_id int,
     full_name varchar(30) not null,
     address varchar(100) not null,
+    email varchar(100) not null ,
     phone varchar(11) not null,
     note text,
     confirmed bit not null,
@@ -60,9 +61,7 @@ create table bill_detail(
 	bill_detail_id int primary key auto_increment not null,
     bill_id int not null,
     product_id int not null,
-    quantity int not null,
-    created_date timestamp not null,
-    updated_date timestamp
+    quantity int not null
 );
 alter table bill_detail add constraint fk_bill_id foreign key (bill_id) references bill(bill_id);
 alter table bill_detail add constraint fk_product_id foreign key (product_id) references product(product_id);

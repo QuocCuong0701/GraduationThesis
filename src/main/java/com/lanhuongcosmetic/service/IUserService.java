@@ -11,6 +11,7 @@ public interface IUserService {
     UserModel update(UserModel userModel);
     void delete(int[] ids);
     List<UserModel> findAll(Pageble pageble);
+    List<UserModel> findAll();
     List<UserModel> findAllUserName();
     int getTotalItem();
 }

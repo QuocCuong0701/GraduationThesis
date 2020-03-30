@@ -3,130 +3,116 @@
 <c:url var="UserURL" value="/admin-user"/>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Danh sách sản phẩm</title>
+    <title>Danh sách tài khoản</title>
 </head>
 
 <body>
-<div class="main-content">
-    <form action="<c:url value='/admin-user'/>" id="formSubmit" method="get">
-        <div class="main-content-inner">
-            <div class="breadcrumbs ace-save-state" id="breadcrumbs">
-                <ul class="breadcrumb">
-                    <li>
-                        <i class="ace-icon fa fa-home home-icon"></i>
-                        <a href="<c:url value="/admin-home"></c:url>">Trang chủ</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="page-content">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <c:if test="${not empty messageResponse}">
-                            <div class="alert alert-${alert}">
-                                    ${messageResponse}
-                            </div>
-                        </c:if>
-                        <div class="widget-box table-filter">
-                            <div class="table-btn-controls">
-                                <div class="pull-right tableTools-container">
-                                    <div class="dt-buttons btn-overlap btn-group">
-                                        <button id="btnDelete" type="button" class="dt-button buttons-html5 btn btn-white btn-primary btn-bold"
-                                                data-toggle="tooltip" title='Xóa người dùng'>
-											<span>
-												<i class="fa fa-trash-o bigger-110 pink"></i>
-											</span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
+<div class="content">
+    <div class="page-inner">
+        <div class="page-header">
+            <ul class="breadcrumbs" style="margin-left: 0;">
+                <li class="nav-home">
+                    <a href="<c:url value="/admin-home"/> ">
+                        <i class="flaticon-home"></i>
+                    </a>
+                </li>
+                <li class="separator">
+                    <i class="flaticon-right-arrow"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="<c:url value="/admin-user?type=list"/>">Quản Lý Tài Khoản</a>
+                </li>
+                <li class="separator">
+                    <i class="flaticon-right-arrow"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="#">Danh Sách Người Dùng</a>
+                </li>
+            </ul>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-flex align-items-center">
+                            <h4 class="card-title">Danh Sách Tài Khoản</h4>
+                            <button id="btnDelete" class="btn btn-primary btn-round ml-auto btn-danger">
+                                <i class="fa fa-trash-alt"></i> Xóa Tài Khoản
+                            </button>
                         </div>
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered">
-                                        <thead>
-                                        <tr>
-                                            <th><input type="checkbox" id="checkAll"></th>
-                                            <th>Tên tài khoản</th>
-                                            <th>Email</th>
-                                            <th>Mật khẩu</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <c:forEach var="item" items="${model.listResult}">
-                                            <tr>
-                                                <td><input type="checkbox" id="checkbox_${item.user_id}"
-                                                           value="${item.user_id}"></td>
-                                                <td>${item.user_name}</td>
-                                                <td>${item.user_email}</td>
-                                                <td>${item.user_pass}</td>
-                                            </tr>
-                                        </c:forEach>
-                                        </tbody>
-                                    </table>
-                                    <ul class="pagination" id="pagination"></ul>
-                                    <input type="hidden" value="" id="page" name="page"/>
-                                    <input type="hidden" value="" id="maxPageItem" name="maxPageItem"/>
-                                    <input type="hidden" value="" id="sortName" name="sortName"/>
-                                    <input type="hidden" value="" id="sortBy" name="sortBy"/>
-                                    <input type="hidden" value="" id="type" name="type"/>
-                                </div>
-                            </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="usersTable" class="display table table-striped table-hover" >
+                                <thead>
+                                <tr>
+                                    <th><input type="checkbox" class="checkAll" id="checkAll"></th>
+                                    <th>Tên Đăng Nhập</th>
+                                    <th>Email</th>
+                                    <th>Mật Khẩu</th>
+                                    <th>Ngày Đăng Ký</th>
+                                    <th>Ngày Cập Nhật</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <c:forEach var="listProducts" items="${model.listResult}">
+                                    <tr>
+                                        <td><input type="checkbox" id="checkbox_${listProducts.user_id}" value="${listProducts.user_id}"></td>
+                                        <td>${listProducts.user_name}</td>
+                                        <td>${listProducts.user_email}</td>
+                                        <td>${listProducts.user_pass}</td>
+                                        <td>${listProducts.created_date}</td>
+                                        <td>${listProducts.updated_date}</td>
+                                    </tr>
+                                </c:forEach>
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <th></th>
+                                    <th>Tên Đăng Nhập</th>
+                                    <th>Email</th>
+                                    <th>Mật Khẩu</th>
+                                    <th>Ngày Đăng Ký</th>
+                                    <th>Ngày Cập Nhật</th>
+                                </tr>
+                                </tfoot>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </form>
+    </div>
 </div>
-<!-- /.main-content -->
-<script>
-    var totalPages = ${model.totalPage};
-    var currentPage = ${model.page};
-    var limit = 2;
-    $(function () {
-        window.pagObj = $('#pagination').twbsPagination({
-            totalPages: totalPages,
-            visiblePages: 10,
-            startPage: currentPage,
-            onPageClick: function (event, page) {
-                if (currentPage != page) {
-                    $('#maxPageItem').val(limit);
-                    $('#page').val(page);
-                    $('#sortName').val('user_name');
-                    $('#sortBy').val('asc');
-                    $('#type').val('list');
-                    $('#formSubmit').submit();
-                }
-            }
-        });
-    });
 
+<script>
+    $(document).ready(function () {
+       $('#usersTable').dataTable();
+    });
     $("#btnDelete").click(function () {
         var data = {};
         var ids = $('tbody input[type=checkbox]:checked').map(function () {
             return $(this).val();
         }).get();
         data['ids'] = ids;
-        deleteNew(data);
+        deleteUser(data);
     });
 
-    function deleteNew(data) {
+    function deleteUser(data) {
         $.ajax({
             url: '${APIurl}',
             type: 'DELETE',
             contentType: 'application/json',
             data: JSON.stringify(data),
             success: function (result) {
-                window.location.href = "${UserURL}?type=list&maxPageItem=10&page=1&message=delete_success";
+                window.location.href = "${UserURL}?type=list&message=delete_success";
             },
             error: function (error) {
-                window.location.href = "${UserURL}?type=list&maxPageItem=10&page=1&message=error_system";
+                window.location.href = "${UserURL}?type=list&message=error_system";
             }
         });
     }

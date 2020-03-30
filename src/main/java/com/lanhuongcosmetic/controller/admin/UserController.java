@@ -28,11 +28,7 @@ public class UserController extends HttpServlet {
         UserModel userModel = FormUtil.toModel(UserModel.class, req);
         String view = "";
         if (userModel.getType().equals(SystemConstant.LIST)) {
-            Pageble pageble = new PageRequest(userModel.getPage(), userModel.getMaxPageItem(),
-                    new Sorter(userModel.getSortName(), userModel.getSortBy()));
-            userModel.setListResult(iUserService.findAll(pageble));
-            userModel.setTotalItem(iUserService.getTotalItem());
-            userModel.setTotalPage((int) Math.ceil((double) userModel.getTotalItem() / userModel.getMaxPageItem()));
+            userModel.setListResult(iUserService.findAll());
             view = "/views/admin/user/list.jsp";
         }
         MessageUtil.showMessage(req);

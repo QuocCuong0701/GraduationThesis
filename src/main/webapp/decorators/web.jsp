@@ -13,9 +13,10 @@
     <link rel="shortcut icon" type="image/x-icon" href="<c:url value="/template/web/img/favicon.jpg"/>">
 
     <!-- Fonts
-    ============================================ -->
+    ============================================
     <link href='https://fonts.googleapis.com/css?family=Raleway:400,700,600,500,300,800,900' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,500,300,300italic,500italic,700' rel='stylesheet' type='text/css'>
+    -->
 
     <!-- CSS  -->
 
@@ -75,7 +76,16 @@
     ============================================ -->
     <link rel="stylesheet" href="<c:url value="/template/web/css/responsive.css"/>">
 
+    <!-- jquery
+   ============================================ -->
+    <script src="<c:url value="/template/web/js/vendor/jquery.3.2.1.min.js"/>"></script>
+
+    <!-- bootstrap js
+   ============================================ -->
+    <script src="<c:url value="/template/web/js/bootstrap.min.js"/>"></script>
+
     <script src="<c:url value="/template/web/js/vendor/modernizr-2.8.3.min.js"/>"></script>
+    <script src="<c:url value="/template/paging/jquery.twbsPagination.js"/>"></script>
 </head>
 <body class="home-one">
     <!-- header -->
@@ -95,13 +105,6 @@
 
 <!-- Placed at the end of the document so the pages load faster -->
     <!-- JS -->
-    <!-- jquery
-   ============================================ -->
-    <script src="<c:url value="/template/web/js/vendor/jquery.3.2.1.min.js"/>"></script>
-
-    <!-- bootstrap js
-   ============================================ -->
-    <script src="<c:url value="/template/web/js/bootstrap.min.js"/>"></script>
 
     <!-- nivo slider js
     ============================================ -->

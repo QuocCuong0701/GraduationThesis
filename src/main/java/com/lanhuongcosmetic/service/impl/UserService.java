@@ -42,6 +42,11 @@ public class UserService implements IUserService {
     }
 
     @Override
+    public List<UserModel> findAll() {
+        return iUserDAO.findAll();
+    }
+
+    @Override
     public List<UserModel> findAllUserName() {
         return iUserDAO.findAllUserName();
     }

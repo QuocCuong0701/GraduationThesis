@@ -1,13 +1,11 @@
 package com.lanhuongcosmetic.model;
 
-import java.sql.Timestamp;
-
 public class BillModel extends AbstractModel<BillModel> {
     private int bill_id;
     private int user_id;
     private String full_name;
-    private double total;
     private String address;
+    private String email;
     private String phone;
     private String note;
     private boolean confirmed;
@@ -52,20 +50,20 @@ public class BillModel extends AbstractModel<BillModel> {
         this.user_id = user_id;
     }
 
-    public double getTotal() {
-        return total;
-    }
-
-    public void setTotal(double total) {
-        this.total = total;
-    }
-
     public String getAddress() {
         return address;
     }
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPhone() {

@@ -31,6 +31,7 @@ public class CartController extends HttpServlet {
         HttpSession httpSession = req.getSession();
         String action = req.getParameter("act");
         HashMap<Integer, CartModel> cartModels = (HashMap<Integer, CartModel>) httpSession.getAttribute(SystemConstant.MODEL);
+        RequestDispatcher rd = req.getRequestDispatcher("/views/web/cart/cart.jsp");
 
         if (action != null && action.equals("add")) {
             int product_id = 0;
@@ -66,12 +67,13 @@ public class CartController extends HttpServlet {
             }
             cartModels.remove(product_id);
         }
+
         httpSession.setAttribute(SystemConstant.MODEL, cartModels);
         if (cartModels != null) {
             httpSession.setAttribute("totalPrice", totalPrice(cartModels));
+            httpSession.setAttribute("totalQuantity", totalQuantity(cartModels));
         }
 
-        RequestDispatcher rd = req.getRequestDispatcher("/views/web/cart/cart.jsp");
         rd.forward(req, resp);
     }
 
@@ -87,6 +89,7 @@ public class CartController extends HttpServlet {
         if (cartModels == null) {
             cartModels = new HashMap<>();
         }
+
         if (action.equalsIgnoreCase("update")) {
             String[] product_id = req.getParameterValues("product_id");
             String[] quantity = req.getParameterValues("quantity");
@@ -96,18 +99,29 @@ public class CartController extends HttpServlet {
                 CartModel cartItem = cartModels.get(pr_id);
                 cartItem.setQuantity(qty);
             }
-            httpSession.setAttribute(SystemConstant.MODEL, cartModels);
+
         }
+
+        httpSession.setAttribute(SystemConstant.MODEL, cartModels);
         httpSession.setAttribute("totalPrice", totalPrice(cartModels));
+        httpSession.setAttribute("totalQuantity", totalQuantity(cartModels));
         RequestDispatcher rd = req.getRequestDispatcher("/views/web/cart/cart.jsp");
         rd.forward(req, resp);
     }
 
-    public double totalPrice(HashMap<Integer, CartModel> cartModels) {
+    private double totalPrice(HashMap<Integer, CartModel> cartModels) {
         double count = 0;
         for (Map.Entry<Integer, CartModel> list : cartModels.entrySet()) {
             count += list.getValue().getProductModel().getProduct_price() * list.getValue().getQuantity();
         }
         return count;
+    }
+
+    private int totalQuantity(HashMap<Integer, CartModel> cartModels) {
+        int totalQuantity = 0;
+        for (Map.Entry<Integer, CartModel> list : cartModels.entrySet()) {
+            totalQuantity += list.getValue().getQuantity();
+        }
+        return totalQuantity;
     }
 }
