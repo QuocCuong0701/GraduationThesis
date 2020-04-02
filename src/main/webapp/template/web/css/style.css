@@ -168,12 +168,15 @@ body{
 	-webkit-appearance: none;
 	-ms-appearance: none;
 	appearance: none;
-	appearance: none;
+	text-transform: capitalize;
 	background: #f1f1f1 url("../img/c-arow.png") no-repeat scroll 125px center;
 	border: medium none;
 	cursor: pointer;
 	padding: 8px 30px 8px 10px;
 	height:35px;
+}
+.catagori-menu select option{
+	text-transform: capitalize;
 }
 .catagori-menu .fa-search{
 	background: #fff none repeat scroll 0 0;
@@ -212,7 +215,7 @@ body{
 	width: 89%;
 	height:35px;
 }
-.header-search button{
+.header-search button, .header-search a{
 	background: #ffa726 none repeat scroll 0 0;
 	border: medium none;
 	border-radius: 0 2px 2px 0;
@@ -220,8 +223,9 @@ body{
 	font-size: 18px;
 	padding: 7px 15px 8px;
 	transition: all 0.5s ease 0s;
+	position: absolute;
 }
-.header-search button:hover{
+.header-search button:hover, .header-search a:hover{
 	background: #062F3C none repeat scroll 0 0;
 }
 .header-chart{
@@ -843,10 +847,12 @@ i.nivo-next-icon{}
 }
 .product-content-left p{
 	margin-bottom: 0;
+	height: 40px;
 }
 .product-content-right h3{
 	font-size:14px;
 	float:right;
+	margin-top: 10px;
 }
 .single-product-action{
 	margin-top: -19px;
@@ -3280,7 +3286,7 @@ body.home-2{
 	font-family:roboto;
 	text-align:justify;
 }
-.shop-button button{
+.shop-button button, .shop-button a{
 	background:#FFA726;
 	color:#fff;
 	text-transform:uppercase;
@@ -3289,7 +3295,7 @@ body.home-2{
 	transition: all .4s;
 	margin-right:10px;
 }
-.shop-button button:hover{
+.shop-button button:hover, .shop-button a:hover{
 	background:#2B82AD;
 	color:#fff;
 }
@@ -3355,4 +3361,17 @@ address {
 }
 .tableOrderReceived th{
 	width: 60%;
+}
+.product-details a{
+	background: #FFA726;
+	color: #fff;
+	text-transform: uppercase;
+	border-radius: 2px;
+	float: left;
+	padding: 10px;
+	margin-left: -15px;
+}
+.product-details a:hover {
+	background: #2B82AD;
+	color: #fff;
 }

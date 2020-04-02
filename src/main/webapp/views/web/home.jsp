@@ -87,8 +87,8 @@
                 <div class="main-slider">
                     <div class="slider">
                         <div id="mainSlider" class="nivoSlider slider-image">
-                            <img src="<c:url value="/template/web/img/slider/s1.jpg"/>" alt="main slider" title="#htmlcaption1"/>
-                            <img src="<c:url value="/template/web/img/slider/s5.jpg"/>" alt="main slider" title="#htmlcaption2"/>
+                            <img src="<c:url value="/template/web/img/slider/slider-image-3.jpg"/>" alt="main slider" title="#htmlcaption1"/>
+                            <img src="<c:url value="/template/web/img/slider/sliser-image-2.jpg"/>" alt="main slider" title="#htmlcaption2"/>
                         </div>
                         <div id="htmlcaption1" class="nivo-html-caption slider-caption-1">
                             <div class="slider-progress"></div>
@@ -107,7 +107,7 @@
                                 </div>
                             </div>
                             <div class="slide-image">
-                                <img class="wow slideInUp"  data-wow-duration="1.5s" data-wow-delay="0s" src="<c:url value="/template/web/img/slider/si2.png"/>" alt="slider caption" />
+                                <img class="wow slideInUp"  data-wow-duration="1.5s" data-wow-delay="0s" src="<c:url value="/template/web/img/slider/hiclipart.png"/>" alt="slider caption" />
                             </div>
                         </div>
                         <div id="htmlcaption2" class="nivo-html-caption slider-caption-2">
@@ -127,7 +127,7 @@
                                 </div>
                             </div>
                             <div class="slide-image slide2-image">
-                                <img class="wow slideInUp"  data-wow-duration="1.5s" data-wow-delay="0s" src="<c:url value="/template/web/img/slider/si3.png"/>" alt="slider caption" />
+                                <img class="wow slideInUp"  data-wow-duration="1.5s" data-wow-delay="0s" src="<c:url value="/template/web/img/slider/hiclipart1.png"/>" alt="slider caption" />
                             </div>
                         </div>
                     </div>
@@ -147,7 +147,7 @@
                         <div class="panel-group" id="accrodian">
                             <c:forEach var="categories" items="${categories.listResult}">
                                 <div class="panel panel-default">
-                                    <a href="#" class="panel-heading">
+                                    <a href="<c:url value="/product?page=1&category_id=${categories.category_id}"/>" class="panel-heading">
                                         <h4 class="panel-title" style="text-transform: capitalize;">
                                             <i class="fa fa-heart"></i> ${categories.category_name}
                                         </h4>

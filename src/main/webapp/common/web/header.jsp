@@ -68,20 +68,20 @@
                             <ul class="list-inline">
                                 <li><i class="fa fa-search"></i></li>
                                 <li>
-                                    <select>
-                                        <option value="All Categories">Thể Loại</option>
-                                        <option value="Categorie One">Categorie One</option>
-                                        <option value="Categorie Two">Categorie Two</option>
-                                        <option value="Categorie Three">Categorie Three</option>
+                                    <select name="category_id" id="category-selection">
+                                        <option value="">Thể Loại</option>
+                                        <c:forEach var="categories" items="${categories.listResult}">
+                                            <option value="${categories.category_id}">${categories.category_name}</option>
+                                        </c:forEach>
                                     </select>
                                 </li>
                             </ul>
                         </div>
                         <div class="header-search">
-                            <form action="#">
-                                <input type="text" placeholder="Tìm Kiếm"/>
-                                <button type="button"><i class="fa fa-search"></i></button>
-                            </form>
+                            <form id="formSearch" action="<c:url value="/product?act=search"/>" method="post"></form>
+                                <input id="searchProduct" name="product_name" type="text" placeholder="Tìm Kiếm Sản Phẩm"/>
+                                <a href="" id="search"><i class="fa fa-search"></i></a>
+                                <%--<button type="button"><i class="fa fa-search"></i></button>--%>
                         </div>
                         <div class="header-chart">
                             <c:set var="cart" value="${sessionScope.model}"/>
@@ -167,13 +167,12 @@
                             <li><a href="shop.html">Thể Loại 3</a></li>
                             <li><a href="#">Trang</a>
                                 <ul class="sub-menu">
-                                    <li><a href="about-us.html">Giới Thiệu</a></li>
-                                    <li><a href="single-product.html">Single Product</a></li>
-                                    <li><a href="cart.html">Giỏ Hàng</a></li>
-                                    <li><a href="checkout.html">Thanh Toán</a></li>
+                                    <li><a href="<c:url value="/about-us"/>">Giới Thiệu</a></li>
+                                    <li><a href="<c:url value="/cart"/>">Giỏ Hàng</a></li>
+                                    <li><a href="<c:url value="/checkout"/>">Thanh Toán</a></li>
                                 </ul>
                             </li>
-                            <li><a href="contact.html">Liên Hệ</a></li>
+                            <li><a href="<c:url value="/contact"/>">Liên Hệ</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -181,8 +180,8 @@
                 <div class="mobile-menu hidden-sm hidden-md hidden-lg">
                     <nav>
                         <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="shop.html">Shop</a>
+                            <li><a href="<c:url value="/home"/>">Trang Chủ</a></li>
+                            <li><a href="<c:url value="/product?page=1"/>">Sản Phẩm</a>
                                 <ul>
                                     <li><a href="#">Shop Layouts</a>
                                         <ul>
@@ -243,3 +242,27 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function () {
+        $('#search').attr('href', "/product?page=1");
+    });
+
+    let link;
+    let category_id = '';
+    let product_name = '';
+
+    $('#category-selection').change(function (e) {
+        e.preventDefault();
+        category_id = $('#category-selection').val();
+    });
+    $('#searchProduct').change(function (e) {
+        e.preventDefault();
+        product_name = $('#searchProduct').val();
+    });
+    $(document).change(function (e) {
+        e.preventDefault();
+        link = "/product?act=search&product_name=" + product_name + "&category_id=" + category_id;
+        $('#search').attr('href', link);
+    });
+</script>

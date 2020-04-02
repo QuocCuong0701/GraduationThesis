@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = {"/product"})
+@WebServlet(urlPatterns = {"/product", "/single-shop"})
 public class ProductController extends HttpServlet {
     @Inject
     private IProductService iProductService;
@@ -31,22 +31,39 @@ public class ProductController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ProductModel productModel = FormUtil.toModel(ProductModel.class, req);
         String category_id = req.getParameter("category_id");
+        String product_name = req.getParameter("product_name");
+        Pageble pageble = null;
         String view = "";
-        Pageble pageble = new PageRequest(productModel.getPage(), 9, new Sorter("product_name", "asc"));
-        if (category_id == null) {
-            productModel.setListResult(iProductService.findAll(pageble));
+        String act = req.getParameter("act");
+
+        if (req.getRequestURI().endsWith("product")) {
+            pageble = new PageRequest(productModel.getPage(), 9, new Sorter("product_name", "asc"));
+            view = "/views/web/product/product.jsp";
+        }
+        if (req.getRequestURI().endsWith("single-shop")) {
+            pageble = new PageRequest(productModel.getPage(), 6, new Sorter("product_name", "asc"));
+            view = "/views/web/product/single-shop.jsp";
+        }
+
+        if (category_id == null || category_id.equalsIgnoreCase("")) {
+            if (product_name == null) {
+                productModel.setListResult(iProductService.findAll(pageble));
+            } else {
+                productModel.setListResult(iProductService.findByCategoryAndName(pageble, "", product_name));
+            }
         } else {
-            productModel.setListResult(null);
-            productModel.setListResult(iProductService.findByCategory(pageble, Integer.parseInt(category_id)));
+            if (product_name == null) {
+                productModel.setListResult(iProductService.findByCategory(pageble, Integer.parseInt(category_id)));
+            } else {
+                productModel.setListResult(iProductService.findByCategoryAndName(pageble, iCategoryService.findOne(Integer.parseInt(category_id)).getCategory_name(), product_name.trim()));
+            }
         }
         productModel.setTotalItem(iProductService.getTotalItem());
-        productModel.setTotalPage((int) Math.ceil((double) productModel.getTotalItem() / 9));
+        productModel.setTotalPage((int) Math.ceil((double) productModel.getTotalItem() / pageble.getLimit()));
 
         CategoryModel categoryModel = FormUtil.toModel(CategoryModel.class, req);
         categoryModel.setListResult(iCategoryService.findAll());
         req.setAttribute("categories", categoryModel);
-
-        view = "/views/web/product/product.jsp";
 
         req.setAttribute(SystemConstant.MODEL, productModel);
         RequestDispatcher rd = req.getRequestDispatcher(view);

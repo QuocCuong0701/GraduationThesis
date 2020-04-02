@@ -21,9 +21,6 @@ public class RegistrationController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        CategoryModel categoryModel = FormUtil.toModel(CategoryModel.class, req);
-        categoryModel.setListResult(iCategoryService.findAll());
-        req.setAttribute("categories", categoryModel);
         String view = "";
         if (req.getRequestURI().endsWith("account")) {
             view = "/views/web/account/account.jsp";

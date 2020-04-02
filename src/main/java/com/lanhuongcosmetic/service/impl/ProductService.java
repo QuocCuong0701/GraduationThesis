@@ -69,6 +69,11 @@ public class ProductService implements IProductService {
     }
 
     @Override
+    public List<ProductModel> findByCategoryAndName(Pageble pageble, String categoryName, String productName) {
+        return iProductDAO.findByCategoryAndName(pageble, categoryName, productName);
+    }
+
+    @Override
     public List<ProductModel> findAll() {
         return iProductDAO.findAll();
     }

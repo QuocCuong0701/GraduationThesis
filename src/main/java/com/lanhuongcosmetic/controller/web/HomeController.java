@@ -75,10 +75,10 @@ public class HomeController extends HttpServlet {
             req.setAttribute("category1", category1);
 
             ProductModel list2 = FormUtil.toModel(ProductModel.class, req);
-            list2.setListResult(iProductService.listProduct(2, 6));
+            list2.setListResult(iProductService.listProduct(5, 6));
             req.setAttribute("list2", list2);
             CategoryModel category2 = FormUtil.toModel(CategoryModel.class, req);
-            category2 = iCategoryService.findOne(2);
+            category2 = iCategoryService.findOne(5);
             req.setAttribute("category2", category2);
 
             ProductModel list3 = FormUtil.toModel(ProductModel.class, req);
@@ -94,6 +94,7 @@ public class HomeController extends HttpServlet {
             CategoryModel category4 = FormUtil.toModel(CategoryModel.class, req);
             category4 = iCategoryService.findOne(4);
             req.setAttribute("category4", category4);
+            // End List Products
 
             RequestDispatcher rd = req.getRequestDispatcher("/views/web/home.jsp");
             rd.forward(req, resp);

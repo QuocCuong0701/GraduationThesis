@@ -27,7 +27,7 @@
                         <h2>Thể Loại</h2>
                         <ul>
                             <c:forEach var="categories" items="${categories.listResult}">
-                                <li><a href="<c:url value="/product?page=1&category_id=${categories.category_id}"/>"><i class="fa fa-angle-right"></i><span style="text-transform: capitalize;">${categories.category_name}</span></a></li>
+                                <li><a href="<c:url value="/product?category_id=${categories.category_id}"/>"><i class="fa fa-angle-right"></i><span style="text-transform: capitalize;">${categories.category_name}</span></a></li>
                             </c:forEach>
                         </ul>
                     </div>
@@ -51,7 +51,6 @@
                                 </div>
                                 <div class="result-short-view">
                                     <div class="result-short">
-                                        <p>Showing 1-9 of 18 results </p>
                                         <div class="result-short-selection">
                                             <select>
                                                 <option>Default sorting</option>
@@ -62,8 +61,8 @@
                                         </div>
                                     </div>
                                     <div class="view-mode">
-                                        <a href="<c:url value="/product"/>" class="active"><i class="fa fa-th-large"></i></a>
-                                        <a href="single-shop.html"><i class="fa fa-th-list"></i></a>
+                                        <a href="<c:url value="/product?page=1"/>" class="active"><i class="fa fa-th-large"></i></a>
+                                        <a href="<c:url value="/single-shop?page=1"/>"><i class="fa fa-th-list"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -75,7 +74,7 @@
                                 <div class="single-item-area">
                                     <div class="single-item">
                                         <div class="product-item-img">
-                                            <a href="#">
+                                            <a href="<c:url value="/product-detail?product_id=${listProducts.product_id}"/>">
                                                 <c:if test="${listProducts.product_image != null}">
                                                     <img class="primary-img" src="<c:url value="${listProducts.product_image}"/>" alt="item" style="width: 264px;height: 230px;" />
                                                     <img class="secondary-img" src="<c:url value="${listProducts.product_image}"/>" alt="item" style="width: 264px; height: 230px;" />
@@ -90,7 +89,7 @@
                                             </div>
                                         </div>
                                         <div class="single-item-content">
-                                            <h2><a href="#">${listProducts.product_name}</a></h2>
+                                            <h2><a href="<c:url value="/product-detail?product_id=${listProducts.product_id}"/>">${listProducts.product_name}</a></h2>
                                             <div class="best-product-rating">
                                                 <a href="#"><i class="fa fa-star"></i></a>
                                                 <a href="#"><i class="fa fa-star"></i></a>

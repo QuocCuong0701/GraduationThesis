@@ -28,6 +28,9 @@ public class CheckoutController extends HttpServlet {
     private IProductService iProductService;
 
     @Inject
+    private ICategoryService iCategoryService;
+
+    @Inject
     private IBillService iBillService;
 
     @Inject
@@ -38,6 +41,9 @@ public class CheckoutController extends HttpServlet {
         HttpSession httpSession = req.getSession();
         String view = "";
         BillModel billModel;
+        CategoryModel categoryModel = FormUtil.toModel(CategoryModel.class, req);
+        categoryModel.setListResult(iCategoryService.findAll());
+        req.setAttribute("categories", categoryModel);
 
         if (req.getRequestURI().endsWith("checkout")) {
             view = "/views/web/checkout/checkout.jsp";

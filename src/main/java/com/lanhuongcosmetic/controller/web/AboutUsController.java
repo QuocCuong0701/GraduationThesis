@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = {"/about-us"})
+@WebServlet(urlPatterns = {"/about-us","/contact"})
 public class AboutUsController extends HttpServlet {
     @Inject
     private ICategoryService iCategoryService;
@@ -23,7 +23,15 @@ public class AboutUsController extends HttpServlet {
         CategoryModel categoryModel = FormUtil.toModel(CategoryModel.class, req);
         categoryModel.setListResult(iCategoryService.findAll());
         req.setAttribute("categories", categoryModel);
-        RequestDispatcher rd = req.getRequestDispatcher("/views/web/aboutUs/aboutUs.jsp");
+
+        String view = "";
+        if(req.getRequestURI().endsWith("about-us")){
+            view="/views/web/aboutUs/aboutUs.jsp";
+        }
+        if(req.getRequestURI().endsWith("contact")){
+            view="/views/web/contactUs/contactUs.jsp";
+        }
+        RequestDispatcher rd = req.getRequestDispatcher(view);
         rd.forward(req, resp);
     }
 

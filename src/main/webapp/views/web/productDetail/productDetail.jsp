@@ -67,7 +67,7 @@
                                     <a href="#"><i class="fa fa-star"></i></a>
                                     <a href="#"><i class="fa fa-star"></i></a>
                                     <a href="#"><i class="fa fa-star"></i></a>
-                                    <p>(3 costomar review)</p>
+                                    <p>(3 khách hàng đánh giá)</p>
                                 </div>
                                 <h3><fmt:formatNumber type="number" pattern="###,###" value="${model.product_price}"/> đ</h3>
                             </div>
@@ -75,7 +75,7 @@
                                 <p>Tình trạng :   Còn hàng</p>
                             </div>
                             <div class="product-item-details">
-                                <p>Nulla quis lorem ut libero malesuada feugiat. Donec sollicitudin molestie malesuada. Mauris. </p>
+                                <p>${model.product_description}</p>
                             </div>
                             <div class="available-option">
                                 <div class="wishlist-icon">
@@ -89,6 +89,9 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-md-12 product-details">
+                            <a href="<c:url value="/cart?act=add&product_id=${model.product_id}"/>">Thêm Vào Giỏ</a>
                         </div>
                     </div>
                 </div>

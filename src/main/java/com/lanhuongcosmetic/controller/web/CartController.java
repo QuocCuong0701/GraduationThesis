@@ -2,9 +2,11 @@ package com.lanhuongcosmetic.controller.web;
 
 import com.lanhuongcosmetic.constant.SystemConstant;
 import com.lanhuongcosmetic.model.CartModel;
+import com.lanhuongcosmetic.model.CategoryModel;
 import com.lanhuongcosmetic.model.ProductModel;
-import com.lanhuongcosmetic.service.ICartService;
+import com.lanhuongcosmetic.service.ICategoryService;
 import com.lanhuongcosmetic.service.IProductService;
+import com.lanhuongcosmetic.utils.FormUtil;
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
@@ -21,7 +23,7 @@ import java.util.Map;
 @WebServlet(urlPatterns = {"/cart"})
 public class CartController extends HttpServlet {
     @Inject
-    private ICartService iCartService;
+    private ICategoryService iCategoryService;
 
     @Inject
     private IProductService iProductService;
@@ -32,6 +34,10 @@ public class CartController extends HttpServlet {
         String action = req.getParameter("act");
         HashMap<Integer, CartModel> cartModels = (HashMap<Integer, CartModel>) httpSession.getAttribute(SystemConstant.MODEL);
         RequestDispatcher rd = req.getRequestDispatcher("/views/web/cart/cart.jsp");
+
+        CategoryModel categoryModel = FormUtil.toModel(CategoryModel.class, req);
+        categoryModel.setListResult(iCategoryService.findAll());
+        req.setAttribute("categories", categoryModel);
 
         if (action != null && action.equals("add")) {
             int product_id = 0;
@@ -83,6 +89,10 @@ public class CartController extends HttpServlet {
         String action = req.getParameter("act");
         HashMap<Integer, CartModel> cartModels = (HashMap<Integer, CartModel>) httpSession.getAttribute(SystemConstant.MODEL);
 
+        CategoryModel categoryModel = FormUtil.toModel(CategoryModel.class, req);
+        categoryModel.setListResult(iCategoryService.findAll());
+        req.setAttribute("categories", categoryModel);
+
         if (httpSession.isNew()) {
             cartModels = new HashMap<>();
         }
@@ -99,7 +109,6 @@ public class CartController extends HttpServlet {
                 CartModel cartItem = cartModels.get(pr_id);
                 cartItem.setQuantity(qty);
             }
-
         }
 
         httpSession.setAttribute(SystemConstant.MODEL, cartModels);
