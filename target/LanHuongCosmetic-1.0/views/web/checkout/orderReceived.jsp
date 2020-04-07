@@ -8,7 +8,6 @@
     <title>Chi tiết hóa đơn</title>
 </head>
 <body>
-    <c:set var="cart" value="${sessionScope.model}" />
     <!-- Breadcurb AREA -->
     <div class="breadcurb-area">
         <div class="container">
@@ -40,7 +39,7 @@
                                             Ngày:<strong>${BillModel.created_date}</strong>
                                         </li>
                                         <li class="total">
-                                            Tổng cộng:<strong><span class="amount"><fmt:formatNumber pattern="###,###" value="${sessionScope.totalPrice}"/> đ</span></strong>
+                                            Tổng cộng:<strong><span class="amount"><fmt:formatNumber pattern="###,###" value="${BillModel.total}"/> đ</span></strong>
                                         </li>
                                         <li class="method" style="display: none">
                                             Phương thức thanh toán:<strong>Trả tiền mặt khi nhận hàng</strong>
@@ -58,17 +57,17 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <c:forEach var="rows" items="${cart}">
+                                        <c:forEach var="billDetail" items="${listbilDetail.listResult}">
                                             <tr>
-                                                <td><span style="color: red;font-style: italic;">${rows.value.productModel.product_name}</span><strong> × ${rows.value.quantity}</strong></td>
-                                                <td><span><fmt:formatNumber pattern="###,###" value="${rows.value.quantity * rows.value.productModel.product_price}"/> đ</span></td>
+                                                <td><span style="color: red;font-style: italic;">${billDetail.product_name}</span><strong> × ${billDetail.quantity}</strong></td>
+                                                <td><span><fmt:formatNumber pattern="###,###" value="${billDetail * billDetail.product_price}"/> đ</span></td>
                                             </tr>
                                         </c:forEach>
                                         </tbody>
                                         <tfoot>
                                         <tr>
                                             <th>Tạm Tính:</th>
-                                            <td><span><fmt:formatNumber pattern="###,###" value="${sessionScope.totalPrice}"/> đ</span></td>
+                                            <td><span><fmt:formatNumber pattern="###,###" value="${BillModel.total}"/> đ</span></td>
                                         </tr>
                                         <tr style="display: none">
                                             <th>Phương thức thanh toán:</th>
@@ -76,7 +75,7 @@
                                         </tr>
                                         <tr>
                                             <th>Tổng Cộng:</th>
-                                            <td><strong><fmt:formatNumber pattern="###,###" value="${sessionScope.totalPrice}"/> đ</strong></td>
+                                            <td><strong><fmt:formatNumber pattern="###,###" value="${BillModel.total}"/> đ</strong></td>
                                         </tr>
                                         </tfoot>
                                     </table>
@@ -104,5 +103,17 @@
             </div>
         </div>
     </div>
+
+<script>
+    $(document).ready(function () {
+        if(document.URL.indexOf("order-received")===-1){
+            // Set the URL to whatever it was plus "#loaded".
+            url = document.URL+"#loaded";
+            location = "#loaded";
+            //Reload the page using reload() method
+            location.reload(true);
+        }
+    });
+</script>
 </body>
 </html>

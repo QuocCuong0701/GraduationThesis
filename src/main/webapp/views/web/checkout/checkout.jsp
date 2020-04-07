@@ -72,6 +72,7 @@
                                     <textarea name="note" rows="9"></textarea>
                                 </div>
                             </div>
+                            <input type="hidden" name="total" value="${sessionScope.totalPrice}"/>
                         </form>
                     </div>
                 </div>
@@ -136,6 +137,7 @@
         let link;
 
         if (user_id !== "") {
+            data["user_id"] = user_id;
             link = "/checkout/order-received?user_id=" + user_id + "&created_date=" + data.created_date;
         } else{
             link = "/checkout/order-received?created_date=" + data.created_date;

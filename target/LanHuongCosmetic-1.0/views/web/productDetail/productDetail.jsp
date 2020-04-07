@@ -27,19 +27,19 @@
                         <h2>Thể Loại</h2>
                         <ul>
                             <c:forEach var="categories" items="${categories.listResult}">
-                                <li><a href="<c:url value="/product?page=1&category_id=${categories.category_id}"/>"><i class="fa fa-angle-right"></i><span style="text-transform: capitalize;">${categories.category_name}</span></a></li>
+                                <li><a href="<c:url value="/product?category_id=${categories.category_id}"/>"><i class="fa fa-angle-right"></i><span style="text-transform: capitalize;">${categories.category_name}</span></a></li>
                             </c:forEach>
                         </ul>
                     </div>
                 </div>
-                <div class="add-shop">
+                <%--<div class="add-shop">
                     <div class="add-kids single-add">
                         <a href="#"><img src="<c:url value="/template/web/img/banner/kids-ad.jpg/"/>" alt="add"></a>
                     </div>
                     <div class="add-dress single-add">
                         <a href="#"><img src="<c:url value="/template/web/img/banner/kids-ad-2.jpg"/>" alt="add"></a>
                     </div>
-                </div>
+                </div>--%>
             </div>
             <div class="col-md-9 col-sm-8">
                 <div class="row">
@@ -119,147 +119,33 @@
                     <div class="col-md-12">
                         <div class="single-product-slider similar-product">
                             <div class="product-items">
-                                <h2 class="product-header">Similar PRODUCTS</h2>
+                                <h2 class="product-header">Sản Phẩm Tương Tự</h2>
                                 <div class="row">
                                     <div id="singleproduct-slider" class="owl-carousel">
-                                        <div class="col-md-4">
-                                            <div class="single-product">
-                                                <div class="single-product-img">
-                                                    <a href="#">
-                                                        <img class="primary-img" src="<c:url value="/template/web/img/product/single-product-1.jpg"/>" alt="product">
-                                                        <img class="secondary-img" src="<c:url value="/template/web/img/product/kids-1.jpg"/>" alt="product">
-                                                    </a>
-                                                    <div class="single-product-action">
-                                                        <a href="#"><i class="fa fa-external-link"></i></a>
-                                                        <a href="#"><i class="fa fa-shopping-cart"></i></a>
+                                        <c:forEach var="similarProduct" items="${similarProducts.listResult}">
+                                            <div class="col-md-4">
+                                                <div class="single-product">
+                                                    <div class="single-product-img">
+                                                        <a href="<c:url value="/product-detail?product_id=${similarProduct.product_id}"/>">
+                                                            <img class="primary-img" src="<c:url value="${similarProduct.product_image}"/>" alt="product">
+                                                            <img class="secondary-img" src="<c:url value="${similarProduct.product_image}"/>" alt="product">
+                                                        </a>
+                                                        <div class="single-product-action">
+                                                            <a href="<c:url value="/product-detail?product_id=${similarProduct.product_id}"/>"><i class="fa fa-external-link"></i></a>
+                                                            <a href="<c:url value="/cart?act=add&product_id=${similarProduct.product_id}"/>"><i class="fa fa-shopping-cart"></i></a>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="single-product-content">
-                                                    <div class="product-content-left">
-                                                        <h2><a href="#">EXCLUSIVE STYLE</a></h2>
-                                                        <p>Jacket’s</p>
-                                                    </div>
-                                                    <div class="product-content-right">
-                                                        <h3>$27.00</h3>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="single-product">
-                                                <div class="single-product-img">
-                                                    <a href="#">
-                                                        <img class="primary-img" src="<c:url value="/template/web/"/>img/product/kids-2.jpg" alt="product">
-                                                        <img class="secondary-img" src="<c:url value="/template/web/"/>img/product/single-product-2.jpg" alt="product">
-                                                    </a>
-                                                    <div class="single-product-action">
-                                                        <a href="#"><i class="fa fa-external-link"></i></a>
-                                                        <a href="#"><i class="fa fa-shopping-cart"></i></a>
-                                                    </div>
-                                                </div>
-                                                <div class="single-product-content">
-                                                    <div class="product-content-left">
-                                                        <h2><a href="#">EXCLUSIVE STYLE</a></h2>
-                                                        <p>Jacket’s</p>
-                                                    </div>
-                                                    <div class="product-content-right">
-                                                        <h3>$27.00</h3>
+                                                    <div class="single-product-content">
+                                                        <div class="product-content-left">
+                                                            <p><a href="<c:url value="/product-detail?product_id=${similarProduct.product_id}"/>">${similarProduct.product_name}</a></p>
+                                                        </div>
+                                                        <div class="product-content-right">
+                                                            <h3><fmt:formatNumber pattern="###,###" value="${similarProduct.product_price}"/> đ</h3>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="single-product">
-                                                <div class="single-product-img">
-                                                    <a href="#">
-                                                        <img class="primary-img" src="<c:url value="/template/web/img/product/kids-4.jpg"/>" alt="product">
-                                                        <img class="secondary-img" src="<c:url value="/template/web/img/product/men-2.jpg"/>" alt="product">
-                                                    </a>
-                                                    <div class="single-product-action">
-                                                        <a href="#"><i class="fa fa-external-link"></i></a>
-                                                        <a href="#"><i class="fa fa-shopping-cart"></i></a>
-                                                    </div>
-                                                </div>
-                                                <div class="single-product-content">
-                                                    <div class="product-content-left">
-                                                        <h2><a href="#">EXCLUSIVE STYLE</a></h2>
-                                                        <p>Jacket’s</p>
-                                                    </div>
-                                                    <div class="product-content-right">
-                                                        <h3>$27.00</h3>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="single-product">
-                                                <div class="single-product-img">
-                                                    <a href="#">
-                                                        <img class="primary-img" src="<c:url value="/template/web/img/product/single-product-1.jpg"/>" alt="product">
-                                                        <img class="secondary-img" src="<c:url value="/template/web/img/product/kids-1.jpg"/>" alt="product">
-                                                    </a>
-                                                    <div class="single-product-action">
-                                                        <a href="#"><i class="fa fa-external-link"></i></a>
-                                                        <a href="#"><i class="fa fa-shopping-cart"></i></a>
-                                                    </div>
-                                                </div>
-                                                <div class="single-product-content">
-                                                    <div class="product-content-left">
-                                                        <h2><a href="#">EXCLUSIVE STYLE</a></h2>
-                                                        <p>Jacket’s</p>
-                                                    </div>
-                                                    <div class="product-content-right">
-                                                        <h3>$27.00</h3>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="single-product">
-                                                <div class="single-product-img">
-                                                    <a href="#">
-                                                        <img class="primary-img" src="<c:url value="/template/web/img/product/single-product-2.jpg"/>" alt="product">
-                                                        <img class="secondary-img" src="<c:url value="/template/web/img/product/women-2.jpg"/>" alt="product">
-                                                    </a>
-                                                    <div class="single-product-action">
-                                                        <a href="#"><i class="fa fa-external-link"></i></a>
-                                                        <a href="#"><i class="fa fa-shopping-cart"></i></a>
-                                                    </div>
-                                                </div>
-                                                <div class="single-product-content">
-                                                    <div class="product-content-left">
-                                                        <h2><a href="#">EXCLUSIVE STYLE</a></h2>
-                                                        <p>Jacket’s</p>
-                                                    </div>
-                                                    <div class="product-content-right">
-                                                        <h3>$27.00</h3>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="single-product">
-                                                <div class="single-product-img">
-                                                    <a href="#">
-                                                        <img class="primary-img" src="<c:url value="/template/web/img/product/single-product-3.jpg"/>" alt="product">
-                                                        <img class="secondary-img" src="<c:url value="/template/web/img/product/men-2.jpg"/>" alt="product">
-                                                    </a>
-                                                    <div class="single-product-action">
-                                                        <a href="#"><i class="fa fa-external-link"></i></a>
-                                                        <a href="#"><i class="fa fa-shopping-cart"></i></a>
-                                                    </div>
-                                                </div>
-                                                <div class="single-product-content">
-                                                    <div class="product-content-left">
-                                                        <h2><a href="#">EXCLUSIVE STYLE</a></h2>
-                                                        <p>Jacket’s</p>
-                                                    </div>
-                                                    <div class="product-content-right">
-                                                        <h3>$27.00</h3>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        </c:forEach>
                                     </div>
                                 </div>
                             </div>

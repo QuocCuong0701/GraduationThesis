@@ -7,6 +7,7 @@ public class BillModel extends AbstractModel<BillModel> {
     private String address;
     private String email;
     private String phone;
+    private double total;
     private String note;
     private boolean confirmed;
 
@@ -72,5 +73,13 @@ public class BillModel extends AbstractModel<BillModel> {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
     }
 }

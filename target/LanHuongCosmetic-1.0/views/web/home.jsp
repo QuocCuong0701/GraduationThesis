@@ -88,21 +88,21 @@
                     <div class="slider">
                         <div id="mainSlider" class="nivoSlider slider-image">
                             <img src="<c:url value="/template/web/img/slider/slider-image-3.jpg"/>" alt="main slider" title="#htmlcaption1"/>
-                            <img src="<c:url value="/template/web/img/slider/sliser-image-2.jpg"/>" alt="main slider" title="#htmlcaption2"/>
+                            <img src="<c:url value="/template/web/img/slider/sliser-image-2.1.png"/>" alt="main slider" title="#htmlcaption2"/>
                         </div>
                         <div id="htmlcaption1" class="nivo-html-caption slider-caption-1">
                             <div class="slider-progress"></div>
                             <div class="slide-text">
                                 <div class="middle-text">
                                     <div class="cap-title wow slideInRight" data-wow-duration=".9s" data-wow-delay="0s">
-                                        <h2>New Collection</h2>
+                                        <h2>Dòng Sản Phẩm Mới</h2>
                                     </div>
                                     <div class="cap-dec wow slideInRight" data-wow-duration="1.1s" data-wow-delay="0s">
-                                        <p>Save Up to</p>
-                                        <h1>37% Off</h1>
+                                        <p>Được Chiết Xuất</p>
+                                        <h1>Tự Nhiên</h1>
                                     </div>
                                     <div class="cap-readmore animated bounceIn" data-wow-duration="1.5s" data-wow-delay=".5s">
-                                        <a href="#">View details</a>
+                                        <a href="<c:url value="/product?category_id=3"/>">Xem chi tiết</a>
                                     </div>
                                 </div>
                             </div>
@@ -115,14 +115,14 @@
                             <div class="slide-text">
                                 <div class="middle-text">
                                     <div class="cap-title wow slideInRight" data-wow-duration=".9s" data-wow-delay="0s">
-                                        <h2>New Collection</h2>
+                                        <h2>Sản Phẩm Làm Đẹp Da</h2>
                                     </div>
                                     <div class="cap-dec wow slideInRight" data-wow-duration="1.1s" data-wow-delay="0s">
-                                        <p>Save Up to</p>
-                                        <h1>37% Off</h1>
+                                        <p>Nhập Khẩu Từ</p>
+                                        <h1>Hàn Quốc</h1>
                                     </div>
                                     <div class="cap-readmore animated bounceIn" data-wow-duration="1.5s" data-wow-delay=".5s">
-                                        <a href="#">Shop Now</a>
+                                        <a href="<c:url value="/product?page=1"/>">Mua ngay</a>
                                     </div>
                                 </div>
                             </div>
@@ -147,7 +147,7 @@
                         <div class="panel-group" id="accrodian">
                             <c:forEach var="categories" items="${categories.listResult}">
                                 <div class="panel panel-default">
-                                    <a href="<c:url value="/product?page=1&category_id=${categories.category_id}"/>" class="panel-heading">
+                                    <a href="<c:url value="/product?category_id=${categories.category_id}"/>" class="panel-heading">
                                         <h4 class="panel-title" style="text-transform: capitalize;">
                                             <i class="fa fa-heart"></i> ${categories.category_name}
                                         </h4>
@@ -263,7 +263,7 @@
                         </div>
                     </div>
                     <div class="arrivals-area single-add">
-                        <a href="#"> <img src="<c:url value="/template/web/img/banner/arrivals.jpg"/>" alt="arrivals"> </a>
+                        <a href="#"> <img src="<c:url value="/template/web/img/banner/banner.jpg"/>" alt="arrivals"> </a>
                     </div>
                     <div class="product-items">
                         <h2 class="product-header">${category3.category_name}</h2>

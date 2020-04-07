@@ -78,7 +78,7 @@ public class ProductDAO extends AbstractDAO<ProductModel> implements IProductDAO
     @Override
     public List<ProductModel> findByCategoryAndName(Pageble pageble, String categoryName, String productName) {
         StringBuilder sql = new StringBuilder("SELECT * FROM product AS p JOIN category AS c ON p.category_id = c.category_id");
-        sql.append(" WHERE p.product_name LIKE '%" + productName + "%' and c.category_name like '%" + categoryName + "%'");
+        sql.append(" WHERE p.product_name LIKE '%" + productName + "%' AND c.category_name LIKE '%" + categoryName + "%'");
         if (pageble.getSorter() != null && StringUtils.isNotBlank(pageble.getSorter().getSortName()) && StringUtils.isNotBlank(pageble.getSorter().getSortBy())) {
             sql.append(" ORDER BY " + pageble.getSorter().getSortName() + " " + pageble.getSorter().getSortBy() + "");
         }

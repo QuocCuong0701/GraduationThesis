@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Trang chủ</title>
+<title>Trang quản trị</title>
 </head>
 <body>
     <div class="content">
@@ -12,13 +12,13 @@
             <div class="page-inner py-5">
                 <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
                     <div>
-                        <h2 class="text-white pb-2 fw-bold">Dashboard</h2>
-                        <h5 class="text-white op-7 mb-2">Free Bootstrap 4 Admin Dashboard</h5>
+                        <h2 class="text-white pb-2 fw-bold">Bản điều khiển</h2>
+                        <h5 class="text-white op-7 mb-2">Dành cho quản trị viên</h5>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="page-inner mt--5">
+        <div class="page-inner mt--5" style="display: none;">
             <div class="row mt--2">
                 <div class="col-md-6">
                     <div class="card full-height">

@@ -59,6 +59,11 @@ public class BillService implements IBillService {
     }
 
     @Override
+    public List<BillModel> findAllByUserId(int user_id, boolean confirmed) {
+        return iBillDAO.findAllByUserId(user_id, confirmed);
+    }
+
+    @Override
     public int getTotalItem() {
         return iBillDAO.getTotalItem();
     }

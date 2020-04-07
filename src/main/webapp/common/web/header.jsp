@@ -2,6 +2,7 @@
 <%@include file="/common/taglib.jsp" %>
 
 <!-- HEADER AREA -->
+<c:set var="cart" value="${sessionScope.model}"/>
 <div class="header-area">
     <div class="header-top-bar">
         <div class="container">
@@ -10,17 +11,17 @@
                     <div class="header-top-left">
                         <div class="header-top-menu">
                             <ul class="list-inline">
-                                <li><img src="<c:url value="/template/web/img/flag.png"/>" alt="flag"></li>
-                                <li class="dropdown"><a href="#" data-toggle="dropdown">English</a>
+                                <li><img src="<c:url value="/template/web/img/vietnam16.png"/>" alt="flag"></li>
+                                <li class="dropdown"><a href="#" data-toggle="dropdown">Tiếng Việt</a>
                                     <ul class="dropdown-menu">
+                                        <li><a href="#">Enlish</a></li>
                                         <li><a href="#">Spanish</a></li>
-                                        <li><a href="#">China</a></li>
                                     </ul>
                                 </li>
-                                <li class="dropdown"><a href="#" data-toggle="dropdown">USD</a>
+                                <li class="dropdown"><a href="#" data-toggle="dropdown">VND</a>
                                     <ul class="dropdown-menu usd-dropdown">
+                                        <li><a href="#">VND</a></li>
                                         <li><a href="#">USD</a></li>
-                                        <li><a href="#">GBP</a></li>
                                         <li><a href="#">EUR</a></li>
                                     </ul>
                                 </li>
@@ -38,9 +39,14 @@
                     <div class="header-top-right">
                         <ul class="list-inline">
                             <c:if test="${not empty USERMODEL}">
-                                <li><a href="#"><i class="fa fa-user"></i>Tài Khoản</a></li>
+                                <li><a id="accountPopup" data-trigger="focus" data-toggle="popover" href="#"><i class="fa fa-user"></i>Tài Khoản</a></li>
+                                <c:if test="${cart.size() == 0 || cart == null}">
+                                    <li><a href="<c:url value="/cart"/>"><i class="fa fa-check-square-o"></i>Thanh Toán</a> </li>
+                                </c:if>
+                                <c:if test="${cart.size()> 0}">
+                                    <li><a href="<c:url value="/checkout"/>"><i class="fa fa-check-square-o"></i>Thanh Toán</a> </li>
+                                </c:if>
                             </c:if>
-                            <li><a href="<c:url value="/checkout"/>"><i class="fa fa-check-square-o"></i>Thanh Toán</a></li>
                             <c:if test="${empty USERMODEL}">
                                 <li><a href="<c:url value="/login?action=login"/>"><i class="fa fa-lock"></i>Đăng Nhập</a></li>
                             </c:if>
@@ -84,7 +90,6 @@
                                 <%--<button type="button"><i class="fa fa-search"></i></button>--%>
                         </div>
                         <div class="header-chart">
-                            <c:set var="cart" value="${sessionScope.model}"/>
                             <ul class="list-inline">
                                 <li><a href="<c:url value="/cart"/>"><i class="fa fa-cart-arrow-down"></i></a></li>
                                 <li class="chart-li"><a href="<c:url value="/cart"/>">Giỏ Hàng</a>
@@ -162,9 +167,9 @@
                         <ul>
                             <li><a href="<c:url value="/home"/>">Trang Chủ</a></li>
                             <li><a href="<c:url value="/product?page=1"/>">Sản Phẩm</a></li>
-                            <li><a href="shop.html">Thể Loại 1</a></li>
-                            <li><a href="shop.html">Thể Loại 2</a></li>
-                            <li><a href="shop.html">Thể Loại 3</a></li>
+                            <li><a href="<c:url value="/product?category_id=9"/>">Nước Hoa Hồng</a></li>
+                            <li><a href="<c:url value="/product?category_id=2"/>">Sữa Tắm</a></li>
+                            <li><a href="<c:url value="/product?category_id=10"/>">Dưỡng Tay</a></li>
                             <li><a href="#">Trang</a>
                                 <ul class="sub-menu">
                                     <li><a href="<c:url value="/about-us"/>">Giới Thiệu</a></li>
@@ -246,6 +251,14 @@
 <script>
     $(document).ready(function () {
         $('#search').attr('href', "/product?page=1");
+        $('#accountPopup').popover({
+           placement: 'bottom',
+            html: true,
+            content: '<div class="account-popup"><ul>' +
+                '<li><a href="<c:url value='/account/profile'/>"><i class="fa fa-user"></i> Thông Tin Tài Khoản</a></li>' +
+                '<li><a href="<c:url value='/account/receipt?user_id=${USERMODEL.user_id}'/>"><i class="fa fa-paper-plane-o"></i> Theo Dõi Đơn Hàng</a></li>' +
+                '</ul></div>'
+        });
     });
 
     let link;

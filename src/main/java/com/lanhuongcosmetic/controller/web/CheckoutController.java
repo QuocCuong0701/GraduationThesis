@@ -41,9 +41,6 @@ public class CheckoutController extends HttpServlet {
         HttpSession httpSession = req.getSession();
         String view = "";
         BillModel billModel;
-        CategoryModel categoryModel = FormUtil.toModel(CategoryModel.class, req);
-        categoryModel.setListResult(iCategoryService.findAll());
-        req.setAttribute("categories", categoryModel);
 
         if (req.getRequestURI().endsWith("checkout")) {
             view = "/views/web/checkout/checkout.jsp";
@@ -74,10 +71,15 @@ public class CheckoutController extends HttpServlet {
                 iProductService.updateBuy(iProductService.findOneByProductId(bdm.getProduct_id()));
             }
 
+            req.setAttribute("listBilDetail", billDetailModel);
             req.setAttribute("BillModel", billModel);
             view = "/views/web/checkout/orderReceived.jsp";
-            //httpSession.invalidate();
+            httpSession.invalidate();
         }
+
+        CategoryModel categoryModel = new CategoryModel();
+        categoryModel.setListResult(iCategoryService.findAll());
+            req.setAttribute("categories", categoryModel);
 
         RequestDispatcher rd = req.getRequestDispatcher(view);
         rd.forward(req, resp);

@@ -16,6 +16,7 @@ public class BillMapper implements RowMapper<BillModel> {
             billModel.setAddress(rs.getString("address"));
             billModel.setEmail(rs.getString("email"));
             billModel.setPhone(rs.getString("phone"));
+            billModel.setTotal(rs.getDouble("total"));
             billModel.setNote(rs.getString("note"));
             billModel.setConfirmed(rs.getBoolean("confirmed"));
             billModel.setCreated_date(rs.getTimestamp("created_date"));

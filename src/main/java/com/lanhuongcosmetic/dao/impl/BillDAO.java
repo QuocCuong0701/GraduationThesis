@@ -32,14 +32,14 @@ public class BillDAO extends AbstractDAO<BillModel> implements IBillDAO {
     @Override
     public int save(BillModel billModel) {
         StringBuilder sql = new StringBuilder("INSERT INTO bill");
-        if(billModel.getUser_id() != 0){
-            sql.append("(user_id, full_name, address, email, phone, created_date, confirmed) VALUES (?,?,?,?,?,?,?)");
+        if (billModel.getUser_id() != 0) {
+            sql.append("(user_id, full_name, address, email, phone, total, created_date, confirmed) VALUES (?,?,?,?,?,?,?,?)");
             return insert(sql.toString(), billModel.getUser_id(), billModel.getFull_name(), billModel.getAddress(),
-                    billModel.getEmail(), billModel.getPhone(), billModel.getCreated_date(), 0);
+                    billModel.getEmail(), billModel.getPhone(), billModel.getTotal(), billModel.getCreated_date(), 0);
         } else {
-            sql.append("(full_name, address, email, phone, created_date, confirmed) VALUES (?,?,?,?,?,?)");
-            return insert(sql.toString(),  billModel.getFull_name(), billModel.getAddress(),
-                    billModel.getEmail(), billModel.getPhone(), billModel.getCreated_date(), 0);
+            sql.append("(full_name, address, email, phone, total, created_date, confirmed) VALUES (?,?,?,?,?,?,?)");
+            return insert(sql.toString(), billModel.getFull_name(), billModel.getAddress(),
+                    billModel.getEmail(), billModel.getPhone(), billModel.getTotal(), billModel.getCreated_date(), 0);
         }
     }
 
@@ -74,6 +74,16 @@ public class BillDAO extends AbstractDAO<BillModel> implements IBillDAO {
         String sql = "SELECT * FROM bill WHERE created_date = ?";
         List<BillModel> billModels = query(sql, new BillMapper(), created_date);
         return billModels.isEmpty() ? null : billModels.get(0);
+    }
+
+    @Override
+    public List<BillModel> findAllByUserId(int user_id, boolean confirmed) {
+        String sql = "SELECT * FROM bill WHERE user_id = ? AND confirmed = ?";
+        if (confirmed){
+            return query(sql, new BillMapper(), user_id, 1);
+        } else{
+            return query(sql, new BillMapper(), user_id, 0);
+        }
     }
 
     @Override

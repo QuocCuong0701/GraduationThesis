@@ -31,6 +31,10 @@ public class ProductDetailController extends HttpServlet {
         iProductService.updateView(productModel);
         req.setAttribute(SystemConstant.MODEL, productModel);
 
+        ProductModel similarProducts = FormUtil.toModel(ProductModel.class,req);
+        similarProducts.setListResult(iProductService.listProduct(productModel.getCategory_id(), 1000));
+        req.setAttribute("similarProducts",similarProducts);
+
         CategoryModel categoryModel = FormUtil.toModel(CategoryModel.class, req);
         categoryModel.setListResult(iCategoryService.findAll());
         req.setAttribute("categories", categoryModel);

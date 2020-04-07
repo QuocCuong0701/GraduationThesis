@@ -48,6 +48,7 @@ create table bill(
     address varchar(100) not null,
     email varchar(100) not null ,
     phone varchar(11) not null,
+    total double,
     note text,
     confirmed bit not null,
     created_date timestamp not null,

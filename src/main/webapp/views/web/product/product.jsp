@@ -32,14 +32,14 @@
                         </ul>
                     </div>
                 </div>
-                <div class="add-shop">
+                <%--<div class="add-shop">
                     <div class="add-kids single-add">
                         <a href="#"><img src="<c:url value="/template/web/img/banner/kids-ad.jpg/"/>" alt="add"></a>
                     </div>
                     <div class="add-dress single-add">
                         <a href="#"><img src="<c:url value="/template/web/img/banner/kids-ad-2.jpg"/>" alt="add"></a>
                     </div>
-                </div>
+                </div>--%>
             </div>
             <div class="col-md-9 col-sm-8">
                 <div class="product-item-list">

@@ -52,7 +52,7 @@ public class ProductController extends HttpServlet {
                 productModel.setListResult(iProductService.findByCategoryAndName(pageble, "", product_name));
             }
         } else {
-            if (product_name == null) {
+            if (product_name == null || product_name.equalsIgnoreCase("")) {
                 productModel.setListResult(iProductService.findByCategory(pageble, Integer.parseInt(category_id)));
             } else {
                 productModel.setListResult(iProductService.findByCategoryAndName(pageble, iCategoryService.findOne(Integer.parseInt(category_id)).getCategory_name(), product_name.trim()));
