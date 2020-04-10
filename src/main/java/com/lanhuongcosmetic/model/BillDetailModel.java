@@ -5,6 +5,7 @@ public class BillDetailModel extends AbstractModel<BillDetailModel> {
     private int bill_id;
     private int product_id;
     private String product_name;
+    private String product_image;
     private double product_price;
     private int quantity;
 
@@ -38,6 +39,14 @@ public class BillDetailModel extends AbstractModel<BillDetailModel> {
 
     public void setProduct_name(String product_name) {
         this.product_name = product_name;
+    }
+
+    public String getProduct_image() {
+        return product_image;
+    }
+
+    public void setProduct_image(String product_image) {
+        this.product_image = product_image;
     }
 
     public double getProduct_price() {

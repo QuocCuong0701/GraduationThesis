@@ -2200,11 +2200,12 @@ body.home-2{
 .product-item-details{
 	border-bottom: 1px solid #e1e1e1;
 	border-top: 1px solid #e1e1e1;
-	padding: 10px 80px 10px 0;
+	padding: 10px 0;
 }
 .product-item-details p{
 	margin-bottom:0;
 	line-height: 27px;
+	text-align: justify;
 }
 .size-chart{
 	padding-top:12px;
@@ -3775,7 +3776,8 @@ address {
 .accountPage_2lsd .form-check-inline,.accountPage_2lsd .form-control {
 	line-height: 1.4rem;
 	color: #495057;
-	background-color: #fff
+	background-color: #fff;
+	margin-bottom: 10px;
 }
 
 .accountPage_2lsd .col-form-label {
@@ -4338,4 +4340,8 @@ address {
 .change-pass-body{
 	width: 60%;
 	margin-left: 20%;
+}
+.alert-check{
+	color: red;
+	margin-left: 13px;
 }

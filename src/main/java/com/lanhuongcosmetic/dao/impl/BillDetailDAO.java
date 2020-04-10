@@ -11,7 +11,7 @@ import java.util.List;
 public class BillDetailDAO extends AbstractDAO<BillDetailModel> implements IBillDetailDAO {
     @Override
     public List<BillDetailModel> findBillDetailByBillId(int bill_id) {
-        StringBuilder sql = new StringBuilder("SELECT bill_detail_id, bill_id,p.product_id, p.product_name, p.product_price ,quantity ");
+        StringBuilder sql = new StringBuilder("SELECT bill_detail_id, bill_id, p.product_image, p.product_id, p.product_name, p.product_price ,quantity ");
         sql.append("FROM bill_detail as bd join product as p on bd.product_id = p.product_id ");
         sql.append("WHERE bill_id = ?");
         return query(sql.toString(), new BillDetailMapper(), bill_id);

@@ -14,6 +14,7 @@ public class BillDetailMapper implements RowMapper<BillDetailModel> {
             billDetailModel.setBill_id(rs.getInt("bill_id"));
             billDetailModel.setProduct_id(rs.getInt("product_id"));
             billDetailModel.setProduct_name(rs.getString("product_name"));
+            billDetailModel.setProduct_image(rs.getString("product_image"));
             billDetailModel.setProduct_price(rs.getDouble("product_price"));
             billDetailModel.setQuantity(rs.getInt("quantity"));
 

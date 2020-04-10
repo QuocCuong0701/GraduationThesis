@@ -42,7 +42,7 @@
             </div>
             <ul class="nav nav-primary">
                 <li class="nav-item active">
-                    <a data-toggle="collapse" href="#dashboard" class="collapsed" aria-expanded="false">
+                    <a data-toggle="collapse" href="<c:url value="/admin-home"/>" class="collapsed" aria-expanded="false">
                         <i class="fas fa-home"></i>
                         <p>Bảng điều khiển</p>
                     </a>

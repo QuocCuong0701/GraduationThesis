@@ -71,7 +71,7 @@ public class CheckoutController extends HttpServlet {
                 iProductService.updateBuy(iProductService.findOneByProductId(bdm.getProduct_id()));
             }
 
-            req.setAttribute("listBilDetail", billDetailModel);
+            req.setAttribute("listBillDetail", billDetailModel);
             req.setAttribute("BillModel", billModel);
             view = "/views/web/checkout/orderReceived.jsp";
             httpSession.invalidate();
@@ -79,7 +79,7 @@ public class CheckoutController extends HttpServlet {
 
         CategoryModel categoryModel = new CategoryModel();
         categoryModel.setListResult(iCategoryService.findAll());
-            req.setAttribute("categories", categoryModel);
+        req.setAttribute("categories", categoryModel);
 
         RequestDispatcher rd = req.getRequestDispatcher(view);
         rd.forward(req, resp);

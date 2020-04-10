@@ -147,7 +147,8 @@
             data: JSON.stringify(data),
             dataType: 'json',
             success: function (result) {
-                window.location.href = "${ProductURL}?type=edit&product_id="+result.product_id+"&message=update_success";
+                //window.location.href = "${ProductURL}?type=edit&product_id="+result.product_id+"&message=update_success";
+                window.location.href = "${ProductURL}?type=list";
             },
             error: function (error) {
                 window.location.href = "${ProductURL}?type=list&message=error_system";

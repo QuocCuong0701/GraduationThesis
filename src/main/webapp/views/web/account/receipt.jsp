@@ -2,6 +2,7 @@
 <%@include file="/common/taglib.jsp"%>
 <c:url var="APIurl" value="/api-admin-user"/>
 <c:url var ="AccountURL" value="/account"/>
+<c:url var="BillDetailURL" value="/api-admin-billDetail"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +27,7 @@
             <div class="leftContainer_1UGN" style="float: left;width: 20%">
                 <div class="sideBarWrap_2l2b">
                     <div class="userInfo_8bQD"><img src="//media3.scdn.vn/img4/2020/03_30/VLsL5cLGxJmK2vZvxnFP.jpg">
-                        <div><p>Pham Quoc Cuong</p><a href="/">Chỉnh sửa tài khoản</a></div>
+                        <div><p>${USERMODEL.user_name}</p><a href="/">Chỉnh sửa tài khoản</a></div>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
                             <path d="M265.312 347.872h537.504c19.456 0 35.264-16.096 35.264-35.936s-15.776-35.936-35.264-35.936h-537.504c-19.456 0-35.264 16.096-35.264 35.936s15.808 35.936 35.264 35.936zM802.816 496.128h-537.504c-19.456 0-35.264 16.096-35.264 35.936 0 19.872 15.776 35.936 35.264 35.936h537.504c19.456 0 35.264-16.064 35.264-35.936-0.032-19.84-15.808-35.936-35.264-35.936zM802.816 716.256h-537.504c-19.456 0-35.264 16.128-35.264 35.936 0 19.872 15.776 35.936 35.264 35.936h537.504c19.456 0 35.264-16.064 35.264-35.936-0.032-19.808-15.808-35.936-35.264-35.936z"></path>
                         </svg>
@@ -53,31 +54,27 @@
             </div>
             <div class="rightContainer_1UxO" style="float: left;width: 80%">
                 <div class="title_B9r-"><p>Quản lý đơn hàng</p></div>
-                <div class="tooltip">
-                    <p>Hover over me</p>
-                    <span class="tooltiptext">Tooltip text</span>
-                </div>
                 <div class="orderTabWrap_1k2o">
                     <div id="orderTab" class="orderTab_3B7S">
                         <div class="tab-content">
                             <ul class="nav nav-tabs">
-                                <li class="active"><a data-toggle="tab" href="#home">Chờ Xác Nhận</a></li>
-                                <li><a data-toggle="tab" href="#menu1">Đã Xác Nhận</a></li>
+                                <li class="active"><a data-toggle="tab" href="#waitConfirm">Chờ Xác Nhận</a></li>
+                                <li><a data-toggle="tab" href="#confirmed">Đã Xác Nhận</a></li>
                             </ul>
-
                             <div class="tab-content">
-                                <div id="home" class="tab-pane fade in active">
+                                <div id="waitConfirm" class="tab-pane fade in active">
                                     <c:forEach var="notConfirmed" items="${notConfirmed.listResult}">
                                         <div class="orderItem_32vz">
                                             <div class="itemSummary_1BmN">
                                                 <div class="summaryCol_15G0 summaryOrder_1SfR">
-                                                    <div>Mã đơn hàng:&nbsp;<a class="summaryLink_2tGf" data-tip="Xem chi tiết đơn hàng" href="#">
-                                                        <div class="__react_component_tooltip place-bottom type-dark " id="codeOrder" data-id="tooltip"></div>
+                                                    <div>Mã đơn hàng:&nbsp;
+                                                        <a class="summaryLink_2tGf seeDetail" data-toggle="modal" data-target="#seeDetailModal"
+                                                           href="${BillDetailURL}?type=list&bill_id=${notConfirmed.bill_id}">
                                                         #${notConfirmed.bill_id}</a>
-                                                        <a class="summaryLink_2tGf summaryLinkDetail_-5xx" data-tip="Xem chi tiết đơn hàng"
-                                                           href="#" currentitem="false">
-                                                            <div class="__react_component_tooltip place-bottom type-dark " id="order" data-id="tooltip"></div>
-                                                            Chi tiết</a></div>
+                                                        <a class="summaryLink_2tGf summaryLinkDetail_-5xx seeDetail" data-toggle="modal"
+                                                           data-target="#seeDetailModal" href="${BillDetailURL}?bill_id=${notConfirmed.bill_id}">
+                                                            Chi tiết</a>
+                                                    </div>
                                                     <div>Đặt ngày:&nbsp;<span>${notConfirmed.created_date}</span></div>
                                                 </div>
                                                 <div class="summaryCol_15G0 summaryShipping_V2WN">
@@ -94,17 +91,17 @@
                                         </div>
                                     </c:forEach>
                                 </div>
-                                <div id="menu1" class="tab-pane fade">
+                                <div id="confirmed" class="tab-pane fade">
                                     <c:forEach var="billModel" items="${listBillModel.listResult}">
                                         <div class="orderItem_32vz">
                                             <div class="itemSummary_1BmN">
                                                 <div class="summaryCol_15G0 summaryOrder_1SfR">
-                                                    <div>Mã đơn hàng:&nbsp;<a class="summaryLink_2tGf" data-tip="Xem chi tiết đơn hàng" href="#">
-                                                        <div class="__react_component_tooltip place-bottom type-dark " id="codeOrder" data-id="tooltip"></div>
+                                                    <div>Mã đơn hàng:&nbsp;
+                                                        <a class="summaryLink_2tGf seeDetail" data-toggle="modal" data-target="#seeDetailModal"
+                                                           href="${BillDetailURL}?bill_id=${billModel.bill_id}">
                                                         #${billModel.bill_id}</a>
-                                                        <a class="summaryLink_2tGf summaryLinkDetail_-5xx" data-tip="Xem chi tiết đơn hàng"
-                                                           href="#" currentitem="false">
-                                                            <div class="__react_component_tooltip place-bottom type-dark " data-id="tooltip"></div>
+                                                        <a class="summaryLink_2tGf summaryLinkDetail_-5xx seeDetail" data-toggle="modal" data-target="#seeDetailModal"
+                                                           href="${BillDetailURL}?bill_id=${billModel.bill_id}">
                                                             Chi tiết</a></div>
                                                     <div>Đặt ngày:&nbsp;<span>${billModel.created_date}</span></div>
                                                 </div>
@@ -128,6 +125,35 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="seeDetailModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <%--<div class="modal-header">
+                <h5 class="modal-title">
+                    <span class="fw-light">Chi tiết hóa đơn</span>
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-responsive table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Tên Sản Phẩm</th>
+                            <th>Giá</th>
+                            <th>Số Lượng</th>
+                            <th>Tổng</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bodyDetail" id="bodyDetail">
+                    </tbody>
+                </table>
+            </div>--%>
         </div>
     </div>
 </div>
@@ -171,7 +197,7 @@
            let error = $('form span').map(function () {
                return $(this).val();
            }).get();
-           if (error.length == 0) {
+           if (error.length === 0) {
                let data = {};
                let formData = $('#formUpdateAcc').serializeArray();
                $.each(formData, function (i, v) {
@@ -201,6 +227,46 @@
            }
        });
    }
+
+   $('.seeDetail').click(function () {
+       $('.modal-content').empty();
+       $('#bodyDetail').empty();
+       let url = $(this).attr('href');
+       $('.modal-content').append("<div class=\"modal-header\">\n" +
+           "                <h5 class=\"modal-title\">\n" +
+           "                    <span class=\"fw-light\">Chi tiết hóa đơn</span>\n" +
+           "                </h5>\n" +
+           "                <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n" +
+           "                    <span aria-hidden=\"true\">&times;</span>\n" +
+           "                </button>\n" +
+           "            </div>\n" +
+           "            <div class=\"modal-body\">\n" +
+           "                <table class=\"table table-responsive table-bordered\">\n" +
+           "                    <thead>\n" +
+           "                        <tr>\n" +
+           "                            <th>Hình Ảnh</th>\n" +
+           "                            <th>Tên Sản Phẩm</th>\n" +
+           "                            <th>Giá</th>\n" +
+           "                            <th>Số Lượng</th>\n" +
+           "                            <th>Tổng</th>\n" +
+           "                        </tr>\n" +
+           "                    </thead>\n" +
+           "                    <tbody class=\"bodyDetail\" id=\"bodyDetail\">\n" +
+           "                    </tbody>\n" +
+           "                </table>\n" +
+           "            </div>");
+       $.get(url, function (item) {
+           item.map(data=>{
+               $('#bodyDetail').append("<tr>\n" +
+                   "<td style='width: 15%;'><img src=\""+data.product_image+"\"></td>\n" +
+                   "<td>"+data.product_name+"</td>\n" +
+                   "<td>"+data.product_price.toLocaleString()+" đ</td>\n" +
+                   "<td>"+data.quantity+"</td>\n" +
+                   "<td>"+parseInt(data.product_price * data.quantity).toLocaleString()+" đ</td>\n" +
+                   "</tr>");
+           });
+       });
+   });
 </script>
 </body>
 </html>

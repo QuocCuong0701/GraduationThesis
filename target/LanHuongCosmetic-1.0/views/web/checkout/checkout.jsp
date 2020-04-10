@@ -20,6 +20,7 @@
         </div>
     </div>
     <!-- Checkout AREA -->
+    <c:set var="cart" value="${sessionScope.model}"/>
     <div class="checkout-area">
     <div class="container">
         <div class="row">
@@ -78,7 +79,7 @@
                 </div>
             </div>
             <div class="col-md-4 col-sm-5">
-                <c:set var="cart" value="${sessionScope.model}"/>
+
                 <div class="review-order">
                     <div class="checkout-head">
                         <h2>Thông Tin Hóa Đơn</h2>
@@ -116,7 +117,7 @@
                             <input type="checkbox"> Paypal
                         </div>
                         <button type="button" class="btn">Đặt Hàng</button>--%>
-                        <a id="btnCheckout" href="" class="btn">Đặt Hàng</a>
+                        <a id="btnCheckout" target="_self" href="" class="btn">Đặt Hàng</a>
                     </div>
                 </div>
             </div>

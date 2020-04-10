@@ -57,10 +57,10 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <c:forEach var="billDetail" items="${listbilDetail.listResult}">
+                                        <c:forEach var="billDetail" items="${listBillDetail.listResult}">
                                             <tr>
                                                 <td><span style="color: red;font-style: italic;">${billDetail.product_name}</span><strong> × ${billDetail.quantity}</strong></td>
-                                                <td><span><fmt:formatNumber pattern="###,###" value="${billDetail * billDetail.product_price}"/> đ</span></td>
+                                                <td><span><fmt:formatNumber pattern="###,###" value="${billDetail.quantity * billDetail.product_price}"/> đ</span></td>
                                             </tr>
                                         </c:forEach>
                                         </tbody>
@@ -84,7 +84,7 @@
                                         <tbody>
                                         <tr>
                                             <th>Email:</th>
-                                            <td>email</td>
+                                            <td>${BillModel.email}</td>
                                         </tr>
                                         <tr>
                                             <th>Số điện thoại:</th>
@@ -103,17 +103,5 @@
             </div>
         </div>
     </div>
-
-<script>
-    $(document).ready(function () {
-        if(document.URL.indexOf("order-received")===-1){
-            // Set the URL to whatever it was plus "#loaded".
-            url = document.URL+"#loaded";
-            location = "#loaded";
-            //Reload the page using reload() method
-            location.reload(true);
-        }
-    });
-</script>
 </body>
 </html>
