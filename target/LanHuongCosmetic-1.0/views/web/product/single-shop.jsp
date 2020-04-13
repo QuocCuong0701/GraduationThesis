@@ -27,7 +27,7 @@
                         <h2>Thể Loại</h2>
                         <ul>
                             <c:forEach var="categories" items="${categories.listResult}">
-                                <li><a href="<c:url value="/product?page=1&category_id=${categories.category_id}"/>"><i class="fa fa-angle-right"></i><span style="text-transform: capitalize;">${categories.category_name}</span></a></li>
+                                <li><a href="<c:url value="/product?category_id=${categories.category_id}"/>"><i class="fa fa-angle-right"></i><span style="text-transform: capitalize;">${categories.category_name}</span></a></li>
                             </c:forEach>
                         </ul>
                     </div>

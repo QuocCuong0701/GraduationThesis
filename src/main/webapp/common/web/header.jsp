@@ -172,12 +172,11 @@
                             <li><a href="<c:url value="/product?category_id=10"/>">Dưỡng Tay</a></li>
                             <li><a href="#">Trang</a>
                                 <ul class="sub-menu">
-                                    <li><a href="<c:url value="/about-us"/>">Giới Thiệu</a></li>
+                                    <li><a href="<c:url value="/contact"/>">Liên Hệ</a></li>
                                     <li><a href="<c:url value="/cart"/>">Giỏ Hàng</a></li>
-                                    <li><a href="<c:url value="/checkout"/>">Thanh Toán</a></li>
                                 </ul>
                             </li>
-                            <li><a href="<c:url value="/contact"/>">Liên Hệ</a></li>
+                            <li><a href="<c:url value="/about-us"/>">Giới Thiệu</a></li>
                         </ul>
                     </nav>
                 </div>

@@ -50,6 +50,7 @@
                                 <thead>
                                 <tr>
                                     <%--<th><input type="checkbox" class="checkAll" id="checkAll"></th>--%>
+                                    <th>Mã đơn hàng</th>
                                     <th>Tên người nhận</th>
                                     <th>Địa chỉ nhân hàng</th>
                                     <th>Số điện thoại</th>
@@ -64,6 +65,7 @@
                                 <c:forEach var="listProducts" items="${model.listResult}">
                                     <tr>
                                         <%--<td><input type="checkbox" id="checkbox_${listProducts.user_id}" value="${listProducts.user_id}"></td>--%>
+                                        <td>${listProducts.bill_id }</td>
                                         <td>${listProducts.full_name}</td>
                                         <td>${listProducts.address}</td>
                                         <td>${listProducts.phone}</td>

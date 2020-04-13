@@ -2418,9 +2418,8 @@ body.home-2{
 .blog-img img{
 	width:100%;
 }
-.single-blog-content{}
 .blog-heading-title{
-	margin-bottom:30px;
+	margin-bottom:15px;
 }
 .blog-heading-title h1{
 	font-size:24px;
@@ -2445,9 +2444,11 @@ body.home-2{
 	float:left;
 	font-family: sans-serif;
 }
-.blog-main-content>p{
+.blog-main-content p{
+	font-size: 16px;
 	margin-bottom: 30px;
 	text-align: justify;
+	line-height: 25px;
 }
 .blog-content-bottom{
 	padding-left:55px;
@@ -3133,26 +3134,35 @@ body.home-2{
 .not-found h1{
 	font-size:48px;
 	font-weight:normal;
-	padding:60px 0;
+	padding:10px 0 20px 0;
 }
 .not-found h2{
-	font-size:60px;
+	font-size:50px;
 	font-family:"Raleway",arial;
 	margin: 15px 0;
 }
 .not-found p{
-	font-size:18px;
+	font-size:22px;
 	line-height:25px;
 	padding:0 100px;
 }
 .not-found a{
 	background:#FFA726;
 	color:#fff;
-	font-size:24px;
+	font-size:22px;
 	padding:14px;
 	display:inline-block;
-	margin-top:45px;
 	text-transform:uppercase;
+}
+.not-found a.a-refresh{
+	background:#FFA726;
+	color:#fff;
+	padding:7px;
+	display:inline-block;
+	margin-top:15px;
+	text-transform:uppercase;
+	border-radius: 10px;
+	font-size: 18px;
 }
 .not-found a:hover{
 	background:#2B82AD;
@@ -4344,4 +4354,8 @@ address {
 .alert-check{
 	color: red;
 	margin-left: 13px;
+}
+.blog-main-content address{
+	margin: 0;
+	font-size: 16px;
 }

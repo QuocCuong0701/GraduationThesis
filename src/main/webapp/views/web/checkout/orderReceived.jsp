@@ -45,7 +45,7 @@
                                             Phương thức thanh toán:<strong>Trả tiền mặt khi nhận hàng</strong>
                                         </li>
                                     </ul>
-                                    <p style="text-align: justify; font-size: 13px;">Bộ phận bán hàng sẽ gọi lại cho quý khách trong thời gian sớm nhất để chốt đơn hàng hoặc nhận thông tin bổ sung.
+                                    <p>Bộ phận bán hàng sẽ gọi lại cho quý khách trong thời gian sớm nhất để chốt đơn hàng hoặc nhận thông tin bổ sung.
                                         Quý khách có yêu cầu gì thêm vui lòng gọi holine 0333 385 398 để có hướng dẫn đầy đủ nhất.<br>
                                         Trân trọng cảm ơn quý khách!</p>
                                     <h3>Chi tiết đơn hàng</h3>

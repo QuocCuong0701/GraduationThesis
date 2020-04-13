@@ -31,8 +31,8 @@
                         <p>Giao hàng tận tay. Ngay nơi bạn ở.</p>
                     </div>
                     <div class="checkout-form">
-                        <form action="/checkout" method="post" id="formSubmit" class="form-horizontal">
-                            <input id="user_id" type="hidden" class="form-control" value="${USERMODEL.user_id}" />
+                        <form id="formSubmit" class="form-horizontal">
+                            <input id="user_id" name="user_id" type="hidden" class="form-control" value="${USERMODEL.user_id}" />
                             <div class="form-group">
                                 <label class="control-label col-md-3">
                                     Họ Và Tên <sup>*</sup>
@@ -117,7 +117,8 @@
                             <input type="checkbox"> Paypal
                         </div>
                         <button type="button" class="btn">Đặt Hàng</button>--%>
-                        <a id="btnCheckout" target="_self" href="" class="btn">Đặt Hàng</a>
+                        <%--<a id="btnCheckout" target="_self" href="" class="btn">Đặt Hàng</a>--%>
+                        <button id="btnCheckout" class="btn">Đặt Hàng</button>
                     </div>
                 </div>
             </div>
@@ -134,20 +135,7 @@
         });
         data["created_date"] = Date.parse((new Date()).toISOString());
 
-        let user_id = $('#user_id').val();
-        let link;
-
-        if (user_id !== "") {
-            data["user_id"] = user_id;
-            link = "/checkout/order-received?user_id=" + user_id + "&created_date=" + data.created_date;
-        } else{
-            link = "/checkout/order-received?created_date=" + data.created_date;
-        }
-
         addBill(data);
-
-        $('#btnCheckout').attr('target', '_self');
-        $('#btnCheckout').attr('href', link);
     });
 
     function addBill(data) {
@@ -158,6 +146,7 @@
             data: JSON.stringify(data),
             dataType: 'json',
             success: function (result) {
+                console.log("addBill: "+result);
                 let billDetail = {};
                 <c:forEach var="cart" items="${cart}">
                     billDetail["bill_id"] = result.bill_id;
@@ -165,6 +154,7 @@
                     billDetail["quantity"] = ${cart.value.quantity};
                     addBillDetail(billDetail);
                 </c:forEach>
+                window.location.href = "/checkout/order-received?bill_id=" + result.bill_id;
             },
             error: function (error) {
                 console.log("ERROR" + error);
@@ -179,8 +169,8 @@
             contentType: 'application/json',
             data: JSON.stringify(data),
             dataType: 'json',
-            success: function () {
-                console.log("Success");
+            success: function (result) {
+                console.log("addBillDetail: "+result);
             },
             error: function (error) {
                 console.log("ERROR" + error);

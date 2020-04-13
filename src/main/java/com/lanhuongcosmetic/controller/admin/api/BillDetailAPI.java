@@ -38,5 +38,6 @@ public class BillDetailAPI extends HttpServlet {
         resp.setContentType("application/json");
         BillDetailModel billDetailModel = HttpUtil.of(req.getReader()).toModel(BillDetailModel.class);
         iBillDetailService.save(billDetailModel);
+        mapper.writeValue(resp.getOutputStream(), billDetailModel);
     }
 }

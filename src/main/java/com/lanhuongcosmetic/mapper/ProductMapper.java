@@ -24,7 +24,7 @@ public class ProductMapper implements RowMapper<ProductModel> {
             products.setUpdated_date(rs.getTimestamp("updated_date"));
 
             return products;
-        } catch (SQLException e){
+        } catch (SQLException e) {
             return null;
         }
     }
