@@ -3259,7 +3259,7 @@ body.home-2{
 19. Single shop page
 ------------------------------*/
 .single-shop{
-	margin-bottom:30px;
+	margin-bottom:70px;
 	overflow:hidden;
 }
 .single-shop:hover .single-product-img .secondary-img{
@@ -3267,9 +3267,6 @@ body.home-2{
 }
 .single-shop:hover .single-product-img>a::before{
 	opacity:1;
-}
-.single-shop-content{
-	padding: 30px 0;
 }
 .single-shop .single-product-img img {
   border-bottom: 1px solid #e8e8e8;
@@ -3293,7 +3290,7 @@ body.home-2{
 	margin-right:5px;
 }
 .shop-content-bottom p{
-	font-family:roboto;
+	/*font-family:roboto;*/
 	text-align:justify;
 }
 .shop-button button, .shop-button a{
@@ -3355,6 +3352,9 @@ body.home-2{
 }
 .order_details li:last-of-type {
 	border: none
+}
+.order_details .amount{
+	color: red;
 }
 address {
 	border-left: 3px solid #f45245;

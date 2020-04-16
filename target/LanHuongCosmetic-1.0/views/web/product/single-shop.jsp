@@ -52,17 +52,18 @@
                                 <div class="result-short-view">
                                     <div class="result-short">
                                         <div class="result-short-selection">
-                                            <select>
-                                                <option>Default sorting</option>
-                                                <option>Sort by popularity</option>
-                                                <option>Sort by average rating</option>
+                                            <select value="Mặc định" id="sort-selection">
+                                                <option value="/single-shop?page=1">Mặc định</option>
+                                                <option value="/single-shop?page=1&sortName=product_price&sortBy=desc">Giá cao</option>
+                                                <option value="/single-shop?page=1&sortName=product_price&sortBy=asc">Giá thấp</option>
+                                                <option value="/single-shop?page=1&sortName=buy&sortBy=desc">Độ phổ biến</option>
                                             </select>
                                             <i class="fa fa-sort-alpha-asc"></i>
                                         </div>
                                     </div>
                                     <div class="view-mode">
-                                        <a href="<c:url value="/product?page=1"/>"><i class="fa fa-th-large"></i></a>
-                                        <a href="<c:url value="/single-shop?page=1"/>" class="active"><i class="fa fa-th-list"></i></a>
+                                        <a href="<c:url value="/product?page=1"/>" title="Dạng lưới"><i class="fa fa-th-large"></i></a>
+                                        <a href="<c:url value="/single-shop?page=1"/>" class="active" title="Dạng danh sách"><i class="fa fa-th-list"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -76,11 +77,11 @@
                                         <div class="single-product-img">
                                             <a href="<c:url value="/product-detail?product_id=${listProducts.product_id}"/>">
                                                 <c:if test="${listProducts.product_image != null}">
-                                                    <img class="primary-img" src="<c:url value="${listProducts.product_image}"/>" alt="item" style="width: 264px;height: 230px;" />
-                                                    <img class="secondary-img" src="<c:url value="${listProducts.product_image}"/>" alt="item" style="width: 264px; height: 230px;" />
+                                                    <img class="primary-img" src="<c:url value="${listProducts.product_image}"/>" alt="item" style="width: 264px;" />
+                                                    <img class="secondary-img" src="<c:url value="${listProducts.product_image}"/>" alt="item" style="width: 264px;" />
                                                 </c:if>
                                                 <c:if test="${listProducts.product_image == null}">
-                                                    <img class="primary-img" src="<c:url value="/template/web/img/notfound.png"/>" alt="item" style="width: 264px;height: 230px;" />
+                                                    <img class="primary-img" src="<c:url value="/template/web/img/notfound.png"/>" alt="item" style="width: 264px;" />
                                                 </c:if>
                                             </a>
                                         </div>
@@ -120,6 +121,8 @@
                 <div class="shop-pagination floatright">
                     <ul class="pagination" id="pagination"></ul>
                     <input type="hidden" value="" id="page" name="page"/>
+                    <input type="hidden" value="${model.sortName}" id="sortName" name="sortName"/>
+                    <input type="hidden" value="${model.sortBy}" id="sortBy" name="sortBy"/>
                 </div>
             </div>
         </div>
@@ -142,6 +145,11 @@
                     }
                 }
             });
+        });
+
+        $('#sort-selection').change(function (e) {
+            e.preventDefault();
+            window.location.href = $('#sort-selection').val();
         });
     </script>
 </body>

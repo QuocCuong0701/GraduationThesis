@@ -35,13 +35,23 @@ public class ProductController extends HttpServlet {
         Pageble pageble = null;
         String view = "";
         String act = req.getParameter("act");
+        String sortName = req.getParameter("sortName");
+        String sortBy = req.getParameter("sortBy");
 
         if (req.getRequestURI().endsWith("product")) {
-            pageble = new PageRequest(productModel.getPage(), 9, new Sorter("product_name", "asc"));
+            if (sortName != null && sortBy != null) {
+                pageble = new PageRequest((productModel.getPage()), 9, new Sorter(sortName, sortBy));
+            } else {
+                pageble = new PageRequest(productModel.getPage(), 9, new Sorter("product_name", "asc"));
+            }
             view = "/views/web/product/product.jsp";
         }
         if (req.getRequestURI().endsWith("single-shop")) {
-            pageble = new PageRequest(productModel.getPage(), 6, new Sorter("product_name", "asc"));
+            if (sortName != null && sortBy != null) {
+                pageble = new PageRequest((productModel.getPage()), 6, new Sorter(sortName, sortBy));
+            } else {
+                pageble = new PageRequest(productModel.getPage(), 6, new Sorter("product_name", "asc"));
+            }
             view = "/views/web/product/single-shop.jsp";
         }
 

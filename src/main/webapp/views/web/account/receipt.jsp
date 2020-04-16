@@ -167,10 +167,6 @@
            });
        });
 
-       $('.oh-yeah').click(function () {
-           alert($(this).val());
-       });
-
        $('#formUpdateAcc').submit(function (e) {
            e.preventDefault();
            let userEmail = $('#inputEmail').val();

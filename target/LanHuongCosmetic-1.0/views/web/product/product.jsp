@@ -52,17 +52,18 @@
                                 <div class="result-short-view">
                                     <div class="result-short">
                                         <div class="result-short-selection">
-                                            <select>
-                                                <option>Default sorting</option>
-                                                <option>Sort by popularity</option>
-                                                <option>Sort by average rating</option>
+                                            <select value="Sắp xếp" id="sort-selection">
+                                                <option value="/product?page=1">Mặc định</option>
+                                                <option value="/product?page=1&sortName=product_price&sortBy=desc">Giá cao</option>
+                                                <option value="/product?page=1&sortName=product_price&sortBy=asc">Giá thấp</option>
+                                                <option value="/product?page=1&sortName=buy&sortBy=desc">Độ phổ biến</option>
                                             </select>
                                             <i class="fa fa-sort-alpha-asc"></i>
                                         </div>
                                     </div>
                                     <div class="view-mode">
-                                        <a href="<c:url value="/product?page=1"/>" class="active"><i class="fa fa-th-large"></i></a>
-                                        <a href="<c:url value="/single-shop?page=1"/>"><i class="fa fa-th-list"></i></a>
+                                        <a href="<c:url value="/product?page=1"/>" class="active" title="Dạng lưới"><i class="fa fa-th-large"></i></a>
+                                        <a href="<c:url value="/single-shop?page=1"/>" title="Dạng danh sách"><i class="fa fa-th-list"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -116,6 +117,8 @@
                 <div class="shop-pagination floatright">
                     <ul class="pagination" id="pagination"></ul>
                     <input type="hidden" value="" id="page" name="page"/>
+                    <input type="hidden" value="${model.sortName}" id="sortName" name="sortName"/>
+                    <input type="hidden" value="${model.sortBy}" id="sortBy" name="sortBy"/>
                 </div>
             </div>
         </div>
@@ -129,15 +132,20 @@
         jQuery(document).ready(function ($) {
             window.pagObj = $('#pagination').twbsPagination({
                 totalPages: totalPages,
-                visiblePages: 10,
+                visiblePages: 9,
                 startPage: currentPage,
                 onPageClick: function (event, page) {
-                    if (currentPage != page) {
+                    if (currentPage !== page) {
                         $('#page').val(page);
                         $('#formListProducts').submit();
                     }
                 }
             });
+        });
+
+        $('#sort-selection').change(function (e) {
+           e.preventDefault();
+           window.location.href = $('#sort-selection').val();
         });
     </script>
 </body>
