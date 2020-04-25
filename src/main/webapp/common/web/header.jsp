@@ -33,6 +33,8 @@
                         <c:if test="${not empty USERMODEL}">
                             <p>Xin chào <span style="font-weight: bold">${USERMODEL.user_name}</span>!</p>
                         </c:if>
+                        <p><a class="summaryLink_2tGf summaryLinkDetail_-5xx" href="<c:url value="/billExport/create?bill_id=6"/>">
+                            In hóa đơn</a></p>
                     </div>
                 </div>
                     <div class="col-md-8 col-sm-8 col-xs-12">

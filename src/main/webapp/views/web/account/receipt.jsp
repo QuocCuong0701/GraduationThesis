@@ -102,7 +102,10 @@
                                                         #${billModel.bill_id}</a>
                                                         <a class="summaryLink_2tGf summaryLinkDetail_-5xx seeDetail" data-toggle="modal" data-target="#seeDetailModal"
                                                            href="${BillDetailURL}?bill_id=${billModel.bill_id}">
-                                                            Chi tiết</a></div>
+                                                            Chi tiết</a>
+                                                        <a class="summaryLink_2tGf summaryLinkDetail_-5xx" href="<c:url value="/billExport/create?bill_id=${billModel.bill_id}"/>">
+                                                            In hóa đơn</a>
+                                                    </div>
                                                     <div>Đặt ngày:&nbsp;<span>${billModel.created_date}</span></div>
                                                 </div>
                                                 <div class="summaryCol_15G0 summaryShipping_V2WN">
