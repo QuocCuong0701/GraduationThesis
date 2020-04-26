@@ -4104,11 +4104,13 @@ address {
 	text-align: right;
 	display: none
 }
-
+.orderItem_32vz .itemSummary_1BmN .summaryLink_2tGf:hover{
+	color: red;
+}
 .orderItem_32vz .itemSummary_1BmN .summaryLink_2tGf {
 	color: #06f;
-	margin-right: .6rem;
-	padding-right: .6rem;
+	margin-right: .5rem;
+	padding-right: .5rem;
 	border-right: none
 }
 
@@ -4160,9 +4162,12 @@ address {
 
 	.orderItem_32vz .itemSummary_1BmN .summaryLink_2tGf {
 		color: #06f;
-		margin-right: .6rem;
-		padding-right: .6rem;
+		margin-right: .5rem;
+		padding-right: .5rem;
 		border-right: 1px solid #d7d7d7
+	}
+	.orderItem_32vz .itemSummary_1BmN .summaryLink_2tGf:hover{
+		color: red;
 	}
 
 	.orderItem_32vz .itemSummary_1BmN .summaryLink_2tGf:last-child {
@@ -4170,6 +4175,7 @@ address {
 		padding: 0;
 		border-right: 0
 	}
+
 
 	.orderItem_32vz .itemSummary_1BmN .tooltip_1Cr6 {
 		background-color: #6cc086;

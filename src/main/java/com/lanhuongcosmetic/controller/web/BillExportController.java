@@ -25,7 +25,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-@WebServlet(urlPatterns = {"/billExport", "/billExport/create", "/billExport/download"})
+@WebServlet(urlPatterns = {"/billExport"})
 public class BillExportController extends HttpServlet {
     @Inject
     private IBillService iBillService;
@@ -58,8 +58,11 @@ public class BillExportController extends HttpServlet {
     // Create Bill
     private void createBill(String fullPath, String bill_id) throws IOException, DocumentException {
         Document document = new Document(PageSize.A4);
-        ServletContext context = getServletContext();
-        BaseFont baseFont = BaseFont.createFont(context.getRealPath("/template/web/fonts/OpenSans-Regular.ttf"), BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
+        document.addAuthor("Pham Quoc Cuong - quoc.cuong.yb.dhtb@gmail.com");
+        document.addSubject("Exporting bill for Lan Huong Cosmetic's customer.");
+        document.addTitle("Customer Bill");
+        ServletContext fontContext = getServletContext();
+        BaseFont baseFont = BaseFont.createFont(fontContext.getRealPath("/template/web/fonts/OpenSans-Regular.ttf"), BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
         Font boldFont = new Font(baseFont, 16, Font.BOLD);
         Font catFont = new Font(baseFont, 11);
         try {
@@ -145,7 +148,7 @@ public class BillExportController extends HttpServlet {
 
             // Footer
             PdfPTable signature = new PdfPTable(3);
-            signature.setTotalWidth(new float[]{55, 45, 60});
+            signature.setTotalWidth(new float[]{55, 35, 70});
             signature.addCell(getCell(new Paragraph("Người mua hàng", new Font(baseFont, 12, Font.BOLD)), PdfPCell.ALIGN_CENTER, PdfPCell.NO_BORDER));
             signature.addCell(getCell(new Paragraph("   ", new Font(baseFont, 12, Font.BOLD)), PdfPCell.ALIGN_CENTER, PdfPCell.NO_BORDER));
             signature.addCell(getCell(new Paragraph("Người bán hàng", new Font(baseFont, 12, Font.BOLD)), PdfPCell.ALIGN_CENTER, PdfPCell.NO_BORDER));
@@ -154,7 +157,7 @@ public class BillExportController extends HttpServlet {
             signature.addCell(getCell(new Paragraph("(Ký, ghi rõ họ tên, đóng dấu)", new Font(baseFont, 12, Font.ITALIC)), PdfPCell.ALIGN_CENTER, PdfPCell.NO_BORDER));
             signature.addCell(getCell(new Paragraph("   "), PdfPCell.ALIGN_CENTER, PdfPCell.NO_BORDER));
             signature.addCell(getCell(new Paragraph("   "), PdfPCell.ALIGN_CENTER, PdfPCell.NO_BORDER));
-            //signature.addCell(getCell(new Paragraph("(Ký, ghi rõ họ tên, đóng dấu)", new Font(baseFont, 12, Font.ITALIC)), PdfPCell.ALIGN_CENTER, PdfPCell.NO_BORDER));
+
             ServletContext image = getServletContext();
             Image img = Image.getInstance(image.getRealPath("/template/web/img/stamp.jpg"));
             PdfPCell cellImg = new PdfPCell(img);
@@ -171,13 +174,13 @@ public class BillExportController extends HttpServlet {
     }
 
     // Download Bill
-    private void downloadBill(String fullPath) throws IOException {
+    private void downloadBill(String fullPath, HttpServletResponse resp, String bill_id) throws IOException {
         Path path = Paths.get(fullPath);
         byte[] data = Files.readAllBytes(path);
 
         // Thiết lập thông tin trả về
-        /*resp.setContentType("application/octet-stream");
-        resp.setHeader("Content-disposition", "attachment; filename=Hello.pdf");
+        resp.setContentType("application/octet-stream");
+        resp.setHeader("Content-disposition", "attachment; filename=BillNo_" + bill_id + " - Lan Huong Cosmetics .pdf");
         resp.setContentLength(data.length);
         InputStream inputStream = new BufferedInputStream(new ByteArrayInputStream(data));
 
@@ -189,7 +192,7 @@ public class BillExportController extends HttpServlet {
             outputStream.write(buffer, 0, bytesRead);
         }
         inputStream.close();
-        outputStream.close();*/
+        outputStream.close();
     }
 
     @Override
@@ -198,15 +201,11 @@ public class BillExportController extends HttpServlet {
         String bill_id = req.getParameter("bill_id");
         String fullPath = context.getRealPath("/Bill_PDF/BillNo_" + bill_id + ".pdf");
 
-        if (req.getRequestURI().endsWith("/billExport/create")) {
-            try {
-                createBill(fullPath, bill_id);
-            } catch (DocumentException e) {
-                e.printStackTrace();
-            }
-        }
-        if (req.getRequestURI().endsWith("/billExport/download")) {
-            downloadBill(fullPath);
+        try {
+            createBill(fullPath, bill_id);
+            downloadBill(fullPath, resp, bill_id);
+        } catch (DocumentException e) {
+            e.printStackTrace();
         }
     }
 }

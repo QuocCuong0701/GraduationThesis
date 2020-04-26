@@ -103,8 +103,8 @@
                                                         <a class="summaryLink_2tGf summaryLinkDetail_-5xx seeDetail" data-toggle="modal" data-target="#seeDetailModal"
                                                            href="${BillDetailURL}?bill_id=${billModel.bill_id}">
                                                             Chi tiết</a>
-                                                        <a class="summaryLink_2tGf summaryLinkDetail_-5xx" href="<c:url value="/billExport/create?bill_id=${billModel.bill_id}"/>">
-                                                            In hóa đơn</a>
+                                                        <a class="summaryLink_2tGf summaryLinkDetail_-5xx downloadBill" href="<c:url value="/billExport?bill_id=${billModel.bill_id}"/>">
+                                                           <i class="fa fa-print"></i> In hóa đơn</a>
                                                     </div>
                                                     <div>Đặt ngày:&nbsp;<span>${billModel.created_date}</span></div>
                                                 </div>
@@ -135,28 +135,6 @@
 <div class="modal fade" id="seeDetailModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
-            <%--<div class="modal-header">
-                <h5 class="modal-title">
-                    <span class="fw-light">Chi tiết hóa đơn</span>
-                </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <table class="table table-responsive table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Tên Sản Phẩm</th>
-                            <th>Giá</th>
-                            <th>Số Lượng</th>
-                            <th>Tổng</th>
-                        </tr>
-                    </thead>
-                    <tbody class="bodyDetail" id="bodyDetail">
-                    </tbody>
-                </table>
-            </div>--%>
         </div>
     </div>
 </div>
