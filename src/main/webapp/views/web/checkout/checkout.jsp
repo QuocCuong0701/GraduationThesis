@@ -107,17 +107,12 @@
                         </div>
                     </div>
                     <div class="payment-method">
-                        <%--<h2>PAYMENT METHOD</h2>
+                        <%--<h2>PHUƯƠNG THỨC THANH TOÁN</h2>
                         <div class="payment-checkbox">
-                            <input type="checkbox" checked> Direct Bank Transfer
-                        </div>
-                        <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order wont be shipped until the funds have cleared in our account.</p>
-                        <div class="payment-checkbox">
-                            <input type="checkbox"> Chaque Payment <br>
-                            <input type="checkbox"> Paypal
+                            <input id="directCheckout" class="checkoutMethod" type="checkbox" name="checkoutMethod" value="check1"> Thanh toán trực tiếp <br>
+                            <input id="paypalCheckout" class="checkoutMethod" type="checkbox" name="checkoutMethod" value="check2"> Thanh toán qua Paypal
                         </div>
                         <button type="button" class="btn">Đặt Hàng</button>--%>
-                        <%--<a id="btnCheckout" target="_self" href="" class="btn">Đặt Hàng</a>--%>
                         <button id="btnCheckout" class="btn">Đặt Hàng</button>
                     </div>
                 </div>
@@ -127,6 +122,17 @@
 </div>
 
 <script>
+    $(".checkoutMethod:checkbox").on('click', function() {
+        let box = $(this);
+        if (box.is(":checked")) {
+            let group = "input:checkbox[name='" + box.attr("name") + "']";
+            $(group).prop("checked", false);
+            box.prop("checked", true);
+        } else {
+            box.prop("checked", false);
+        }
+    });
+
     $('#btnCheckout').click(function () {
         let data = {};
         let formData = $('#formSubmit').serializeArray();

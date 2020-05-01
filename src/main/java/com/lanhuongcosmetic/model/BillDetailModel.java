@@ -9,6 +9,15 @@ public class BillDetailModel extends AbstractModel<BillDetailModel> {
     private double product_price;
     private int quantity;
 
+    public BillDetailModel() {
+    }
+
+    public BillDetailModel(String product_name, double product_price, int quantity) {
+        this.product_name = product_name;
+        this.product_price = product_price;
+        this.quantity = quantity;
+    }
+
     public int getBill_detail_id() {
         return bill_detail_id;
     }
