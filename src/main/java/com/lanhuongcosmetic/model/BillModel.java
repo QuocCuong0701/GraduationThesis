@@ -11,6 +11,27 @@ public class BillModel extends AbstractModel<BillModel> {
     private String note;
     private boolean confirmed;
 
+    public BillModel() {
+    }
+
+    public BillModel(int user_id, String full_name, String address, String email, String phone, double total, String note) {
+        this.user_id = user_id;
+        this.full_name = full_name;
+        this.address = address;
+        this.email = email;
+        this.phone = phone;
+        this.total = total;
+        this.note = note;
+    }
+    public BillModel( String full_name, String address, String email, String phone, double total, String note) {
+        this.full_name = full_name;
+        this.address = address;
+        this.email = email;
+        this.phone = phone;
+        this.total = total;
+        this.note = note;
+    }
+
     public String getFull_name() {
         return full_name;
     }

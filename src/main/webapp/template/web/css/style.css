@@ -2450,6 +2450,20 @@ body.home-2{
 	text-align: justify;
 	line-height: 25px;
 }
+.blog-main-content button{
+	width: 150px;
+	background: #FFA726;
+	color: #fff;
+	border-radius: 2px;
+	transition: all .4s;
+	text-transform: uppercase;
+	margin-top: 15px;
+	margin-left: 450px;
+}
+.blog-main-content button:hover{
+	background:#2B82AD;
+	color:#fff;
+}
 .blog-content-bottom{
 	padding-left:55px;
 }

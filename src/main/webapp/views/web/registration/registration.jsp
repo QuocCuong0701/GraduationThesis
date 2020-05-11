@@ -19,9 +19,9 @@
                     Đăng Ký Tài Khoản
                 </span>
 
-                <c:if test="${not empty message}">
+                <c:if test="${not empty messageResponse}">
                     <div class="alert alert-${alert}" style="border-radius: 25px;">
-                            ${message}
+                            ${messageResponse}
                     </div>
                 </c:if>
 

@@ -20,12 +20,7 @@ public class UserAPI extends HttpServlet {
     private IUserService iUserService;
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("application/json");
@@ -33,7 +28,7 @@ public class UserAPI extends HttpServlet {
         List<UserModel> allUser = iUserService.findAllUserName();
         boolean check = true;
         for (UserModel userModel : allUser) {
-            if (addUser.getUser_name().equalsIgnoreCase(userModel.getUser_name())) {
+            if (addUser.getUser_name().equalsIgnoreCase(userModel.getUser_name()) || addUser.getUser_email().equalsIgnoreCase(userModel.getUser_email())) {
                 check = false;
                 break;
             }
@@ -45,7 +40,7 @@ public class UserAPI extends HttpServlet {
     }
 
     @Override
-    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("application/json");
@@ -55,7 +50,7 @@ public class UserAPI extends HttpServlet {
     }
 
     @Override
-    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         req.setCharacterEncoding("UTF-8");
         resp.setContentType("application/json");

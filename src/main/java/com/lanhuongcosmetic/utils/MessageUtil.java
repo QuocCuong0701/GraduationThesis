@@ -25,7 +25,7 @@ public class MessageUtil {
 				messageResponse = "Tạo tài khoản thành công.";
 				alert = "success";
 			} else if (message.equals("create_account_error")) {
-				messageResponse = "Tên đăng nhập đã tồn tại.";
+				messageResponse = "Tên đăng nhập hoặc tài khoản email đã tồn tại.";
 				alert = "danger";
 			}
 			request.setAttribute("messageResponse", messageResponse);

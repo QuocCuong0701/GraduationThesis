@@ -199,7 +199,7 @@ public class BillExportController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ServletContext context = getServletContext();
         String bill_id = req.getParameter("bill_id");
-        String fullPath = context.getRealPath("/Bill_PDF/BillNo_" + bill_id + ".pdf");
+        String fullPath = context.getRealPath("/BillNo_" + bill_id + ".pdf");
 
         try {
             createBill(fullPath, bill_id);
