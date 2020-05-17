@@ -7,6 +7,7 @@ import com.lanhuongcosmetic.model.ProductModel;
 import com.lanhuongcosmetic.service.ICategoryService;
 import com.lanhuongcosmetic.service.IProductService;
 import com.lanhuongcosmetic.utils.FormUtil;
+import com.lanhuongcosmetic.utils.SessionUtil;
 
 import javax.inject.Inject;
 import javax.servlet.RequestDispatcher;
@@ -75,6 +76,7 @@ public class CartController extends HttpServlet {
         }
 
         httpSession.setAttribute(SystemConstant.MODEL, cartModels);
+        SessionUtil.getInstance().putValue(req, "cartModels", cartModels);
         if (cartModels != null) {
             httpSession.setAttribute("totalPrice", totalPrice(cartModels));
             httpSession.setAttribute("totalQuantity", totalQuantity(cartModels));

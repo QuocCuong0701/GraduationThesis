@@ -18,7 +18,7 @@
         </ul>
     </div>
 </div>
-
+<c:set var="cart" value="${sessionScope.model}"/>
 <div class="Single-blog-area">
     <div class="container">
         <div class="row">
@@ -29,7 +29,7 @@
                             <div class="blog-heading-title fix">
                                 <h1>Vui lòng xem lại thông tin trước khi thanh toán.</h1>
                             </div>
-                            <form action="<c:url value="/execute_payment"/>" method="post">
+                            <form id="submitForm" action="<c:url value="/execute_payment"/>" method="post">
                                 <div class="blog-main-content fix">
                                     <h3 style="width: 1078px">Chi tiết giao dịch</h3>
                                     <table class="table table-bordered tableOrderReceived">
@@ -42,14 +42,12 @@
                                         </tr>
                                         <tr>
                                             <td>Tạm tính</td>
-                                            <td><fmt:formatNumber pattern="###,###"
-                                                                  value="${transaction.amount.details.subtotal}"/> đ
+                                            <td><fmt:formatNumber pattern="###,###" value="${transaction.amount.details.subtotal}"/> đ
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Tổng</td>
-                                            <td><fmt:formatNumber pattern="###,###"
-                                                                  value="${transaction.amount.total}"/> đ
+                                            <td><fmt:formatNumber pattern="###,###" value="${transaction.amount.total}"/> đ
                                             </td>
                                         </tr>
                                         </tbody>
@@ -72,7 +70,12 @@
                                         ${shippingAddress.line1}, ${shippingAddress.city}, ${shippingAddress.state}, ${shippingAddress.countryCode}<br/>
                                         Mã bưu điện: ${shippingAddress.postalCode}
                                     </address>
-                                    <button type="submit" class="btn">Đặt Hàng</button>
+                                    <input type="hidden" name="user_id" value="${USERMODEL.user_id}"/>
+                                    <input type="hidden" name="created_date" id="created_date" value=""/>
+                                    <c:forEach var="rows" items="${cartModels}">
+                                        <input name="product_id" type="hidden" value="${rows.value.productModel.product_id}">
+                                    </c:forEach>
+                                    <button id="btnSub" type="submit" class="btn">Đặt Hàng</button>
                                 </div>
                             </form>
                         </div>
@@ -83,5 +86,12 @@
         </div>
     </div>
 </div>
+<script>
+    $('#btnSub').click(function (e) {
+        e.preventDefault();
+        $('#created_date').val(Date.parse((new Date()).toISOString()));
+        $('#submitForm').submit();
+    });
+</script>
 </body>
 </html>
