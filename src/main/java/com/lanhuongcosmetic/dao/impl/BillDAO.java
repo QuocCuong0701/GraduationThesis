@@ -35,11 +35,11 @@ public class BillDAO extends AbstractDAO<BillModel> implements IBillDAO {
         if (billModel.getUser_id() != 0) {
             sql.append("(user_id, full_name, address, email, phone, total, created_date, confirmed) VALUES (?,?,?,?,?,?,?,?)");
             return insert(sql.toString(), billModel.getUser_id(), billModel.getFull_name(), billModel.getAddress(),
-                    billModel.getEmail(), billModel.getPhone(), billModel.getTotal(), billModel.getCreated_date(), 0);
+                    billModel.getEmail(), billModel.getPhone(), billModel.getTotal(), billModel.getCreated_date(), 1);
         } else {
             sql.append("(full_name, address, email, phone, total, created_date, confirmed) VALUES (?,?,?,?,?,?,?)");
             return insert(sql.toString(), billModel.getFull_name(), billModel.getAddress(),
-                    billModel.getEmail(), billModel.getPhone(), billModel.getTotal(), billModel.getCreated_date(), 0);
+                    billModel.getEmail(), billModel.getPhone(), billModel.getTotal(), billModel.getCreated_date(), 1);
         }
     }
 

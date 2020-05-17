@@ -34,6 +34,8 @@
                         <div class="checkout-form">
                             <div class="form-horizontal">
                                 <input id="user_id" name="user_id" type="hidden" class="form-control" value="${USERMODEL.user_id}" />
+                                <input name="user_name" type="hidden"  value="${USERMODEL.user_name}" />
+                                <input name="user_email" type="hidden"  value="${USERMODEL.user_email}" />
                                 <div class="form-group">
                                     <label class="control-label col-md-3">
                                         Họ Và Tên <sup>*</sup>
