@@ -25,6 +25,13 @@
                     </div>
                 </c:if>
 
+                <div class="wrap-input100 validate-input" data-validate = "Nhập họ và tên. Ví dụ: Phạm Văn A">
+                    <input class="input100" type="text" name="user_full_name" placeholder="Họ và tên">
+                    <span class="focus-input100"></span>
+                    <span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+                </div>
                 <div class="wrap-input100 validate-input" data-validate = "Nhập email hợp lệ. Ví dụ: ex@abc.xyz">
                     <input class="input100" type="text" name="user_email" placeholder="Email">
                     <span class="focus-input100"></span>

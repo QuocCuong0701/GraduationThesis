@@ -3,6 +3,7 @@ package com.lanhuongcosmetic.model;
 public class UserModel extends AbstractModel<UserModel> {
     private int user_id;
     private String user_name;
+    private String user_full_name;
     private String user_email;
     private String user_pass;
     private boolean user_role;
@@ -21,6 +22,18 @@ public class UserModel extends AbstractModel<UserModel> {
 
     public void setUser_name(String user_name) {
         this.user_name = user_name;
+    }
+
+    public String getUser_full_name() {
+        return user_full_name;
+    }
+
+    public void setUser_full_name(String user_full_name) {
+        this.user_full_name = user_full_name;
+    }
+
+    public boolean isUser_role() {
+        return user_role;
     }
 
     public String getUser_email() {

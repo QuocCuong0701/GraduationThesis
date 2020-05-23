@@ -34,6 +34,7 @@ public class AuthorizePaymentServlet extends HttpServlet {
         String user_id = request.getParameter("user_id");
         String full_name = request.getParameter("full_name");
         String user_name = request.getParameter("user_name");
+        String user_full_name = request.getParameter("user_full_name");
         String user_email = request.getParameter("user_email");
         String address = request.getParameter("address");
         String email = request.getParameter("email");
@@ -55,10 +56,10 @@ public class AuthorizePaymentServlet extends HttpServlet {
         BillModel billModel;
         assert false;
         if (!user_id.equals("")) {
-            billModel = new BillModel(Integer.parseInt(user_id), user_name, full_name + ", " + address, user_email, phone, Double.parseDouble(total), note);
+            billModel = new BillModel(Integer.parseInt(user_id), user_full_name, full_name + ", " + address, user_email, phone, Double.parseDouble(total), note);
             billModel.setCreated_date(Timestamp.valueOf(df.format(ts)));
         } else {
-            billModel = new BillModel(user_name, full_name + ", " + address, user_email, phone, Double.parseDouble(total), note);
+            billModel = new BillModel(user_full_name, full_name + ", " + address, user_email, phone, Double.parseDouble(total), note);
             billModel.setCreated_date(Timestamp.valueOf(df.format(ts)));
         }
 

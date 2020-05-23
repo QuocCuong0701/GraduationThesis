@@ -31,7 +31,7 @@
                             <p>Chào mừng quý khách!</p>
                         </c:if>
                         <c:if test="${not empty USERMODEL}">
-                            <p>Xin chào <span style="font-weight: bold">${USERMODEL.user_name}</span>!</p>
+                            <p>Xin chào <span style="font-weight: bold">${USERMODEL.user_full_name}</span>!</p>
                         </c:if>
                     </div>
                 </div>

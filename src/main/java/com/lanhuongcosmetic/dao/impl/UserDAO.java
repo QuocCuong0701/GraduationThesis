@@ -19,9 +19,9 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO {
 
     @Override
     public int save(UserModel userModel) {
-        StringBuilder sql = new StringBuilder("INSERT INTO user (user_name, user_email, user_pass, user_role, created_date)");
-        sql.append(" VALUES (?,?,?,?,?)");
-        return insert(sql.toString(), userModel.getUser_name(), userModel.getUser_email(),
+        StringBuilder sql = new StringBuilder("INSERT INTO user (user_name, user_full_name, user_email, user_pass, user_role, created_date)");
+        sql.append(" VALUES (?,?,?,?,?,?)");
+        return insert(sql.toString(), userModel.getUser_name(), userModel.getUser_full_name(), userModel.getUser_email(),
                 userModel.getUser_pass(), 1, userModel.getCreated_date());
     }
 
@@ -52,7 +52,7 @@ public class UserDAO extends AbstractDAO<UserModel> implements IUserDAO {
     @Override
     public List<UserModel> findAll() {
         String sql = "SELECT * FROM user";
-        return query(sql,new UserMapper());
+        return query(sql, new UserMapper());
     }
 
     @Override

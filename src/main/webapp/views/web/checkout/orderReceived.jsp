@@ -94,7 +94,7 @@
                                         </tbody>
                                     </table>
                                     <h3>Địa chỉ thanh toán</h3>
-                                    <address>${BillModel.full_name}<br>${BillModel.address}</address>
+                                    <address>Người thanh toán: ${BillModel.full_name}<br>Người nhận hàng: ${BillModel.address}</address>
                                 </div>
                             </div>
                             <%--<div class="blog-main-content fix">
