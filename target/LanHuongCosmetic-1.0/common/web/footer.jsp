@@ -86,7 +86,10 @@
             <div class="row">
                 <div class="col-md-6 col-sm-6">
                     <div class="copyright">
-                        Copyrignt@2018 <a href="https://freethemescloud.com/" target="_blank">Free themes Cloud </a>/ ALL RIGHTS RESERVED
+                        Copyrignt@2018 <a href="https://freethemescloud.com/" target="_blank">Free themes Cloud </a>/ ALL RIGHTS RESERVED<br/>
+                        2020 @ Developed by Phạm Quốc Cường - 1141360205 - Software Engineering 3 <br/>
+                        Contact: (+84) 0333 853 98<br/>
+                        Email: <a href="mailto:quoc.cuong.yb.dhtb@gmail.com">quoc.cuong.yb.dhtb@gmail.com</a>
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-6">

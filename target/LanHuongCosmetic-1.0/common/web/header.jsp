@@ -274,7 +274,7 @@
     });
     $(document).change(function (e) {
         e.preventDefault();
-        link = "/product?act=search&product_name=" + product_name + "&category_id=" + category_id;
+        link = "/lanhuongcosmetic/product?act=search&product_name=" + product_name + "&category_id=" + category_id;
         $('#search').attr('href', link);
     });
 </script>

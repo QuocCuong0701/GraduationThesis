@@ -4,14 +4,17 @@ use lhcosmetic;
 -- User --
 drop table if exists user;
 create table user(
-	user_id int primary key auto_increment not null,
+    user_id int primary key auto_increment not null,
     user_name varchar(50) not null,
+    user_full_name varchar(50) not null,
     user_email varchar(50) not null,
     user_pass varchar(20) not null,
     user_role bit not null,
     created_date timestamp not null,
     updated_date timestamp
 );
+ALTER TABLE user
+ADD COLUMN user_full_name VARCHAR(50) AFTER user_name;
 
 -- Category --
 drop table if exists category;
@@ -37,7 +40,9 @@ create table product(
     updated_date timestamp ,
     category_id int not null
 );
-alter table product add constraint fk_category_id foreign key (category_id) references category(category_id);
+
+alter table product add constraint fk_category_id 
+foreign key (category_id) references category(category_id) on delete cascade on update cascade;
 
 -- Bill --
 drop table if exists bill;
@@ -54,7 +59,9 @@ create table bill(
     created_date timestamp not null,
     updated_date timestamp
 );
-alter table bill add constraint fk_bill_user_id foreign key (user_id) references user(user_id);
+
+alter table bill add constraint fk_bill_user_id 
+foreign key (user_id) references user(user_id) on delete cascade on update cascade;
 
 -- BillDetail --
 drop table if exists bill_detail;
@@ -64,5 +71,8 @@ create table bill_detail(
     product_id int not null,
     quantity int not null
 );
-alter table bill_detail add constraint fk_bill_id foreign key (bill_id) references bill(bill_id);
-alter table bill_detail add constraint fk_product_id foreign key (product_id) references product(product_id);
+
+alter table bill_detail add constraint fk_bill_id 
+foreign key (bill_id) references bill(bill_id) on delete cascade on update cascade;
+alter table bill_detail add constraint fk_product_id 
+foreign key (product_id) references product(product_id)on delete cascade on update cascade;
