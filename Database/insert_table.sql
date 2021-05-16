@@ -1,17 +1,18 @@
 use lhcosmetic;
 
-insert into user(user_name, user_email, user_pass, user_role, created_date) 
-values ('admin','admin@gmail.com','12345',0,curdate()),
-('user','user@gmail.com','12345',1,curdate()),
-('user1','user1@gmail.com','12345',1,curdate()),
-('quoccuong','quoccuong@gmail.com','12345',1,curdate()),
-('katy','kperry@gmail.com','12345',1,curdate()),
-('taylor','tswifty@gmail.com','12345',1,curdate()),
-('justin','beiber@gmail.com','12345',1,curdate()),
-('sontung','mtp@gmail.com','12345',1,curdate()),
-('zeus','zeus@gmail.com','12345',1,curdate()),
-('poseidon','poseidon@gmail.com','12345',1,curdate()),
-('hades','hades@gmail.com','12345',1,curdate()),
+insert into user(user_name,user_full_name, user_email, user_pass, user_role, created_date)
+values ('admin','Admin','admin@gmail.com','12345',0,curdate()),
+       ('user','User','user@gmail.com','12345',1,curdate()),
+       ('user1','User1','user1@gmail.com','12345',1,curdate()),
+       ('quoccuong','Pham Quoc Cuong','quoccuong@gmail.com','12345',1,curdate()),
+       ('katy','Katy Perry','kperry@gmail.com','12345',1,curdate()),
+       ('taylor','Taylor','tswifty@gmail.com','12345',1,curdate()),
+       ('justin','Justin','beiber@gmail.com','12345',1,curdate()),
+       ('sontung','Son Tung','mtp@gmail.com','12345',1,curdate()),
+       ('zeus','Zeus','zeus@gmail.com','12345',1,curdate()),
+       ('poseidon','Poseidon','poseidon@gmail.com','12345',1,curdate()),
+       ('hades','Hades','hades@gmail.com','12345',1,curdate()),
+       ('chiron','Chiron','chiron@gmail.com','12345',1,curdate());
 ('chiron','chiron@gmail.com','12345',1,curdate());
 
 insert into category(category_name,created_date) 

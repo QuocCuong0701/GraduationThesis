@@ -10,12 +10,9 @@ import com.lanhuongcosmetic.model.BillDetailModel;
 import com.lanhuongcosmetic.model.BillModel;
 import com.lanhuongcosmetic.service.IBillDetailService;
 import com.lanhuongcosmetic.service.IBillService;
-import com.opensymphony.module.sitemesh.Page;
-import javafx.scene.text.TextAlignment;
 
 import javax.inject.Inject;
 import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
